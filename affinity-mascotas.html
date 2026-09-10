@@ -1,0 +1,4125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Affinity Mascotas · Seguro para perros y gatos">
+<title>Affinity Mascotas</title>
+<style>
+:root{
+  --ink:#182126;
+  --muted:#66727a;
+  --line:#e2e7e9;
+  --paper:#fff;
+  --soft:#f6f7f7;
+  --soft-2:#f1f4f3;
+  --brand:#17695f;
+  --brand-dark:#115149;
+  --brand-soft:#e9f2f0;
+  --accent:#efe9df;
+  --wa:#176b51;
+  --radius:22px;
+  --shadow:0 24px 70px rgba(21,33,37,.10);
+  --container:1220px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.container{width:min(var(--container),calc(100% - 48px));margin-inline:auto}
+
+
+
+/* SISTEMA VISUAL MASCOTAS · refinado con referencias Canva */
+.pet-symbol{
+  display:inline-grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid rgba(23,105,95,.13);
+  background:linear-gradient(180deg,#eef6f4 0%,#e7f0ee 100%);
+  color:var(--brand);
+  flex:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+}
+.pet-symbol.small{
+  width:31px;
+  height:31px;
+  border-radius:10px;
+}
+.pet-symbol.soft{
+  background:#f5f7f6;
+  border-color:#e3e8e6;
+  color:#5c6e69;
+}
+.pet-symbol.white{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.18);
+  color:#fff;
+  box-shadow:none;
+}
+.pet-icon-svg{
+  width:23px;
+  height:23px;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.pet-symbol.small .pet-icon-svg{
+  width:17px;
+  height:17px;
+}
+.pet-type-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-bottom:15px;
+}
+.pet-type-copy{
+  font-size:11px;
+  color:#637278;
+  font-weight:800;
+  letter-spacing:.015em;
+}
+.icon-pair{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.icon-pair .pet-symbol + .pet-symbol{
+  margin-left:0;
+}
+.icon-pair .pet-symbol:nth-child(2){
+  background:#fff;
+}
+.choice-pet{
+  display:inline-grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  margin-right:6px;
+  border-radius:8px;
+  background:var(--brand-soft);
+  color:var(--brand);
+  vertical-align:middle;
+}
+.choice-pet .pet-icon-svg{
+  width:14px;
+  height:14px;
+  stroke-width:2.2;
+}
+.benefit-icon{
+  display:grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  flex:0 0 24px;
+  color:var(--brand);
+}
+.benefit-icon .pet-icon-svg{
+  width:19px;
+  height:19px;
+}
+.info-card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.info-card:after{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  right:-38px;
+  bottom:-42px;
+  border-radius:50%;
+  background:rgba(23,105,95,.035);
+  pointer-events:none;
+}
+.info-card .pet-symbol{
+  margin-bottom:20px;
+}
+.discounts-pets{
+  display:flex;
+  align-items:center;
+  margin-bottom:18px;
+}
+.product-info{
+  position:relative;
+  overflow:hidden;
+}
+.product-info:before{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  right:-120px;
+  top:72px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(23,105,95,.045) 0%,rgba(23,105,95,0) 70%);
+  pointer-events:none;
+}
+@media(max-width:600px){
+  .pet-symbol{
+    width:40px;
+    height:40px;
+    border-radius:13px;
+  }
+  .pet-icon-svg{
+    width:21px;
+    height:21px;
+  }
+}
+
+/* HEADER */
+.header{
+  position:sticky;top:0;z-index:30;
+  background:rgba(255,255,255,.98);
+  border-bottom:1px solid rgba(226,231,233,.9);
+  backdrop-filter:blur(10px);
+}
+.header-inner{
+  min-height:78px;
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  min-width:0;
+}
+.brand img{
+  display:block;
+  width:auto;
+  height:39px;
+  object-fit:contain;
+}
+.brand .logo-horizontal{display:block}
+.brand .logo-compact{display:none}
+.brand-lockup{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.brand-product{
+  padding-left:14px;
+  border-left:1px solid #dfe5e5;
+  color:#27353a;
+  font-size:14px;
+  font-weight:750;
+  letter-spacing:-.015em;
+  white-space:nowrap;
+}
+.nav{display:flex;align-items:center;gap:26px;font-size:14px;color:#4f5f66}
+.nav a:hover{color:var(--brand)}
+.nav .cta{
+  min-height:44px;padding:0 18px;border-radius:999px;
+  display:inline-flex;align-items:center;
+  background:var(--ink);color:#fff;font-weight:800;
+}
+
+/* HERO */
+.hero{
+  padding:72px 0 46px;
+  background:linear-gradient(180deg,#fff 0%,#fbfcfc 100%);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.78fr) minmax(620px,1.22fr);
+  align-items:center;
+  gap:58px;
+}
+.kicker{
+  font-size:12px;font-weight:850;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--brand);
+}
+h1{
+  max-width:610px;
+  margin:14px 0 18px;
+  font-size:clamp(46px,5.2vw,72px);
+  line-height:.99;letter-spacing:-.056em;
+}
+.hero-lead{
+  max-width:560px;margin:0 0 24px;
+  color:#536169;font-size:18px;line-height:1.62;
+}
+.benefits{
+  display:grid;gap:11px;margin:0 0 28px;padding:0;list-style:none;
+}
+.benefits li{
+  display:flex;align-items:center;gap:10px;
+  color:#38464c;font-size:14px;font-weight:650;
+}
+.check{
+  width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand);
+  font-size:11px;font-weight:900;flex:none;
+}
+.hero-link{
+  display:inline-flex;align-items:center;gap:8px;
+  min-height:48px;padding:0 18px;border-radius:12px;
+  background:var(--brand);color:#fff;font-size:14px;font-weight:800;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+.hero-link.secondary{
+  border:1px solid var(--brand);
+  background:#fff;
+  color:var(--brand);
+}
+.hero-link:hover{background:var(--brand-dark)}
+.hero-link.secondary:hover{background:var(--brand-soft)}
+.hero-note{margin-top:12px;font-size:12px;color:#6f7d82}
+.hero-note strong{color:#46555a}
+@media(max-width:600px){
+  .hero-actions{flex-direction:column}
+  .hero-link{justify-content:space-between;width:100%}
+}
+
+/* EXPERIENCE */
+.experience{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transform:translateZ(0);
+}
+.experience input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.experience-head{
+  min-height:58px;padding:0 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  border-bottom:1px solid var(--line);background:#fbfcfc;
+}
+.assistant{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:800;
+}
+.assistant-logo{
+  width:26px;
+  height:26px;
+  object-fit:contain;
+  border-radius:7px;
+  background:#fff;
+  padding:2px;
+  border:1px solid #e6ebeb;
+}
+.online{
+  width:8px;height:8px;border-radius:50%;
+  background:#4b9a75;box-shadow:0 0 0 4px rgba(75,154,117,.11);
+}
+.mode{
+  display:flex;align-items:center;gap:7px;
+  padding:4px;border-radius:999px;background:#eef1f1;
+  font-size:11px;color:#6c7a80;
+}
+.mode span{padding:6px 9px;border-radius:999px}
+.mode .active{background:#fff;color:#334247;font-weight:800;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+
+.experience-main{
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  align-items:stretch;
+  min-height:535px;
+}
+.chat{
+  position:relative;
+  padding:25px 24px 21px;
+  display:flex;flex-direction:column;
+  border-right:1px solid var(--line);
+  min-width:0;
+}
+.step-top{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-bottom:17px;
+}
+.step-title{
+  font-size:11px;font-weight:850;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--brand);
+}
+.step-progress{font-size:11px;color:#8a979c}
+.chat-stage{position:relative;flex:1;min-height:360px}
+.stage{
+  position:absolute;inset:0;
+  opacity:0;transform:translateY(6px);
+  pointer-events:none;
+  transition:opacity .32s ease,transform .32s ease;
+  display:flex;flex-direction:column;
+}
+.bubble{
+  max-width:88%;
+  padding:12px 14px;margin-bottom:10px;
+  border-radius:15px;
+  font-size:14px;line-height:1.45;
+}
+.bubble.bot{
+  background:var(--soft);border:1px solid #e8ecec;
+  border-bottom-left-radius:5px;
+}
+.bubble.user{
+  align-self:flex-end;background:var(--brand);color:#fff;
+  border-bottom-right-radius:5px;
+}
+.choice-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.choice{
+  cursor:pointer;
+  border:1px solid #ccd6d8;background:#fff;
+  border-radius:999px;
+  padding:9px 13px;
+  font-size:13px;font-weight:750;color:#415157;
+  transition:.2s ease;
+}
+.choice:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-1px)}
+
+.choice .pet-icon-svg{
+  width:16px;
+  height:16px;
+  stroke-width:2.25;
+}
+
+.choice.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.choice.subtle{background:var(--soft)}
+.chat-hint{
+  margin-top:auto;padding-top:15px;
+  font-size:11px;color:#8b979b;
+}
+.fake-input{
+  margin-top:auto;
+  min-height:47px;padding:0 10px 0 14px;
+  border:1px solid var(--line);border-radius:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  color:#929da1;font-size:13px;background:#fff;
+}
+.send{
+  width:31px;height:31px;border-radius:9px;
+  display:grid;place-items:center;background:var(--ink);color:#fff;font-weight:900;
+}
+
+/* stage visibility */
+#s1:checked ~ .experience-main .stage.s1,
+#s2:checked ~ .experience-main .stage.s2,
+#s3dog:checked ~ .experience-main .stage.s3dog,
+#s3cat:checked ~ .experience-main .stage.s3cat,
+#s4dog:checked ~ .experience-main .stage.s4dog,
+#s4cat:checked ~ .experience-main .stage.s4cat{
+  opacity:1;transform:none;pointer-events:auto;
+}
+
+/* progress text */
+.progress-text{display:none}
+#s1:checked ~ .experience-head .p1,
+#s2dog:checked ~ .experience-head .p2,
+#s2cat:checked ~ .experience-head .p2,
+#s3dog:checked ~ .experience-head .p3,
+#s3cat:checked ~ .experience-head .p3,
+#s4dog:checked ~ .experience-head .p4,
+#s4cat:checked ~ .experience-head .p4{display:inline}
+
+/* PHOTOS · ENCAJE EDITORIAL PROFESIONAL */
+
+.selector-grid{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:18px;
+  padding:24px;
+  align-content:center;
+  align-items:center;
+}
+.selector-card{
+  position:relative;
+  display:block;
+  width:100%;
+  aspect-ratio:1 / 1;
+  min-width:0;
+  min-height:0;
+  align-self:center;
+  justify-self:stretch;
+  border-radius:24px;
+  overflow:hidden;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.38);
+  box-shadow:0 18px 42px rgba(17,30,32,.18);
+  background:#dfe5e3;
+  transform:translateY(0);
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.selector-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 22px 46px rgba(17,30,32,.22);
+  border-color:rgba(255,255,255,.62);
+}
+.selector-card img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.selector-card.dog img{object-position:50% 36%}
+.selector-card.cat img{object-position:50% 34%}
+.selector-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(12,24,25,.05) 18%,rgba(12,24,25,.68) 100%);
+}
+.selector-content{
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:20px;
+  z-index:2;
+  color:#fff;
+}
+.selector-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:8px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(8px);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.selector-title{
+  display:block;
+  margin:0 0 6px;
+  font-size:22px;
+  line-height:1.06;
+  font-weight:850;
+  letter-spacing:-.03em;
+}
+.selector-text{
+  display:block;
+  margin:0 0 13px;
+  font-size:12px;
+  line-height:1.45;
+  color:rgba(255,255,255,.84);
+}
+.selector-action{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  min-height:36px;
+  padding:0 13px;
+  border-radius:11px;
+  background:#fff;
+  color:#1d2c30;
+  font-size:11px;
+  font-weight:850;
+}
+.selector-tag{
+  position:absolute;
+  top:18px;
+  right:18px;
+  z-index:2;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.92);
+  color:#2c3a3f;
+  font-size:10px;
+  font-weight:850;
+  box-shadow:0 5px 18px rgba(18,31,33,.10);
+}
+#s1:checked ~ .experience-main .selector-grid{
+  display:grid;
+}
+#s2dog:checked ~ .experience-main .selector-grid,
+#s2cat:checked ~ .experience-main .selector-grid,
+#s3dog:checked ~ .experience-main .selector-grid,
+#s3cat:checked ~ .experience-main .selector-grid,
+#s4dog:checked ~ .experience-main .selector-grid,
+#s4cat:checked ~ .experience-main .selector-grid{
+  display:none;
+}
+
+.visual{
+  position:relative;
+  min-width:0;
+  min-height:535px;
+  height:100%;
+  overflow:hidden;
+  isolation:isolate;
+  background:#dfe5e3;
+}
+
+/* El degradado mejora la lectura sin ensuciar la fotografía */
+.visual:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(12,24,25,.00) 38%,rgba(12,24,25,.13) 62%,rgba(12,24,25,.70) 100%);
+}
+
+/*
+  figure tiene márgenes por defecto en navegador.
+  Se eliminan para que la fotografía ocupe EXACTAMENTE todo el marco.
+*/
+.photo{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  opacity:0;
+  transform:scale(1.018);
+  transform-origin:center center;
+  transition:
+    opacity .62s cubic-bezier(.22,.61,.36,1),
+    transform 1.15s cubic-bezier(.22,.61,.36,1);
+  backface-visibility:hidden;
+}
+
+/* La foto llena el marco sin deformarse */
+.photo img{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  min-width:100%;
+  min-height:100%;
+  margin:0;
+  padding:0;
+  border:0;
+  object-fit:cover;
+  image-rendering:auto;
+  filter:saturate(.92) contrast(.98) brightness(.99);
+  transform:translateZ(0);
+}
+
+/* Encuadre ajustado individualmente para mantener el rostro de la mascota */
+.photo.generic img{object-position:50% 47%}
+.photo.dog img{object-position:50% 41%}
+.photo.cat img{object-position:50% 43%}
+
+#s2dog:checked ~ .experience-main .photo.dog,
+#s3dog:checked ~ .experience-main .photo.dog,
+#s4dog:checked ~ .experience-main .photo.dog,
+#s2cat:checked ~ .experience-main .photo.cat,
+#s3cat:checked ~ .experience-main .photo.cat,
+#s4cat:checked ~ .experience-main .photo.cat{
+  opacity:1;
+  transform:scale(1);
+}
+.visual-badge{
+  position:absolute;
+  z-index:5;
+  left:18px;
+  top:18px;
+  max-width:calc(100% - 36px);
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,.62);
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(10px);
+  box-shadow:0 5px 18px rgba(20,35,37,.08);
+  color:#405055;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.visual-copy{
+  position:absolute;z-index:5;left:22px;right:22px;bottom:21px;color:#fff;
+}
+.visual-copy strong{
+  display:block;margin-bottom:5px;
+  font-size:20px;letter-spacing:-.025em;
+}
+.visual-copy p{
+  margin:0;max-width:390px;
+  font-size:12px;line-height:1.5;color:rgba(255,255,255,.86);
+}
+.visual-state{display:none}
+#s1:checked ~ .experience-main .vselect,
+#s2dog:checked ~ .experience-main .vdog,
+#s3dog:checked ~ .experience-main .vdog,
+#s4dog:checked ~ .experience-main .vdog,
+#s2cat:checked ~ .experience-main .vcat,
+#s3cat:checked ~ .experience-main .vcat,
+#s4cat:checked ~ .experience-main .vcat{display:block}
+
+/* CALL · CTA DE MARKETING */
+.help-section{
+  position:relative;
+  padding:18px 0 86px;
+  background:#fbfcfc;
+}
+.call-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(420px,.82fr);
+  gap:42px;
+  align-items:center;
+  padding:34px 36px;
+  border:0;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--brand-dark) 0%,#17695f 100%);
+  color:#fff;
+  box-shadow:0 20px 54px rgba(17,81,73,.18);
+  overflow:hidden;
+}
+.call-card:after{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;
+  right:-90px;top:-130px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  pointer-events:none;
+}
+
+.call-icon .pet-icon-svg{
+  width:23px;
+  height:23px;
+  stroke-width:2;
+}
+
+.call-copy{
+  position:relative;z-index:2;
+  display:flex;align-items:flex-start;gap:18px;
+}
+.call-icon{
+  width:52px;height:52px;border-radius:16px;
+  display:grid;place-items:center;flex:none;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-size:20px;
+}
+.call-eyebrow{
+  display:block;
+  margin-bottom:5px;
+  font-size:10px;font-weight:850;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.70);
+}
+.call-copy h2{
+  margin:0 0 6px;
+  font-size:27px;line-height:1.08;letter-spacing:-.035em;
+}
+.call-copy p{
+  margin:0;
+  max-width:520px;
+  color:rgba(255,255,255,.78);
+  font-size:14px;line-height:1.55;
+}
+.call-action{
+  position:relative;z-index:2;
+}
+.call-form{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:9px;
+  padding:8px;
+  border-radius:15px;
+  background:#fff;
+  box-shadow:0 10px 28px rgba(3,28,25,.14);
+}
+.call-form input{
+  min-width:0;
+  width:100%;
+  height:47px;
+  padding:0 13px;
+  border:0;
+  border-radius:10px;
+  outline:none;
+  background:#fff;
+  color:#506066;
+}
+.call-form input::placeholder{color:#9aa4a7}
+.call-form button{
+  height:47px;
+  padding:0 19px;
+  border:0;
+  border-radius:10px;
+  background:var(--ink);
+  color:#fff;
+  font-weight:850;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.call-form button:hover{background:#0f171b}
+.call-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:9px;
+  padding:0 3px;
+  font-size:10px;
+  color:rgba(255,255,255,.68);
+}
+.call-meta strong{color:#fff}
+
+
+/* INFORMACIÓN CLAVE · Inspiración estructural Barkibu, contenido MGC */
+.product-info{
+  padding:82px 0 76px;
+  background:#fff;
+}
+.info-head{
+  max-width:720px;
+  margin-bottom:34px;
+}
+.info-head .kicker{margin-bottom:10px}
+.info-head h2{
+  margin:0 0 13px;
+  font-size:clamp(34px,4vw,48px);
+  line-height:1.04;
+  letter-spacing:-.045em;
+}
+.info-head p{
+  max-width:650px;
+  margin:0;
+  color:#647178;
+  font-size:15px;
+  line-height:1.7;
+}
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.info-card{
+  min-height:220px;
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#fff;
+}
+.info-icon{
+  width:45px;height:45px;
+  display:grid;place-items:center;
+  margin-bottom:22px;
+  border-radius:13px;
+  background:var(--brand-soft);
+  color:var(--brand);
+  font-size:19px;
+  font-weight:900;
+}
+.info-card h3{
+  margin:0 0 8px;
+  font-size:18px;
+  letter-spacing:-.025em;
+}
+.info-card p{
+  margin:0;
+  color:#69777d;
+  font-size:13px;
+  line-height:1.62;
+}
+.eligibility{
+  margin-top:18px;
+  padding:15px 17px;
+  border:1px solid #e5e9e8;
+  border-radius:13px;
+  background:#f8faf9;
+  color:#68767b;
+  font-size:12px;
+  line-height:1.55;
+}
+.eligibility strong{
+  color:#334449;
+  font-weight:800;
+}
+
+/* CÓMO FUNCIONA */
+.how{
+  padding:76px 0;
+  background:#f6f8f7;
+}
+.how-layout{
+  display:grid;
+  grid-template-columns:.72fr 1.28fr;
+  gap:58px;
+  align-items:start;
+}
+.how-copy h2{
+  margin:8px 0 14px;
+  font-size:clamp(34px,4vw,48px);
+  line-height:1.04;
+  letter-spacing:-.045em;
+}
+.how-copy p{
+  max-width:430px;
+  margin:0 0 23px;
+  color:#647178;
+  font-size:14px;
+  line-height:1.7;
+}
+.how-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:45px;
+  padding:0 16px;
+  border-radius:11px;
+  background:var(--brand);
+  color:#fff;
+  font-size:13px;
+  font-weight:850;
+}
+.steps{
+  display:grid;
+  gap:10px;
+}
+.step-card{
+  display:grid;
+  grid-template-columns:50px 1fr;
+  gap:17px;
+  align-items:start;
+  padding:20px;
+  border:1px solid #e0e6e4;
+  border-radius:17px;
+  background:#fff;
+}
+.step-number{
+  width:50px;height:50px;
+  display:grid;place-items:center;
+  border-radius:15px;
+  background:var(--brand);
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+}
+.step-card h3{
+  margin:1px 0 4px;
+  font-size:16px;
+  letter-spacing:-.02em;
+}
+.step-card p{
+  margin:0;
+  color:#6c797e;
+  font-size:12px;
+  line-height:1.55;
+}
+
+/* DISCOUNTS */
+.discounts{
+  padding:84px 0;
+  background:#f3f0ea;
+}
+.discounts-grid{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:48px;align-items:center;
+}
+.discounts-copy .kicker{margin-bottom:12px}
+.discounts-copy h2{
+  margin:0 0 15px;max-width:470px;
+  font-size:clamp(34px,4.1vw,50px);
+  line-height:1.04;letter-spacing:-.045em;
+}
+.discounts-copy p{
+  max-width:500px;margin:0 0 23px;
+  color:#5d696d;font-size:15px;line-height:1.7;
+}
+.discounts-copy .micro{font-size:11px;color:#8a9495}
+.access-card{
+  border:1px solid #dedfd9;border-radius:26px;
+  background:#fff;box-shadow:0 20px 55px rgba(39,39,31,.07);
+  overflow:hidden;
+}
+.access-head{
+  padding:26px 28px 19px;border-bottom:1px solid var(--line);
+}
+.access-head strong{display:block;font-size:20px;letter-spacing:-.025em}
+.access-head span{display:block;margin-top:5px;font-size:12px;color:#7b878b}
+.access-body{
+  display:grid;grid-template-columns:.86fr 1.14fr;
+}
+.login{
+  padding:25px;border-right:1px solid var(--line);
+}
+.label{
+  display:block;margin:0 0 6px;
+  font-size:11px;font-weight:800;color:#556469;
+}
+.login input{
+  width:100%;height:44px;margin-bottom:11px;padding:0 12px;
+  border:1px solid var(--line);border-radius:10px;background:#fcfdfd;
+}
+.login button{
+  width:100%;height:44px;border:0;border-radius:10px;
+  background:var(--brand);color:#fff;font-weight:800;
+}
+.login small{display:block;margin-top:10px;color:#8b9698;font-size:10px;line-height:1.45}
+.offers{
+  padding:23px;background:#fbfcfb;
+}
+.offers-top{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-bottom:12px;
+}
+.offers-top strong{font-size:14px}
+.offers-top a{font-size:11px;color:var(--brand);font-weight:800}
+.offer-list{display:grid;gap:9px}
+.offer{
+  min-height:62px;padding:11px 12px;
+  border:1px solid var(--line);border-radius:12px;background:#fff;
+  display:flex;align-items:center;gap:11px;
+}
+.offer-logo{
+  width:38px;height:38px;border-radius:10px;
+  display:grid;place-items:center;background:var(--soft-2);
+  color:#566569;font-size:11px;font-weight:900;flex:none;
+}
+.offer strong{display:block;font-size:12px}
+.offer span{display:block;margin-top:2px;font-size:10px;color:#899496}
+
+/* WhatsApp · acceso visual reconocible */
+.whatsapp-wrap{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:45;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.whatsapp-label{
+  padding:10px 13px;
+  border:1px solid #e5e9e8;
+  border-radius:12px;
+  background:#fff;
+  color:#48575d;
+  box-shadow:0 10px 28px rgba(24,33,38,.12);
+  font-size:11px;
+  line-height:1.35;
+}
+.whatsapp-label strong{
+  display:block;
+  color:#263338;
+  font-size:12px;
+}
+.whatsapp{
+  width:58px;
+  height:58px;
+  padding:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#25D366;
+  color:#fff;
+  box-shadow:0 12px 30px rgba(37,211,102,.30);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.whatsapp:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 34px rgba(37,211,102,.38);
+}
+.whatsapp svg{
+  width:30px;
+  height:30px;
+  display:block;
+  fill:#fff;
+}
+
+.footer{padding:28px 0;border-top:1px solid var(--line);font-size:11px;color:#829094}
+.footer-inner{display:flex;justify-content:space-between;gap:18px}
+.footer strong{color:#425157}
+.footer-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#607076;
+}
+.footer-brand img{
+  display:block;
+  width:auto;
+  height:25px;
+  object-fit:contain;
+}
+
+/* Responsive */
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .hero-lead{max-width:680px}
+  .experience{max-width:930px}
+  .discounts-grid{grid-template-columns:1fr;gap:30px}
+  .how-layout{grid-template-columns:1fr;gap:30px}
+}
+
+@media(max-width:1180px){
+  .selector-grid{
+    padding:20px;
+    gap:14px;
+  }
+  .selector-card{
+    aspect-ratio:5 / 6;
+  }
+  .selector-title{
+    font-size:20px;
+  }
+  .selector-text{
+    font-size:11px;
+  }
+}
+
+@media(max-width:820px){
+  .container{width:min(var(--container),calc(100% - 32px))}
+  .nav a:not(.cta){display:none}
+  .hero{padding:50px 0 34px}
+  h1{font-size:48px}
+  .experience-main{grid-template-columns:1fr}
+  .chat{min-height:475px;border-right:0;border-bottom:1px solid var(--line)}
+  .visual{
+    min-height:0;
+    height:auto;
+    aspect-ratio:16 / 10;
+  }
+  .photo.generic img{object-position:50% 48%}
+  .photo.dog img{object-position:50% 39%}
+  .photo.cat img{object-position:50% 42%}
+  .call-card{grid-template-columns:1fr;gap:24px}
+  .call-action{width:100%}
+  .access-body{grid-template-columns:1fr}
+  .login{border-right:0;border-bottom:1px solid var(--line)}
+  .info-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .header-inner{min-height:66px}
+  .brand .logo-horizontal{display:none}
+  .brand .logo-compact{display:block;width:38px;height:38px}
+  .brand-product{font-size:12px;padding-left:10px}
+  .brand img{height:34px}
+  .brand-product{font-size:13px;padding-left:11px;margin-left:0}
+  .nav .cta{font-size:11px;min-height:38px;padding:0 12px}
+  .hero{padding-top:42px}
+  h1{font-size:39px}
+  .hero-lead{font-size:16px}
+  .experience{border-radius:22px}
+  .experience-head{align-items:flex-start;flex-direction:column;padding:13px 15px;gap:8px}
+  .chat{padding:20px 17px;min-height:470px}
+  .visual{
+    min-height:0;
+    height:auto;
+    aspect-ratio:4 / 3;
+  }
+  .photo.generic img{object-position:50% 50%}
+  .photo.dog img{object-position:50% 38%}
+  .photo.cat img{object-position:50% 41%}
+  .visual-copy{left:17px;right:17px;bottom:17px}
+  .selector-grid{
+    grid-template-columns:1fr;
+    padding:14px;
+    gap:12px;
+    align-content:stretch;
+  }
+  .selector-card{
+    aspect-ratio:4 / 3;
+  }
+  .selector-title{font-size:22px}
+  .selector-text{font-size:12px}
+  .selector-content{left:16px;right:16px;bottom:16px}
+  .call-card{padding:24px 20px;border-radius:20px}
+  .call-copy{align-items:flex-start}
+  .call-icon{width:46px;height:46px;border-radius:14px}
+  .call-copy h2{font-size:23px}
+  .call-form{grid-template-columns:1fr}
+  .call-form input,.call-form button{width:100%}
+  .call-meta{flex-direction:column;gap:3px}
+  .discounts{padding:58px 0}
+  .discounts-copy h2{font-size:34px}
+  .access-head,.login,.offers{padding:20px}
+  .whatsapp-wrap{right:14px;bottom:14px}
+  .whatsapp-label{display:none}
+  .whatsapp{width:56px;height:56px}
+  .footer-inner{flex-direction:column}
+}
+
+/* =========================================================
+   EXPERIENCIA V21 · IMÁGENES-BOTÓN ARRIBA + CHAT DEBAJO
+   ========================================================= */
+
+.experience{
+  overflow:hidden;
+}
+
+.experience-body{
+  background:#fff;
+}
+
+.pet-selector-top{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  padding:22px 22px 0;
+  max-width:820px;
+  margin:0 auto;
+}
+
+.pet-image-button{
+  position:relative;
+  display:block;
+  width:100%;
+  aspect-ratio:4 / 3;
+  overflow:hidden;
+  border:0;
+  border-radius:18px;
+  background:#eef2f1;
+  cursor:pointer;
+  isolation:isolate;
+  box-shadow:0 10px 28px rgba(24,38,41,.10);
+  transform:translateY(0);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.pet-image-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(24,38,41,.15);
+}
+
+.pet-image-button img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border:0;
+  margin:0;
+  padding:0;
+  transform:scale(1.002);
+  transition:transform .5s ease;
+}
+
+.pet-image-button:hover img{
+  transform:scale(1.025);
+}
+
+.pet-image-button.dog img{
+  object-position:50% 36%;
+}
+
+.pet-image-button.cat img{
+  object-position:50% 34%;
+}
+
+.pet-image-button::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(
+    180deg,
+    rgba(8,20,22,0) 42%,
+    rgba(8,20,22,.12) 62%,
+    rgba(8,20,22,.68) 100%
+  );
+  pointer-events:none;
+}
+
+.pet-button-copy{
+  position:absolute;
+  z-index:2;
+  left:18px;
+  right:18px;
+  bottom:17px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  color:#fff;
+}
+
+.pet-button-name{
+  display:block;
+  font-size:24px;
+  line-height:1;
+  font-weight:850;
+  letter-spacing:-.035em;
+}
+
+.pet-button-sub{
+  display:block;
+  margin-top:5px;
+  color:rgba(255,255,255,.82);
+  font-size:11px;
+  font-weight:650;
+}
+
+.pet-button-action{
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 12px;
+  border-radius:999px;
+  background:#fff;
+  color:#243238;
+  font-size:11px;
+  font-weight:850;
+  box-shadow:0 5px 18px rgba(0,0,0,.10);
+}
+
+.pet-selected-mark{
+  position:absolute;
+  z-index:3;
+  top:14px;
+  right:14px;
+  display:none;
+  align-items:center;
+  gap:6px;
+  min-height:30px;
+  padding:0 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  color:var(--brand);
+  font-size:10px;
+  font-weight:850;
+  box-shadow:0 5px 18px rgba(17,30,32,.10);
+}
+
+/* Estado inicial: las dos imágenes funcionan como dos grandes botones */
+#s1:checked ~ .experience-body .pet-selector-top{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+/* Tras seleccionar perro, queda solo la imagen-botón del perro */
+#s2dog:checked ~ .experience-body .pet-image-button.cat,
+#s3dog:checked ~ .experience-body .pet-image-button.cat,
+#s4dog:checked ~ .experience-body .pet-image-button.cat{
+  display:none;
+}
+
+#s2dog:checked ~ .experience-body .pet-image-button.dog,
+#s3dog:checked ~ .experience-body .pet-image-button.dog,
+#s4dog:checked ~ .experience-body .pet-image-button.dog{
+  grid-column:1 / -1;
+  width:min(100%,480px);
+  justify-self:center;
+}
+
+#s2dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+#s3dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+#s4dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark{
+  display:inline-flex;
+}
+
+/* Tras seleccionar gato, queda solo la imagen-botón del gato */
+#s2cat:checked ~ .experience-body .pet-image-button.dog,
+#s3cat:checked ~ .experience-body .pet-image-button.dog,
+#s4cat:checked ~ .experience-body .pet-image-button.dog{
+  display:none;
+}
+
+#s2cat:checked ~ .experience-body .pet-image-button.cat,
+#s3cat:checked ~ .experience-body .pet-image-button.cat,
+#s4cat:checked ~ .experience-body .pet-image-button.cat{
+  grid-column:1 / -1;
+  width:min(100%,480px);
+  justify-self:center;
+}
+
+#s2cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark,
+#s3cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark,
+#s4cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark{
+  display:inline-flex;
+}
+
+/* Chat a todo el ancho y claramente separado de la imagen */
+.experience-body .chat{
+  width:100%;
+  min-height:390px;
+  margin-top:20px;
+  padding:23px 25px 25px;
+  border-right:0;
+  border-top:1px solid #edf0f0;
+  background:#fff;
+}
+
+.experience-body .chat-stage{
+  min-height:300px;
+}
+
+/* Estados del chat */
+#s1:checked ~ .experience-body .stage.s1,
+#s2dog:checked ~ .experience-body .stage.s2dog,
+#s2cat:checked ~ .experience-body .stage.s2cat,
+#s3dog:checked ~ .experience-body .stage.s3dog,
+#s3cat:checked ~ .experience-body .stage.s3cat,
+#s4dog:checked ~ .experience-body .stage.s4dog,
+#s4cat:checked ~ .experience-body .stage.s4cat{
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+}
+
+/* Ocultamos cualquier selector/visual antiguo por seguridad */
+.experience-body .selector-grid,
+.experience-body .visual{
+  display:none!important;
+}
+
+@media(max-width:1180px){
+  .pet-selector-top{
+    gap:14px;
+    padding:18px 18px 0;
+  }
+  .pet-button-name{
+    font-size:21px;
+  }
+  .pet-button-action{
+    min-height:34px;
+    padding-inline:10px;
+  }
+}
+
+@media(max-width:820px){
+  .pet-selector-top{
+    gap:12px;
+    padding:16px 16px 0;
+  }
+  .pet-image-button{
+    aspect-ratio:4 / 3;
+    border-radius:16px;
+  }
+  .experience-body .chat{
+    min-height:380px;
+    margin-top:16px;
+    padding:21px 18px 23px;
+  }
+}
+
+@media(max-width:600px){
+  .pet-selector-top{
+    grid-template-columns:1fr;
+    padding:12px 12px 0;
+    gap:10px;
+  }
+  #s1:checked ~ .experience-body .pet-selector-top{
+    grid-template-columns:1fr;
+  }
+  .pet-image-button{
+    aspect-ratio:16 / 10;
+    border-radius:15px;
+  }
+  .pet-image-button.dog img{
+    object-position:50% 34%;
+  }
+  .pet-image-button.cat img{
+    object-position:50% 31%;
+  }
+  .pet-button-copy{
+    left:15px;
+    right:15px;
+    bottom:14px;
+  }
+  .pet-button-name{
+    font-size:21px;
+  }
+  .pet-button-sub{
+    font-size:10px;
+  }
+  .pet-button-action{
+    min-height:33px;
+    padding:0 10px;
+    font-size:10px;
+  }
+  .experience-body .chat{
+    min-height:410px;
+    padding:19px 16px 22px;
+  }
+}
+
+
+/* =========================================================
+   V21 · TRANSICIÓN DE LAYOUT TRAS ELEGIR MASCOTA
+   Inicial: imágenes arriba + chat debajo.
+   Seleccionado (desktop): chat izquierda + foto derecha.
+   ========================================================= */
+
+@media(min-width:821px){
+
+  /* Estado inicial: composición vertical */
+  #s1:checked ~ .experience-body{
+    display:block;
+  }
+
+  #s1:checked ~ .experience-body .pet-selector-top{
+    display:grid;
+    max-width:820px;
+    margin:0 auto;
+    padding:22px 22px 0;
+  }
+
+  #s1:checked ~ .experience-body .chat{
+    width:100%;
+    margin-top:20px;
+    border-top:1px solid #edf0f0;
+    border-right:0;
+  }
+
+  /* Estados seleccionados: composición horizontal */
+  #s2dog:checked ~ .experience-body,
+  #s3dog:checked ~ .experience-body,
+  #s4dog:checked ~ .experience-body,
+  #s2cat:checked ~ .experience-body,
+  #s3cat:checked ~ .experience-body,
+  #s4cat:checked ~ .experience-body{
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(340px,.82fr);
+    grid-template-areas:"chat pet";
+    gap:0;
+    align-items:stretch;
+    min-height:500px;
+  }
+
+  #s2dog:checked ~ .experience-body .chat,
+  #s3dog:checked ~ .experience-body .chat,
+  #s4dog:checked ~ .experience-body .chat,
+  #s2cat:checked ~ .experience-body .chat,
+  #s3cat:checked ~ .experience-body .chat,
+  #s4cat:checked ~ .experience-body .chat{
+    grid-area:chat;
+    min-width:0;
+    min-height:500px;
+    margin-top:0;
+    padding:28px 30px 30px;
+    border-top:0;
+    border-right:1px solid #edf0f0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+  }
+
+  #s2dog:checked ~ .experience-body .pet-selector-top,
+  #s3dog:checked ~ .experience-body .pet-selector-top,
+  #s4dog:checked ~ .experience-body .pet-selector-top,
+  #s2cat:checked ~ .experience-body .pet-selector-top,
+  #s3cat:checked ~ .experience-body .pet-selector-top,
+  #s4cat:checked ~ .experience-body .pet-selector-top{
+    grid-area:pet;
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    max-width:none;
+    min-width:0;
+    height:100%;
+    min-height:500px;
+    margin:0;
+    padding:18px;
+    align-content:stretch;
+    background:#f7f9f8;
+  }
+
+  /* La imagen seleccionada se convierte en el panel visual derecho */
+  #s2dog:checked ~ .experience-body .pet-image-button.dog,
+  #s3dog:checked ~ .experience-body .pet-image-button.dog,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog,
+  #s2cat:checked ~ .experience-body .pet-image-button.cat,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat{
+    grid-column:auto;
+    width:100%;
+    height:100%;
+    min-height:464px;
+    aspect-ratio:auto;
+    justify-self:stretch;
+    align-self:stretch;
+    border-radius:20px;
+    box-shadow:none;
+  }
+
+  /* Sin efecto "tarjeta flotante" una vez seleccionada */
+  #s2dog:checked ~ .experience-body .pet-image-button.dog:hover,
+  #s3dog:checked ~ .experience-body .pet-image-button.dog:hover,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog:hover,
+  #s2cat:checked ~ .experience-body .pet-image-button.cat:hover,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat:hover,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat:hover{
+    transform:none;
+    box-shadow:none;
+  }
+
+  #s2dog:checked ~ .experience-body .pet-image-button.dog:hover img,
+  #s3dog:checked ~ .experience-body .pet-image-button.dog:hover img,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog:hover img,
+  #s2cat:checked ~ .experience-body .pet-image-button.cat:hover img,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat:hover img,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat:hover img{
+    transform:scale(1.002);
+  }
+
+  /* Recorte específico para el nuevo panel vertical */
+  #s2dog:checked ~ .experience-body .pet-image-button.dog img,
+  #s3dog:checked ~ .experience-body .pet-image-button.dog img,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog img{
+    object-position:50% 38%;
+  }
+
+  #s2cat:checked ~ .experience-body .pet-image-button.cat img,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat img,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat img{
+    object-position:50% 36%;
+  }
+
+  /* En estado seleccionado el CTA deja de parecer un botón de selección */
+  #s2dog:checked ~ .experience-body .pet-image-button.dog .pet-button-action,
+  #s3dog:checked ~ .experience-body .pet-image-button.dog .pet-button-action,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog .pet-button-action,
+  #s2cat:checked ~ .experience-body .pet-image-button.cat .pet-button-action,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat .pet-button-action,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat .pet-button-action{
+    display:none;
+  }
+
+  #s2dog:checked ~ .experience-body .pet-image-button.dog .pet-button-sub,
+  #s3dog:checked ~ .experience-body .pet-image-button.dog .pet-button-sub,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog .pet-button-sub,
+  #s2cat:checked ~ .experience-body .pet-image-button.cat .pet-button-sub,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat .pet-button-sub,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat .pet-button-sub{
+    display:none;
+  }
+
+  #s2dog:checked ~ .experience-body .pet-image-button.dog .pet-button-name,
+  #s3dog:checked ~ .experience-body .pet-image-button.dog .pet-button-name,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog .pet-button-name,
+  #s2cat:checked ~ .experience-body .pet-image-button.cat .pet-button-name,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat .pet-button-name,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat .pet-button-name{
+    font-size:27px;
+  }
+}
+
+/* En móvil mantenemos una lectura vertical cómoda */
+@media(max-width:820px){
+  #s2dog:checked ~ .experience-body,
+  #s3dog:checked ~ .experience-body,
+  #s4dog:checked ~ .experience-body,
+  #s2cat:checked ~ .experience-body,
+  #s3cat:checked ~ .experience-body,
+  #s4cat:checked ~ .experience-body{
+    display:flex;
+    flex-direction:column;
+  }
+
+  #s2dog:checked ~ .experience-body .pet-selector-top,
+  #s3dog:checked ~ .experience-body .pet-selector-top,
+  #s4dog:checked ~ .experience-body .pet-selector-top,
+  #s2cat:checked ~ .experience-body .pet-selector-top,
+  #s3cat:checked ~ .experience-body .pet-selector-top,
+  #s4cat:checked ~ .experience-body .pet-selector-top{
+    order:1;
+    width:100%;
+    max-width:none;
+  }
+
+  #s2dog:checked ~ .experience-body .chat,
+  #s3dog:checked ~ .experience-body .chat,
+  #s4dog:checked ~ .experience-body .chat,
+  #s2cat:checked ~ .experience-body .chat,
+  #s3cat:checked ~ .experience-body .chat,
+  #s4cat:checked ~ .experience-body .chat{
+    order:2;
+  }
+}
+
+
+/* =========================================================
+   V21 · FLUJO MGC REAL
+   Chat y formulario solicitan exactamente los mismos datos.
+   ========================================================= */
+
+.mode label{
+  padding:6px 9px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.18s ease;
+}
+.mode label:hover{color:#334247}
+#mchat:checked ~ .experience-head .mode-chat,
+#mform:checked ~ .experience-head .mode-form{
+  background:#fff;
+  color:#334247;
+  font-weight:800;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+
+/* Visibilidad de modos */
+.form-panel{display:none}
+#mform:checked ~ .experience-body{display:none!important}
+#mform:checked ~ .form-panel{display:block}
+#mchat:checked ~ .form-panel{display:none}
+
+/* El selector visual solo aparece en el paso perro/gato */
+#mchat:checked ~ #s1:checked ~ .experience-body .pet-selector-top{
+  display:none;
+}
+#mchat:checked ~ #s2:checked ~ .experience-body .pet-selector-top{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  max-width:820px;
+  margin:0 auto;
+  padding:22px 22px 0;
+}
+
+/* En el paso 2 las dos fotos siguen siendo botones */
+#s2:checked ~ .experience-body .pet-image-button{
+  display:block;
+}
+#s2:checked ~ .experience-body .pet-selected-mark{
+  display:none;
+}
+
+/* Una vez elegida especie: chat izquierda + foto derecha en desktop */
+@media(min-width:821px){
+  #s1:checked ~ .experience-body,
+  #s2:checked ~ .experience-body{
+    display:block;
+  }
+
+  #s1:checked ~ .experience-body .chat,
+  #s2:checked ~ .experience-body .chat{
+    width:100%;
+    margin-top:0;
+    border-top:0;
+    border-right:0;
+    min-height:420px;
+  }
+
+  #s2:checked ~ .experience-body .chat{
+    margin-top:18px;
+    border-top:1px solid #edf0f0;
+  }
+
+  #s3dog:checked ~ .experience-body,
+  #s4dog:checked ~ .experience-body,
+  #s5dog:checked ~ .experience-body,
+  #s6dog:checked ~ .experience-body,
+  #s7dog:checked ~ .experience-body,
+  #s8dog:checked ~ .experience-body,
+  #s3cat:checked ~ .experience-body,
+  #s4cat:checked ~ .experience-body,
+  #s5cat:checked ~ .experience-body,
+  #s6cat:checked ~ .experience-body,
+  #s7cat:checked ~ .experience-body,
+  #s8cat:checked ~ .experience-body{
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(340px,.82fr);
+    grid-template-areas:"chat pet";
+    min-height:520px;
+  }
+
+  #s3dog:checked ~ .experience-body .chat,
+  #s4dog:checked ~ .experience-body .chat,
+  #s5dog:checked ~ .experience-body .chat,
+  #s6dog:checked ~ .experience-body .chat,
+  #s7dog:checked ~ .experience-body .chat,
+  #s8dog:checked ~ .experience-body .chat,
+  #s3cat:checked ~ .experience-body .chat,
+  #s4cat:checked ~ .experience-body .chat,
+  #s5cat:checked ~ .experience-body .chat,
+  #s6cat:checked ~ .experience-body .chat,
+  #s7cat:checked ~ .experience-body .chat,
+  #s8cat:checked ~ .experience-body .chat{
+    grid-area:chat;
+    margin:0;
+    min-height:520px;
+    border:0;
+    border-right:1px solid #edf0f0;
+    padding:28px 30px 30px;
+  }
+
+  #s3dog:checked ~ .experience-body .pet-selector-top,
+  #s4dog:checked ~ .experience-body .pet-selector-top,
+  #s5dog:checked ~ .experience-body .pet-selector-top,
+  #s6dog:checked ~ .experience-body .pet-selector-top,
+  #s7dog:checked ~ .experience-body .pet-selector-top,
+  #s8dog:checked ~ .experience-body .pet-selector-top,
+  #s3cat:checked ~ .experience-body .pet-selector-top,
+  #s4cat:checked ~ .experience-body .pet-selector-top,
+  #s5cat:checked ~ .experience-body .pet-selector-top,
+  #s6cat:checked ~ .experience-body .pet-selector-top,
+  #s7cat:checked ~ .experience-body .pet-selector-top,
+  #s8cat:checked ~ .experience-body .pet-selector-top{
+    grid-area:pet;
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    max-width:none;
+    height:100%;
+    min-height:520px;
+    padding:18px;
+    margin:0;
+    align-content:stretch;
+    background:#f7f9f8;
+  }
+
+  /* perro */
+  #s3dog:checked ~ .experience-body .pet-image-button.cat,
+  #s4dog:checked ~ .experience-body .pet-image-button.cat,
+  #s5dog:checked ~ .experience-body .pet-image-button.cat,
+  #s6dog:checked ~ .experience-body .pet-image-button.cat,
+  #s7dog:checked ~ .experience-body .pet-image-button.cat,
+  #s8dog:checked ~ .experience-body .pet-image-button.cat{display:none}
+
+  #s3dog:checked ~ .experience-body .pet-image-button.dog,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog,
+  #s5dog:checked ~ .experience-body .pet-image-button.dog,
+  #s6dog:checked ~ .experience-body .pet-image-button.dog,
+  #s7dog:checked ~ .experience-body .pet-image-button.dog,
+  #s8dog:checked ~ .experience-body .pet-image-button.dog{
+    display:block;
+    width:100%;
+    height:100%;
+    min-height:484px;
+    aspect-ratio:auto;
+    grid-column:auto;
+    justify-self:stretch;
+    border-radius:20px;
+    box-shadow:none;
+  }
+
+  /* gato */
+  #s3cat:checked ~ .experience-body .pet-image-button.dog,
+  #s4cat:checked ~ .experience-body .pet-image-button.dog,
+  #s5cat:checked ~ .experience-body .pet-image-button.dog,
+  #s6cat:checked ~ .experience-body .pet-image-button.dog,
+  #s7cat:checked ~ .experience-body .pet-image-button.dog,
+  #s8cat:checked ~ .experience-body .pet-image-button.dog{display:none}
+
+  #s3cat:checked ~ .experience-body .pet-image-button.cat,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat,
+  #s5cat:checked ~ .experience-body .pet-image-button.cat,
+  #s6cat:checked ~ .experience-body .pet-image-button.cat,
+  #s7cat:checked ~ .experience-body .pet-image-button.cat,
+  #s8cat:checked ~ .experience-body .pet-image-button.cat{
+    display:block;
+    width:100%;
+    height:100%;
+    min-height:484px;
+    aspect-ratio:auto;
+    grid-column:auto;
+    justify-self:stretch;
+    border-radius:20px;
+    box-shadow:none;
+  }
+
+  #s3dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+  #s4dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+  #s5dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+  #s6dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+  #s7dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+  #s8dog:checked ~ .experience-body .pet-image-button.dog .pet-selected-mark,
+  #s3cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark,
+  #s4cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark,
+  #s5cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark,
+  #s6cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark,
+  #s7cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark,
+  #s8cat:checked ~ .experience-body .pet-image-button.cat .pet-selected-mark{
+    display:inline-flex;
+  }
+
+  #s3dog:checked ~ .experience-body .pet-button-action,
+  #s4dog:checked ~ .experience-body .pet-button-action,
+  #s5dog:checked ~ .experience-body .pet-button-action,
+  #s6dog:checked ~ .experience-body .pet-button-action,
+  #s7dog:checked ~ .experience-body .pet-button-action,
+  #s8dog:checked ~ .experience-body .pet-button-action,
+  #s3cat:checked ~ .experience-body .pet-button-action,
+  #s4cat:checked ~ .experience-body .pet-button-action,
+  #s5cat:checked ~ .experience-body .pet-button-action,
+  #s6cat:checked ~ .experience-body .pet-button-action,
+  #s7cat:checked ~ .experience-body .pet-button-action,
+  #s8cat:checked ~ .experience-body .pet-button-action,
+  #s3dog:checked ~ .experience-body .pet-button-sub,
+  #s4dog:checked ~ .experience-body .pet-button-sub,
+  #s5dog:checked ~ .experience-body .pet-button-sub,
+  #s6dog:checked ~ .experience-body .pet-button-sub,
+  #s7dog:checked ~ .experience-body .pet-button-sub,
+  #s8dog:checked ~ .experience-body .pet-button-sub,
+  #s3cat:checked ~ .experience-body .pet-button-sub,
+  #s4cat:checked ~ .experience-body .pet-button-sub,
+  #s5cat:checked ~ .experience-body .pet-button-sub,
+  #s6cat:checked ~ .experience-body .pet-button-sub,
+  #s7cat:checked ~ .experience-body .pet-button-sub,
+  #s8cat:checked ~ .experience-body .pet-button-sub{
+    display:none;
+  }
+}
+
+/* mobile: siempre apilado */
+@media(max-width:820px){
+  #s1:checked ~ .experience-body .pet-selector-top{display:none}
+  #s2:checked ~ .experience-body .pet-selector-top{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  #s3dog:checked ~ .experience-body,
+  #s4dog:checked ~ .experience-body,
+  #s5dog:checked ~ .experience-body,
+  #s6dog:checked ~ .experience-body,
+  #s7dog:checked ~ .experience-body,
+  #s8dog:checked ~ .experience-body,
+  #s3cat:checked ~ .experience-body,
+  #s4cat:checked ~ .experience-body,
+  #s5cat:checked ~ .experience-body,
+  #s6cat:checked ~ .experience-body,
+  #s7cat:checked ~ .experience-body,
+  #s8cat:checked ~ .experience-body{
+    display:flex;
+    flex-direction:column;
+  }
+}
+
+/* Stages V21 */
+#s1:checked ~ .experience-body .stage.s1,
+#s2:checked ~ .experience-body .stage.s2,
+#s3dog:checked ~ .experience-body .stage.s3dog,
+#s3cat:checked ~ .experience-body .stage.s3cat,
+#s4dog:checked ~ .experience-body .stage.s4dog,
+#s4cat:checked ~ .experience-body .stage.s4cat,
+#s5dog:checked ~ .experience-body .stage.s5dog,
+#s5cat:checked ~ .experience-body .stage.s5cat,
+#s6dog:checked ~ .experience-body .stage.s6dog,
+#s6cat:checked ~ .experience-body .stage.s6cat,
+#s7dog:checked ~ .experience-body .stage.s7dog,
+#s7cat:checked ~ .experience-body .stage.s7cat,
+#s8dog:checked ~ .experience-body .stage.s8dog,
+#s8cat:checked ~ .experience-body .stage.s8cat{
+  opacity:1!important;
+  transform:none!important;
+  pointer-events:auto!important;
+}
+
+/* Progreso V21 */
+#s1:checked ~ .experience-head .p1,
+#s2:checked ~ .experience-head .p2,
+#s3dog:checked ~ .experience-head .p3,
+#s3cat:checked ~ .experience-head .p3,
+#s4dog:checked ~ .experience-head .p4,
+#s4cat:checked ~ .experience-head .p4,
+#s5dog:checked ~ .experience-head .p5,
+#s5cat:checked ~ .experience-head .p5,
+#s6dog:checked ~ .experience-head .p6,
+#s6cat:checked ~ .experience-head .p6,
+#s7dog:checked ~ .experience-head .p7,
+#s7cat:checked ~ .experience-head .p7,
+#s8dog:checked ~ .experience-head .p8,
+#s8cat:checked ~ .experience-head .p8{
+  display:inline!important;
+}
+
+/* Formulario: mismos campos que el chat MGC */
+.form-panel{
+  padding:24px;
+  background:#fff;
+}
+.form-intro{
+  margin-bottom:20px;
+}
+.form-intro h3{
+  margin:0 0 6px;
+  font-size:21px;
+  letter-spacing:-.025em;
+}
+.form-intro p{
+  margin:0;
+  color:#6b797e;
+  font-size:12px;
+  line-height:1.55;
+}
+.mgc-form{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.form-field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.form-field.full{grid-column:1/-1}
+.form-field label{
+  color:#435258;
+  font-size:11px;
+  font-weight:800;
+}
+.form-field input,
+.form-field select{
+  width:100%;
+  min-height:46px;
+  padding:0 13px;
+  border:1px solid #dce3e4;
+  border-radius:11px;
+  background:#fff;
+  color:#4a585d;
+  font:inherit;
+  font-size:13px;
+  outline:none;
+}
+.form-field input:focus,
+.form-field select:focus{
+  border-color:var(--brand);
+  box-shadow:0 0 0 3px rgba(23,105,95,.08);
+}
+.pet-form-options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.pet-form-option{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-height:46px;
+  padding:0 13px;
+  border:1px solid #dce3e4;
+  border-radius:11px;
+  color:#435258;
+  font-size:12px;
+  font-weight:750;
+}
+.add-pet-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px 14px;
+  border:1px dashed #d5ddde;
+  border-radius:12px;
+  background:#fafbfb;
+}
+.add-pet-row span{
+  font-size:12px;
+  color:#647278;
+}
+.add-pet-button{
+  min-height:36px;
+  padding:0 13px;
+  border:0;
+  border-radius:9px;
+  background:var(--brand-soft);
+  color:var(--brand);
+  font-size:11px;
+  font-weight:850;
+}
+.form-submit{
+  grid-column:1/-1;
+  min-height:48px;
+  border:0;
+  border-radius:11px;
+  background:var(--brand);
+  color:#fff;
+  font-size:13px;
+  font-weight:850;
+}
+.form-note{
+  grid-column:1/-1;
+  margin-top:-3px;
+  color:#8a969a;
+  font-size:10px;
+}
+@media(max-width:600px){
+  .form-panel{padding:18px 15px 20px}
+  .mgc-form{grid-template-columns:1fr}
+  .form-field.full,
+  .form-submit,
+  .form-note{grid-column:1}
+}
+
+
+/* =========================================================
+   V21 · REPARACIÓN DEFINITIVA DE IMÁGENES PERRO / GATO
+   ========================================================= */
+
+.journey-v17{
+  position:relative;
+}
+
+/* radios ocultos */
+.journey-v17 > input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* selector formulario / conversación */
+.journey-v17 .mode label{
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  padding:0 11px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.18s ease;
+}
+.journey-v17 .mode label:hover{
+  color:#304045;
+}
+.journey-v17 #mchat:checked ~ .experience-head .mode-chat,
+.journey-v17 #mform:checked ~ .experience-head .mode-form{
+  background:#fff;
+  color:#304045;
+  font-weight:800;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+
+/* visibilidad general */
+.journey-v17 .experience-body{
+  display:block;
+}
+.journey-v17 .form-panel{
+  display:none;
+}
+.journey-v17 #mform:checked ~ .experience-body{
+  display:none !important;
+}
+.journey-v17 #mform:checked ~ .form-panel{
+  display:block !important;
+}
+.journey-v17 #mchat:checked ~ .experience-body{
+  display:block !important;
+}
+
+/* Formulario desplegable */
+.form-disclosure{
+  background:#f7faf9;
+  border-bottom:1px solid var(--line);
+}
+.form-disclosure summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:14px 18px;
+  list-style:none;
+  cursor:pointer;
+  user-select:none;
+}
+.form-disclosure summary::-webkit-details-marker{display:none}
+.form-disclosure-copy{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.form-disclosure-copy strong{
+  color:#304045;
+  font-size:13px;
+}
+.form-disclosure-copy span{
+  color:#758287;
+  font-size:11px;
+}
+.form-disclosure-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:40px;
+  padding:0 14px;
+  border-radius:10px;
+  background:var(--brand);
+  color:#fff;
+  font-size:11px;
+  font-weight:850;
+  white-space:nowrap;
+  transition:background .18s ease;
+}
+.form-disclosure summary:hover .form-disclosure-action{
+  background:var(--brand-dark);
+}
+.form-disclosure summary:focus-visible{
+  outline:3px solid rgba(23,105,95,.2);
+  outline-offset:-3px;
+}
+.form-close-label{display:none}
+.form-chevron{
+  width:7px;
+  height:7px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translateY(-2px);
+  transition:transform .2s ease;
+}
+.form-disclosure[open] .form-open-label{display:none}
+.form-disclosure[open] .form-close-label{display:inline}
+.form-disclosure[open] .form-chevron{
+  transform:rotate(225deg) translate(-1px,-1px);
+}
+.journey-v17 .form-disclosure .form-panel{
+  display:block !important;
+  border-top:1px solid var(--line);
+}
+@media(max-width:600px){
+  .form-disclosure summary{
+    align-items:stretch;
+    flex-direction:column;
+    gap:10px;
+    padding:14px 15px;
+  }
+  .form-disclosure-action{width:100%}
+}
+
+/* panel de selección visual */
+.journey-v17 .pet-selector-top{
+  display:none !important;
+  gap:18px;
+  padding:22px 22px 0;
+  max-width:860px;
+  margin:0 auto;
+}
+.journey-v17 .pet-image-button{
+  position:relative;
+  display:block;
+  width:100%;
+  aspect-ratio:4 / 3;
+  overflow:hidden;
+  border:0;
+  border-radius:18px;
+  background:#eef2f1;
+  cursor:pointer;
+  isolation:isolate;
+  box-shadow:0 10px 28px rgba(24,38,41,.10);
+  transform:translateY(0);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.journey-v17 .pet-image-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(24,38,41,.15);
+}
+.journey-v17 .pet-image-button img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border:0;
+  margin:0;
+  padding:0;
+}
+.journey-v17 .pet-image-button.dog img{
+  object-position:50% 36%;
+}
+.journey-v17 .pet-image-button.cat img{
+  object-position:50% 34%;
+}
+.journey-v17 .pet-image-button::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(8,20,22,0) 42%,
+    rgba(8,20,22,.12) 62%,
+    rgba(8,20,22,.68) 100%
+  );
+  z-index:1;
+  pointer-events:none;
+}
+.journey-v17 .pet-button-copy{
+  position:absolute;
+  z-index:2;
+  left:18px;
+  right:18px;
+  bottom:17px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  color:#fff;
+}
+.journey-v17 .pet-button-name{
+  display:block;
+  font-size:24px;
+  line-height:1;
+  font-weight:850;
+  letter-spacing:-.035em;
+}
+.journey-v17 .pet-button-sub{
+  display:block;
+  margin-top:5px;
+  color:rgba(255,255,255,.82);
+  font-size:11px;
+  font-weight:650;
+}
+.journey-v17 .pet-button-action{
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 12px;
+  border-radius:999px;
+  background:#fff;
+  color:#243238;
+  font-size:11px;
+  font-weight:850;
+  box-shadow:0 5px 18px rgba(0,0,0,.10);
+}
+.journey-v17 .pet-selected-mark{
+  position:absolute;
+  z-index:3;
+  top:14px;
+  right:14px;
+  display:none;
+  align-items:center;
+  gap:6px;
+  min-height:30px;
+  padding:0 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  color:var(--brand);
+  font-size:10px;
+  font-weight:850;
+  box-shadow:0 5px 18px rgba(17,30,32,.10);
+}
+
+/* chat */
+.journey-v17 .chat{
+  width:100%;
+  min-height:420px;
+  margin-top:0;
+  padding:23px 25px 25px;
+  border-right:0;
+  border-top:0;
+  background:#fff;
+}
+.journey-v17 .chat-stage{
+  min-height:310px;
+}
+
+/* state visibility */
+.journey-v17 .stage{
+  display:none;
+}
+.journey-v17 #s1:checked ~ .experience-body .stage.s1,
+.journey-v17 #s2:checked ~ .experience-body .stage.s2,
+.journey-v17 #s3dog:checked ~ .experience-body .stage.s3dog,
+.journey-v17 #s3cat:checked ~ .experience-body .stage.s3cat,
+.journey-v17 #s4dog:checked ~ .experience-body .stage.s4dog,
+.journey-v17 #s4cat:checked ~ .experience-body .stage.s4cat,
+.journey-v17 #s5dog:checked ~ .experience-body .stage.s5dog,
+.journey-v17 #s5cat:checked ~ .experience-body .stage.s5cat,
+.journey-v17 #s6dog:checked ~ .experience-body .stage.s6dog,
+.journey-v17 #s6cat:checked ~ .experience-body .stage.s6cat,
+.journey-v17 #s7dog:checked ~ .experience-body .stage.s7dog,
+.journey-v17 #s7cat:checked ~ .experience-body .stage.s7cat,
+.journey-v17 #s8dog:checked ~ .experience-body .stage.s8dog,
+.journey-v17 #s8cat:checked ~ .experience-body .stage.s8cat{
+  display:block;
+}
+
+/* progress states */
+.journey-v17 .progress-text{
+  display:none;
+}
+.journey-v17 #s1:checked ~ .experience-head .p1,
+.journey-v17 #s2:checked ~ .experience-head .p2,
+.journey-v17 #s3dog:checked ~ .experience-head .p3,
+.journey-v17 #s3cat:checked ~ .experience-head .p3,
+.journey-v17 #s4dog:checked ~ .experience-head .p4,
+.journey-v17 #s4cat:checked ~ .experience-head .p4,
+.journey-v17 #s5dog:checked ~ .experience-head .p5,
+.journey-v17 #s5cat:checked ~ .experience-head .p5,
+.journey-v17 #s6dog:checked ~ .experience-head .p6,
+.journey-v17 #s6cat:checked ~ .experience-head .p6,
+.journey-v17 #s7dog:checked ~ .experience-head .p7,
+.journey-v17 #s7cat:checked ~ .experience-head .p7,
+.journey-v17 #s8dog:checked ~ .experience-head .p8,
+.journey-v17 #s8cat:checked ~ .experience-head .p8{
+  display:inline;
+}
+
+/* paso 1 y paso 2: mostrar las dos imágenes como botones */
+.journey-v17 #s1:checked ~ .experience-body .pet-selector-top,
+.journey-v17 #s2:checked ~ .experience-body .pet-selector-top{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.journey-v17 #s1:checked ~ .experience-body .chat,
+.journey-v17 #s2:checked ~ .experience-body .chat{
+  margin-top:18px;
+  border-top:1px solid #edf0f0;
+}
+
+/* después de elegir, desktop: chat izquierda + imagen derecha */
+@media(min-width:821px){
+  .journey-v17 #s3dog:checked ~ .experience-body,
+  .journey-v17 #s4dog:checked ~ .experience-body,
+  .journey-v17 #s5dog:checked ~ .experience-body,
+  .journey-v17 #s6dog:checked ~ .experience-body,
+  .journey-v17 #s7dog:checked ~ .experience-body,
+  .journey-v17 #s8dog:checked ~ .experience-body,
+  .journey-v17 #s3cat:checked ~ .experience-body,
+  .journey-v17 #s4cat:checked ~ .experience-body,
+  .journey-v17 #s5cat:checked ~ .experience-body,
+  .journey-v17 #s6cat:checked ~ .experience-body,
+  .journey-v17 #s7cat:checked ~ .experience-body,
+  .journey-v17 #s8cat:checked ~ .experience-body{
+    display:grid !important;
+    grid-template-columns:minmax(0,1.08fr) minmax(340px,.82fr);
+    grid-template-areas:"chat pet";
+    min-height:520px;
+    align-items:stretch;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .chat,
+  .journey-v17 #s4dog:checked ~ .experience-body .chat,
+  .journey-v17 #s5dog:checked ~ .experience-body .chat,
+  .journey-v17 #s6dog:checked ~ .experience-body .chat,
+  .journey-v17 #s7dog:checked ~ .experience-body .chat,
+  .journey-v17 #s8dog:checked ~ .experience-body .chat,
+  .journey-v17 #s3cat:checked ~ .experience-body .chat,
+  .journey-v17 #s4cat:checked ~ .experience-body .chat,
+  .journey-v17 #s5cat:checked ~ .experience-body .chat,
+  .journey-v17 #s6cat:checked ~ .experience-body .chat,
+  .journey-v17 #s7cat:checked ~ .experience-body .chat,
+  .journey-v17 #s8cat:checked ~ .experience-body .chat{
+    grid-area:chat;
+    margin:0;
+    min-height:520px;
+    border:0;
+    border-right:1px solid #edf0f0;
+    padding:28px 30px 30px;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-selector-top{
+    display:grid !important;
+    grid-area:pet;
+    grid-template-columns:1fr;
+    width:100%;
+    max-width:none;
+    min-height:520px;
+    padding:18px;
+    margin:0;
+    align-content:stretch;
+    background:#f7f9f8;
+  }
+
+  /* perro seleccionado */
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-image-button.cat{
+    display:none !important;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-image-button.dog{
+    display:block !important;
+    width:100%;
+    height:100%;
+    min-height:484px;
+    aspect-ratio:auto;
+    border-radius:20px;
+    box-shadow:none;
+  }
+
+  /* gato seleccionado */
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-image-button.dog{
+    display:none !important;
+  }
+
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-image-button.cat{
+    display:block !important;
+    width:100%;
+    height:100%;
+    min-height:484px;
+    aspect-ratio:auto;
+    border-radius:20px;
+    box-shadow:none;
+  }
+
+  /* panel seleccionado */
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-selected-mark{
+    display:inline-flex;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-button-action,
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-button-sub,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-button-sub{
+    display:none;
+  }
+}
+
+/* mobile */
+@media(max-width:820px){
+  .journey-v17 #s1:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s2:checked ~ .experience-body .pet-selector-top{
+    grid-template-columns:1fr !important;
+    gap:12px;
+    padding:14px 14px 0;
+  }
+  .journey-v17 .pet-image-button{
+    aspect-ratio:16 / 10;
+    border-radius:15px;
+  }
+  .journey-v17 .pet-button-copy{
+    left:15px;
+    right:15px;
+    bottom:14px;
+  }
+  .journey-v17 .pet-button-name{
+    font-size:22px;
+  }
+  .journey-v17 .pet-button-sub{
+    font-size:10px;
+  }
+  .journey-v17 .pet-button-action{
+    min-height:33px;
+    padding:0 10px;
+    font-size:10px;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body,
+  .journey-v17 #s4dog:checked ~ .experience-body,
+  .journey-v17 #s5dog:checked ~ .experience-body,
+  .journey-v17 #s6dog:checked ~ .experience-body,
+  .journey-v17 #s7dog:checked ~ .experience-body,
+  .journey-v17 #s8dog:checked ~ .experience-body,
+  .journey-v17 #s3cat:checked ~ .experience-body,
+  .journey-v17 #s4cat:checked ~ .experience-body,
+  .journey-v17 #s5cat:checked ~ .experience-body,
+  .journey-v17 #s6cat:checked ~ .experience-body,
+  .journey-v17 #s7cat:checked ~ .experience-body,
+  .journey-v17 #s8cat:checked ~ .experience-body{
+    display:flex !important;
+    flex-direction:column;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-selector-top,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-selector-top{
+    display:grid !important;
+    grid-template-columns:1fr;
+    padding:12px 12px 0;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-image-button.cat{
+    display:none !important;
+  }
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-image-button.dog{
+    display:none !important;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-image-button.dog,
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-image-button.cat,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-image-button.cat{
+    display:block !important;
+    width:100%;
+    aspect-ratio:16 / 10;
+  }
+
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-selected-mark,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-selected-mark{
+    display:inline-flex;
+  }
+
+  .journey-v17 .chat{
+    padding:20px 16px 22px;
+    min-height:410px;
+  }
+}
+
+
+/* V21 · imágenes embebidas, siempre visibles */
+.journey-v17 #s2:checked ~ .experience-body .pet-selector-top{
+  display:grid !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+.journey-v17 #s2:checked ~ .experience-body .pet-image-button{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+.journey-v17 .pet-image-button img{
+  visibility:visible !important;
+  opacity:1 !important;
+}
+
+
+/* V21 · fotografías reales perro/gato */
+.journey-v17 .pet-image-button.dog img{
+  object-fit:cover;
+  object-position:50% 42%;
+}
+.journey-v17 .pet-image-button.cat img{
+  object-fit:cover;
+  object-position:50% 38%;
+}
+
+/* Encuadre del panel derecho tras seleccionar */
+@media(min-width:821px){
+  .journey-v17 #s3dog:checked ~ .experience-body .pet-image-button.dog img,
+  .journey-v17 #s4dog:checked ~ .experience-body .pet-image-button.dog img,
+  .journey-v17 #s5dog:checked ~ .experience-body .pet-image-button.dog img,
+  .journey-v17 #s6dog:checked ~ .experience-body .pet-image-button.dog img,
+  .journey-v17 #s7dog:checked ~ .experience-body .pet-image-button.dog img,
+  .journey-v17 #s8dog:checked ~ .experience-body .pet-image-button.dog img{
+    object-position:50% 44%;
+  }
+
+  .journey-v17 #s3cat:checked ~ .experience-body .pet-image-button.cat img,
+  .journey-v17 #s4cat:checked ~ .experience-body .pet-image-button.cat img,
+  .journey-v17 #s5cat:checked ~ .experience-body .pet-image-button.cat img,
+  .journey-v17 #s6cat:checked ~ .experience-body .pet-image-button.cat img,
+  .journey-v17 #s7cat:checked ~ .experience-body .pet-image-button.cat img,
+  .journey-v17 #s8cat:checked ~ .experience-body .pet-image-button.cat img{
+    object-position:50% 34%;
+  }
+}
+
+
+/* V21 · sección de ventajas sin registro dentro de la landing */
+.discount-main-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:46px;
+  margin-top:22px;
+  padding:0 18px;
+  border-radius:11px;
+  background:var(--brand);
+  color:#fff;
+  font-size:12px;
+  font-weight:850;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(23,105,95,.16);
+  transition:transform .18s ease, background .18s ease;
+}
+.discount-main-cta:hover{
+  background:var(--brand-dark);
+  transform:translateY(-1px);
+}
+.benefits-card .access-head{
+  padding-bottom:18px;
+}
+.benefits-offers{
+  padding:0 22px 22px;
+}
+.benefits-offers .offer-list{
+  margin-top:0;
+}
+.benefits-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  margin-top:18px;
+  border:1px solid #dce3e4;
+  border-radius:11px;
+  background:#fff;
+  color:var(--brand);
+  font-size:11px;
+  font-weight:850;
+  text-decoration:none;
+  transition:border-color .18s ease, background .18s ease;
+}
+.benefits-link:hover{
+  border-color:#c8d4d3;
+  background:#f8faf9;
+}
+
+
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .stage,.photo{transition:none!important}
+}
+
+/* Interactive layer: original layout and identity retained. */
+button,select,summary{cursor:pointer} button{font:inherit}
+:where(a,button,input,select,summary):focus-visible{outline:3px solid #17695f!important;outline-offset:4px}
+button:disabled{opacity:.55;cursor:wait}
+.mode-switch{display:flex;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.mode-switch button{border:1px solid #ccd6d8;background:#fff;color:var(--brand);border-radius:10px;padding:10px 14px;font-size:12px;font-weight:750;min-height:44px}
+.mode-switch button[aria-pressed=true]{background:var(--brand);color:#fff;border-color:var(--brand)}
+.pet-fields{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;min-width:0}
+.pet-fields>legend{font-size:13px;font-weight:800;padding:0 6px;color:var(--brand)}
+.species-field{border:0;padding:0;margin:0;min-width:0}
+.species-field legend{font-size:11px;font-weight:800;color:#435258;margin-bottom:7px}
+.experience .pet-form-option input[type=radio]{position:static;opacity:1;pointer-events:auto;width:16px;height:16px;min-height:0;margin:0;accent-color:var(--brand)}
+.pet-form-option{cursor:pointer}.pet-form-option.selected{border:2px solid var(--brand);background:var(--brand-soft)}
+.journey-v17 .chat-stage{min-height:310px;height:auto}.chat-step{display:flex;flex-direction:column;gap:14px}.chat-step .bubble{max-width:100%;margin:0}
+.chat-controls{margin-top:12px}.choice{min-height:44px}.pet-image-button{text-align:left;padding:0}
+.pet-image-button[aria-pressed=true]{outline:3px solid var(--brand);outline-offset:-3px}
+.ui-status{font-size:13px;line-height:1.6;white-space:pre-wrap}.ui-status:empty{display:none}
+#quote-status{margin:16px;padding:14px;border-radius:12px;background:var(--brand-soft);border:1px solid #c7dad5}
+#quote-status[data-state=error]{background:#fff0ee;border-color:#d49086;color:#8c2820}
+#callback-status{color:white}.review-list{padding-left:18px;font-size:13px}.review-list li{margin-bottom:12px}
+.offer{gap:12px}.offer:hover{background:var(--brand-soft)}
+dialog{max-width:min(440px,calc(100% - 32px));border:1px solid var(--line);border-radius:18px;padding:24px;color:var(--ink);box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(10,30,30,.45)}dialog h2{font-size:21px;margin-top:0}dialog p{font-size:14px}
+section,details,#conversacion{scroll-margin-top:145px}
+@media(max-width:820px){.header-inner{flex-wrap:wrap;gap:12px;padding-block:12px}.nav{width:100%;gap:14px;justify-content:space-between;flex-wrap:wrap}.nav a:not(.cta){display:inline-flex!important;font-size:12px}.nav .cta{min-height:40px}.brand img{max-width:180px}.pet-fields{grid-template-columns:1fr}.journey-v17 .chat{min-height:0}.mode-switch button{flex:1}.whatsapp-label{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+
+/* ============================================================
+   V22 · Claridad de recorrido, revisión y corrección de datos
+   (mismo sistema visual: colores, tipografía y radios existentes)
+   ============================================================ */
+
+.journey-v17 [hidden]{display:none!important}
+
+/* El panel del formulario ya no depende del antiguo <details>:
+   lo controla el selector único de modo. */
+.journey-v17 .form-panel-wrap{display:block}
+.journey-v17 .form-panel-wrap[hidden]{display:none!important}
+.journey-v17 .form-panel-wrap .form-panel{
+  display:block!important;
+  border-top:1px solid var(--line);
+}
+
+/* 1 · Un único selector chat / formulario ------------------- */
+.mode-block{
+  padding:16px 18px 14px;
+  border-bottom:1px solid var(--line);
+  background:#fbfcfc;
+}
+.mode-label{
+  display:block;
+  margin-bottom:10px;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--brand);
+}
+.mode-switch{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  padding:0;
+  border:0;
+}
+.mode-switch button{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2px;
+  min-height:56px;
+  padding:10px 14px;
+  border:1px solid #ccd6d8;
+  border-radius:12px;
+  background:#fff;
+  color:#46555a;
+  text-align:left;
+  transition:border-color .18s ease, background .18s ease;
+}
+.mode-switch button strong{font-size:13px;font-weight:850;letter-spacing:-.01em}
+.mode-switch button span{font-size:11px;font-weight:650;color:#7d8a8f}
+.mode-switch button:hover{border-color:var(--brand)}
+.mode-switch button[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:#fff}
+.mode-switch button[aria-pressed=true] span{color:rgba(255,255,255,.82)}
+.mode-note{
+  margin:10px 0 0;
+  font-size:11px;
+  line-height:1.5;
+  color:#6f7d82;
+}
+.mode-note strong{color:#46555a}
+
+/* 2 · Progreso por etapas ----------------------------------- */
+.journey-v17 .step-top{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:9px;
+  margin-bottom:18px;
+}
+.stage-track{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.stage-item{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:800;
+  color:#98a4a8;
+  white-space:nowrap;
+}
+.stage-item i{
+  display:grid;
+  place-items:center;
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  background:var(--soft);
+  color:#8a979c;
+  font-style:normal;
+  font-size:10px;
+  font-weight:850;
+}
+.stage-item.is-done{color:#46555a}
+.stage-item.is-done i{background:var(--brand-soft);color:var(--brand)}
+.stage-item.is-current{color:var(--brand)}
+.stage-item.is-current i{background:var(--brand);color:#fff;box-shadow:0 4px 12px rgba(23,105,95,.22)}
+.stage-sep{color:#ccd6d8;font-size:11px}
+.step-context{
+  margin:0;
+  font-size:11px;
+  color:#7d8a8f;
+  font-weight:700;
+}
+.step-context strong{color:var(--brand)}
+
+/* 3 · Resumen de mascotas siempre a mano --------------------- */
+.pet-summary{
+  padding:14px 18px 16px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.pet-summary:empty{display:none}
+.summary-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.summary-bar-copy{
+  margin:0;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.summary-bar-copy strong{
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--brand);
+}
+.summary-bar-copy span{
+  font-size:12px;
+  font-weight:700;
+  color:#46555a;
+}
+.summary-bar-copy em{font-style:normal;color:#9a8557}
+.summary-bar-copy b{color:var(--brand)}
+.summary-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  flex:none;
+  min-height:40px;
+  padding:0 14px;
+  border:1px solid #ccd6d8;
+  border-radius:10px;
+  background:#fff;
+  color:var(--brand);
+  font-size:11px;
+  font-weight:850;
+}
+.summary-toggle:hover{border-color:var(--brand);background:var(--brand-soft)}
+.summary-toggle[aria-expanded=true]{background:var(--brand);border-color:var(--brand);color:#fff}
+.summary-toggle[aria-expanded=true] .psc-caret{transform:rotate(180deg)}
+.summary-panel{margin-top:14px}
+.summary-panel[hidden]{display:none}
+.summary-panel-intro{
+  margin:0 0 10px;
+  font-size:11px;
+  color:#7d8a8f;
+}
+.summary-add{
+  display:inline-flex;
+  align-items:center;
+  min-height:40px;
+  margin-top:12px;
+  padding:0 13px;
+  border:1px dashed #bfd0cc;
+  border-radius:10px;
+  background:#fff;
+  color:var(--brand);
+  font-size:11px;
+  font-weight:850;
+}
+.summary-add:hover{background:var(--brand-soft)}
+.pet-summary-list{
+  display:grid;
+  gap:9px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.psc{
+  padding:12px 13px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--soft);
+}
+.psc.is-active{
+  border-color:var(--brand);
+  background:var(--brand-soft);
+}
+.psc-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:9px;
+}
+.psc-name{font-size:14px;font-weight:850;letter-spacing:-.02em}
+.psc-badge.is-ok{background:var(--brand);border-color:var(--brand);color:#fff}
+.psc-badge{
+  font-size:10px;
+  font-weight:850;
+  color:var(--brand);
+  background:#fff;
+  border:1px solid #cfe0dc;
+  border-radius:999px;
+  padding:3px 9px;
+}
+.psc-line{
+  margin:0;
+  font-size:12px;
+  font-weight:700;
+  color:#46555a;
+  line-height:1.5;
+}
+.psc-line em{font-style:normal;color:#9a8557;font-weight:700}
+.psc-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.psc-btn{
+  min-height:36px;
+  padding:0 12px;
+  border:1px solid #d6dedf;
+  border-radius:10px;
+  background:#fff;
+  font-size:11px;
+  font-weight:850;
+  color:#3d4c52;
+}
+.psc-btn:hover{border-color:var(--brand);color:var(--brand)}
+.psc-btn.danger{margin-top:10px}
+.psc-btn.danger:hover{border-color:#c0705f;color:#a3402c}
+.psc-toggle{display:inline-flex;align-items:center;gap:7px}
+.psc-caret{font-size:9px;transition:transform .18s ease}
+.psc.is-open .psc-toggle{border-color:var(--brand);color:var(--brand)}
+.psc.is-open .psc-caret{transform:rotate(180deg)}
+
+.psc-edit{
+  margin-top:11px;
+  padding-top:11px;
+  border-top:1px dashed #dfe6e6;
+}
+.psc-edit[hidden]{display:none}
+.psc-edit-title{
+  display:block;
+  margin-bottom:8px;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#8a979c;
+}
+.psc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.psc-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:34px;
+  padding:0 11px;
+  border:1px solid #dde5e5;
+  border-radius:999px;
+  background:#fff;
+  color:#46555a;
+  font-size:11px;
+  font-weight:700;
+}
+.psc-chip b{font-weight:850;color:#8a979c}
+.psc-chip:hover{border-color:var(--brand);color:var(--brand)}
+.psc-chip.is-pending{border-style:dashed;color:#947a45;background:#fffaf1}
+.psc-chip .psc-pen{font-size:10px;color:#9aa7ab}
+.psc-owner{margin-top:9px}
+
+/* 4 · Ayudas y errores junto al campo ------------------------ */
+.field-help{
+  margin:6px 0 0;
+  font-size:11px;
+  line-height:1.45;
+  color:#7d8a8f;
+}
+.field-error{
+  display:none;
+  align-items:flex-start;
+  gap:6px;
+  margin:6px 0 0;
+  font-size:11px;
+  line-height:1.45;
+  font-weight:700;
+  color:#8c2820;
+}
+.field-error.is-visible{display:flex}
+.field-error::before{
+  content:"!";
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:15px;
+  height:15px;
+  margin-top:1px;
+  border-radius:50%;
+  background:#8c2820;
+  color:#fff;
+  font-size:10px;
+  font-weight:850;
+}
+.form-field input[aria-invalid=true],
+.form-field select[aria-invalid=true]{
+  border-color:#c47a6d;
+  background:#fff8f7;
+}
+.species-field[data-invalid=true] .pet-form-option{border-color:#c47a6d}
+
+/* 5 · Qué hace cada botón ------------------------------------ */
+.action-hint{
+  margin:8px 0 0;
+  font-size:11px;
+  line-height:1.5;
+  color:#7d8a8f;
+}
+.chat-controls{align-items:center}
+.choice.primary.is-quote{background:var(--brand-dark);border-color:var(--brand-dark)}
+.form-submit + .form-note{margin-top:8px}
+.call-steps{
+  margin:12px 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:6px;
+  font-size:11px;
+  color:rgba(255,255,255,.86);
+}
+.call-steps li{display:flex;gap:8px;align-items:flex-start}
+.call-steps li::before{content:"✓";color:#fff;font-weight:850}
+
+/* 6 · La fotografía cede protagonismo a los campos ----------- */
+@media(min-width:821px){
+  .journey-v17.compact-media .experience-body{
+    grid-template-columns:minmax(0,1.62fr) minmax(0,.6fr)!important;
+    min-height:0!important;
+  }
+  .journey-v17.compact-media .experience-body .chat{min-height:0!important}
+  .journey-v17.compact-media .experience-body .pet-selector-top{
+    min-height:0!important;
+    padding:18px!important;
+    align-content:start!important;
+  }
+  .journey-v17.compact-media .experience-body .pet-image-button{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:4 / 3!important;
+  }
+  .journey-v17.compact-media .pet-button-name{font-size:17px!important}
+}
+@media(max-width:820px){
+  .journey-v17.compact-media .experience-body .pet-selector-top{
+    padding:12px 12px 0!important;
+  }
+  .journey-v17.compact-media .experience-body .pet-image-button{
+    aspect-ratio:auto!important;
+    height:82px!important;
+    min-height:0!important;
+    border-radius:13px;
+  }
+  .journey-v17.compact-media .pet-button-name{font-size:15px!important}
+  .journey-v17.compact-media .pet-button-sub{display:none!important}
+  .journey-v17.compact-media .pet-button-action{min-height:28px;font-size:10px}
+  .journey-v17.compact-media .pet-selected-mark{min-height:24px;font-size:9px;top:9px;right:9px}
+}
+
+@media(max-width:600px){
+  .mode-switch{grid-template-columns:1fr}
+  .pet-summary{padding:12px 14px 14px}
+  .psc-chip{font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="#inicio" aria-label="Affinity Mascotas">
+      <span class="brand-lockup">
+        <img
+          class="logo-horizontal"
+          src="https://www.affinitysoluciones.com/wp-content/uploads/2020/04/Logo-Affinity2.jpg"
+          alt="Affinity Soluciones"
+          loading="eager"
+        >
+        <img
+          class="logo-compact"
+          src="https://www.affinitysoluciones.com/wp-content/uploads/2021/04/Logo-Affinity.png"
+          alt="Affinity"
+          loading="eager"
+        >
+        <span class="brand-product">Mascotas</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegación">
+      <a href="#inicio">Seguro</a>
+      <a href="#informacion">Qué incluye</a>
+      <a href="#descuentos">Descuentos</a>
+      <a class="cta" href="#conversacion">Calcula tu precio</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="pet-type-row">
+        <div class="icon-pair">
+          <span class="pet-symbol small">
+<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M19 24c-5-7-10-9-13-6-2 3 0 10 7 15"/>
+  <path d="M45 24c5-7 10-9 13-6 2 3 0 10-7 15"/>
+  <path d="M18 30c1-9 6-15 14-15s13 6 14 15v10c0 9-6 16-14 16S18 49 18 40Z"/>
+  <path d="M25 34h.01M39 34h.01"/>
+  <path d="M28 43c2 2 6 2 8 0"/>
+  <path d="M29 39c1-2 5-2 6 0-1 3-5 3-6 0Z"/>
+</svg></span>
+          <span class="pet-symbol small">
+<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="m19 24-7-13 15 7"/>
+  <path d="m45 24 7-13-15 7"/>
+  <path d="M17 29c1-8 7-14 15-14s14 6 15 14v11c0 9-6 16-15 16S17 49 17 40Z"/>
+  <path d="M25 34h.01M39 34h.01"/>
+  <path d="M32 38v5"/>
+  <path d="M29 43c2 2 4 2 6 0"/>
+  <path d="M20 40 8 38m12 7L9 48m35-8 12-2m-12 7 11 3"/>
+</svg></span>
+        </div>
+        <span class="pet-type-copy">Seguro para perros y gatos</span>
+      </div>
+      <h1>Tu mascota, protegida. Tú eliges veterinario.</h1>
+      <p class="hero-lead">
+        Calcula tu presupuesto conversando con nuestro asistente y descubre una protección pensada para perros y gatos.
+      </p>
+
+      <ul class="benefits">
+        <li><span class="check">✓</span> Reembolso del 80% de los gastos veterinarios cubiertos</li>
+        <li><span class="check">✓</span> Libertad para elegir centro veterinario</li>
+        <li><span class="check">✓</span> Presupuesto en pocos pasos y sin compromiso</li>
+      </ul>
+
+      <div class="hero-actions" aria-label="Empieza a calcular tu precio">
+        <a class="hero-link" id="open-journey" href="#conversacion">Calcular mi precio <span>→</span></a>
+      </div>
+      <div class="hero-note"><strong>Tú eliges cómo:</strong> chat paso a paso o formulario completo. Puedes cambiar cuando quieras y no perderás lo que ya hayas escrito.</div>
+    </div>
+
+    <div class="experience journey-v17" id="conversacion">
+      <input type="radio" name="flow" id="s1" checked>
+      <input type="radio" name="flow" id="s2">
+      <input type="radio" name="flow" id="s3dog">
+      <input type="radio" name="flow" id="s3cat">
+      <input type="radio" name="flow" id="s4dog">
+      <input type="radio" name="flow" id="s4cat">
+      <input type="radio" name="flow" id="s5dog">
+      <input type="radio" name="flow" id="s5cat">
+      <input type="radio" name="flow" id="s6dog">
+      <input type="radio" name="flow" id="s6cat">
+      <input type="radio" name="flow" id="s7dog">
+      <input type="radio" name="flow" id="s7cat">
+      <input type="radio" name="flow" id="s8dog">
+      <input type="radio" name="flow" id="s8cat">
+
+      <div class="experience-head">
+        <div class="assistant">
+          <img class="assistant-logo" src="https://www.affinitysoluciones.com/wp-content/uploads/2021/04/Logo-Affinity.png" alt="" aria-hidden="true">
+          <span class="online"></span>
+          Asistente Affinity Mascotas
+        </div>
+      </div>
+
+      <div class="mode-block">
+        <span class="mode-label" id="mode-switch-label">¿Cómo prefieres darnos los datos?</span>
+        <div id="mode-switch" class="mode-switch" role="group" aria-labelledby="mode-switch-label">
+          <button type="button" data-mode="chat" aria-pressed="true">
+            <strong>Chat paso a paso</strong>
+            <span>Una pregunta cada vez</span>
+          </button>
+          <button type="button" data-mode="form" aria-pressed="false">
+            <strong>Formulario completo</strong>
+            <span>Todos los campos a la vez</span>
+          </button>
+        </div>
+        <p class="mode-note">Puedes cambiar de una opción a otra en cualquier momento: <strong>los datos que ya hayas introducido se conservan</strong>.</p>
+      </div>
+      <div class="form-panel-wrap" id="formulario" hidden>
+        <div class="form-panel">
+          <div class="form-intro">
+            <h3>Formulario completo</h3>
+            <p>Introduce todos los datos en una sola vista. Al cambiar al chat conservarás lo que ya hayas rellenado.</p>
+          </div>
+
+          <form class="mgc-form" novalidate aria-label="Datos para calcular tu precio"></form>
+        </div>
+      </div>
+
+      <div id="pet-summary" class="pet-summary" aria-label="Resumen de tus datos"></div>
+
+      <div class="experience-body">
+
+        <!-- Fotografías reales de Pexels:
+         Perro: Masood Aslami · pexels.com/photo/30810888
+         Gato: Tuğçe Açıkyürek · pexels.com/photo/15660834 -->
+        <div class="pet-selector-top" aria-label="Selecciona perro o gato">
+          <button type="button" class="pet-image-button dog" data-action="species" data-species="dog" aria-label="Seleccionar perro" aria-pressed="false">
+            <img
+              src="https://images.pexels.com/photos/30810888/pexels-photo-30810888.jpeg?cs=srgb&fm=jpg" loading="eager" decoding="async" referrerpolicy="no-referrer"
+              alt="Perro"
+            >
+            <span class="pet-selected-mark">✓ Perro seleccionado</span>
+            <span class="pet-button-copy">
+              <span>
+                <span class="pet-button-name">Perro</span>
+                <span class="pet-button-sub">Continúa con los datos de tu perro</span>
+              </span>
+              <span class="pet-button-action">Elegir perro →</span>
+            </span>
+          </button>
+
+          <button type="button" class="pet-image-button cat" data-action="species" data-species="cat" aria-label="Seleccionar gato" aria-pressed="false">
+            <img
+              src="https://images.pexels.com/photos/15660834/pexels-photo-15660834.jpeg?cs=srgb&fm=jpg" loading="eager" decoding="async" referrerpolicy="no-referrer"
+              alt="Gato"
+            >
+            <span class="pet-selected-mark">✓ Gato seleccionado</span>
+            <span class="pet-button-copy">
+              <span>
+                <span class="pet-button-name">Gato</span>
+                <span class="pet-button-sub">Continúa con los datos de tu gato</span>
+              </span>
+              <span class="pet-button-action">Elegir gato →</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="chat">
+          <div class="step-top" id="journey-progress"></div>
+
+          <div class="chat-stage"></div>
+        </div>
+      </div>
+
+      <div id="quote-status" class="ui-status" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="help-section" id="ayuda">
+  <div class="container">
+    <div class="call-card">
+      <div class="call-copy">
+        <div class="call-icon">
+<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M20 10 13 17c-2 2 2 12 12 22s20 14 22 12l7-7-11-9-6 6c-5-2-12-9-14-14l6-6Z"/>
+</svg></div>
+        <div>
+          <span class="call-eyebrow">Atención inmediata</span>
+          <h2>¿Prefieres hablar? Te llamamos ahora.</h2>
+          <p>Solo te pedimos el teléfono. Te llamamos normalmente en pocos minutos, las 24 horas. En la llamada te preguntaremos por tu mascota y tu código postal para darte el precio.</p>
+        </div>
+      </div>
+
+      <div class="call-action">
+        <form class="call-form" id="callback-form">
+          <input id="callback-phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="Introduce tu teléfono" aria-label="Introduce tu teléfono" aria-describedby="callback-status">
+          <button type="submit">Quiero que me llamen</button>
+        </form>
+        <p id="callback-status" class="ui-status" role="status" aria-live="polite"></p>
+        <ul class="call-steps">
+          <li>Solo pedimos tu teléfono, nada más.</li>
+          <li>Te llamamos normalmente en pocos minutos.</li>
+          <li>Sin compromiso: puedes colgar cuando quieras.</li>
+        </ul>
+        <div class="call-meta">
+          <span>Sin esperas · Sin compromiso</span>
+          <span><strong>Servicio 24 h</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="product-info" id="informacion">
+  <div class="container">
+    <div class="info-head">
+      <div class="kicker">Tu seguro, de forma clara</div>
+      <h2>Protección veterinaria para cuando más la necesites.</h2>
+      <p>
+        Conoce las principales ventajas del seguro y calcula un presupuesto adaptado a tu mascota en pocos pasos.
+      </p>
+    </div>
+
+    <div class="info-grid">
+      <article class="info-card">
+        <span class="pet-symbol">
+<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M32 8 50 15v13c0 13-8 23-18 28-10-5-18-15-18-28V21Z"/>
+  <ellipse cx="25" cy="28" rx="3" ry="4"/>
+  <ellipse cx="33" cy="25" rx="3" ry="4"/>
+  <ellipse cx="41" cy="28" rx="3" ry="4"/>
+  <path d="M33 32c-5 0-9 4-9 8 0 3 3 5 6 4 2-1 2-2 3-2s2 1 4 2c3 1 6-1 6-4 0-4-5-8-10-8Z"/>
+</svg></span>
+        <h3>80% de reembolso</h3>
+        <p>
+          Recupera el 80% de los gastos veterinarios cubiertos, de acuerdo con las condiciones de tu seguro.
+        </p>
+      </article>
+
+      <article class="info-card">
+        <span class="pet-symbol soft">
+<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M14 52V21h36v32"/>
+  <path d="M24 20V21h16v9"/>
+  <path d="M32 27v14M25 34h14"/>
+  <path d="M21 52h22"/>
+</svg></span>
+        <h3>Elige tu veterinario</h3>
+        <p>
+          Acude al centro veterinario que prefieras y gestiona después el reembolso de los gastos cubiertos.
+        </p>
+      </article>
+
+      <article class="info-card">
+        <span class="pet-symbol soft">
+<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M32 54S11 42 11 25c0-7 5-12 12-12 5 0 8 3 9 6 1-3 4-6 9-6 7 0 12 5 12 12 0 17-21 29-21 29Z"/>
+  <path d="M23 33h6l3-7 4 14 3-7h5"/>
+</svg></span>
+        <h3>Accidentes y enfermedad</h3>
+        <p>
+          Protección ante consultas, pruebas diagnósticas, cirugía y hospitalización, según las coberturas contratadas.
+        </p>
+      </article>
+    </div>
+
+    <div class="eligibility public-eligibility">
+      <strong>Protección para perros y gatos.</strong>
+      Durante el cálculo te indicaremos los requisitos y condiciones aplicables a tu mascota.
+    </div>
+  </div>
+</section>
+
+<section class="how" id="como-funciona">
+  <div class="container how-layout">
+    <div class="how-copy">
+      <div class="kicker">Cómo funciona</div>
+      <h2>Sencillo también cuando lo necesitas.</h2>
+      <p>
+        Elige tu veterinario, envía la documentación necesaria y recibe el reembolso correspondiente
+        según las coberturas de tu seguro.
+      </p>
+      <a class="how-cta" href="#conversacion">Calcular mi precio <span>→</span></a>
+    </div>
+
+    <div class="steps">
+      <article class="step-card">
+        <div class="step-number">01</div>
+        <div>
+          <h3>Acude a tu centro veterinario</h3>
+          <p>Elige la clínica o centro veterinario que prefieras.</p>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <div class="step-number">02</div>
+        <div>
+          <h3>Pagas y envías la factura</h3>
+          <p>Después de la atención veterinaria, envías la documentación necesaria.</p>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <div class="step-number">03</div>
+        <div>
+          <h3>Recibes el reembolso</h3>
+          <p>Se tramita el reembolso correspondiente según las coberturas y condiciones contratadas.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="discounts" id="descuentos">
+  <div class="container discounts-grid">
+    <div class="discounts-copy">
+      <div class="discounts-pets">
+        <span class="pet-symbol">
+<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M12 27h40v27H12Z"/>
+  <path d="M9 20h46v9H9Z"/>
+  <path d="M32 20v34"/>
+  <path d="M32 20c-8 0-14-2-14-7 0-3 2-5 5-5 5 0 9 7 9 12Z"/>
+  <path d="M32 20c8 0 14-2 14-7 0-3-2-5-5-5-5 0-9 7-9 12Z"/>
+</svg></span>
+      </div>
+
+      <div class="kicker">Ventajas Affinity Mascotas</div>
+      <h2>Ventajas también para su día a día.</h2>
+
+      <p>
+        Descubre una selección de ventajas y descuentos pensados para el cuidado,
+        la alimentación y el día a día de tu mascota.
+      </p>
+
+      <a class="discount-main-cta" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener">
+        Ver todas las ventajas <span>→</span>
+      </a>
+    </div>
+
+    <div class="access-card benefits-card">
+      <div class="access-head">
+        <strong>Ventajas para tu mascota</strong>
+        <span>Algunas de las marcas y servicios disponibles.</span>
+      </div>
+
+      <div class="offers benefits-offers">
+        <div class="offer-list">
+          <a class="offer" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener noreferrer" aria-label="Consultar Zooplus en el catálogo de ventajas (nueva pestaña)">
+            <div class="offer-logo">Z+</div>
+            <div><strong>Zooplus</strong><span>Ventajas en productos para mascotas</span></div>
+          <span aria-hidden="true">↗</span></a>
+          <a class="offer" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener noreferrer" aria-label="Consultar Tiendanimal en el catálogo de ventajas (nueva pestaña)">
+            <div class="offer-logo">TA</div>
+            <div><strong>Tiendanimal</strong><span>Ventajas para su cuidado diario</span></div>
+          <span aria-hidden="true">↗</span></a>
+          <a class="offer" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener noreferrer" aria-label="Consultar Kiwoko en el catálogo de ventajas (nueva pestaña)">
+            <div class="offer-logo">KW</div>
+            <div><strong>Kiwoko</strong><span>Ventajas en alimentación y accesorios</span></div>
+          <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <a class="benefits-link" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener">
+          Consultar todas las ventajas <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="whatsapp-wrap">
+  <div class="whatsapp-label">
+    <strong>¿Prefieres WhatsApp?</strong>
+    Escríbenos por aquí
+  </div>
+  <a class="whatsapp" href="#ayuda" aria-label="Abrir canal de WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"/>
+    </svg>
+  </a>
+</div>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="https://www.affinitysoluciones.com/wp-content/uploads/2020/04/Logo-Affinity2.jpg" alt="Affinity Soluciones">
+      <span>Affinity Mascotas</span>
+    </div>
+    <div>Seguro para perros y gatos</div>
+  </div>
+</footer>
+
+
+
+<dialog id="contact-dialog" aria-labelledby="contact-title"><h2 id="contact-title">Contacto por WhatsApp</h2><p>Este canal todavía no está disponible. Puedes consultar la información del seguro en esta página.</p><button type="button" class="choice primary" id="close-contact">Entendido</button></dialog>
+<dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">¿Empezar de nuevo?</h2><p>Se borrarán los datos introducidos de todas tus mascotas y del titular.</p><div class="choice-row"><button type="button" class="choice subtle" id="cancel-reset" autofocus>Conservar datos</button><button type="button" class="choice primary" id="confirm-reset">Borrar y empezar</button></div></dialog>
+<noscript><p style="padding:20px">Activa JavaScript para usar el formulario y el asistente interactivo.</p></noscript>
+<script>
+/* Affinity UI v2 — Integration contract (sin cambios respecto a v1)
+ * AffinityMenu.configure({
+ *   breeds: {dog:[{value:'golden',label:'Golden Retriever'}],cat:[...]},
+ *   whatsappUrl: 'https://wa.me/REAL_NUMBER',
+ *   handlers: {
+ *     quote: async (payload, {signal, requestId}) => ({amount:12.5,currency:'EUR',period:'mes',reference:'...'}),
+ *     callback: async ({phone}, {signal, requestId}) => ({accepted:true})
+ *   }
+ * });
+ * A cualquier catálogo de razas se le añaden siempre «Mestizo o cruce» y «No lo sé».
+ * Payload: {schemaVersion:1,pets:[{id,name,species,breed,birthDate}],owner:{postalCode,birthDate}}.
+ * Eventos: affinity:ready | change | request | success | error | navigate.
+ * Los datos permanecen en memoria; nada en URL, localStorage ni telemetría.
+ */
+(() => {
+  'use strict';
+  const $ = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const today = () => {const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+  const humanDate = v => /^\d{4}-\d{2}-\d{2}$/.test(v) ? v.split('-').reverse().join('/') : '';
+
+  let counter=0;
+  const newPet=()=>({id:`pet-${++counter}`,name:'',species:'',breed:'',breedText:'',birthDate:''});
+  const state={schemaVersion:1,pets:[newPet()],owner:{postalCode:'',birthDate:''}};
+  let active=0, step=1, mode='chat', returnToReview=false, priceReady=false;
+
+  const FALLBACK_BREEDS=[{value:'mixed',label:'Mestizo o cruce'},{value:'unknown',label:'No lo sé'}];
+  const withFallback=list=>{
+    const out=list.filter(b=>!FALLBACK_BREEDS.some(f=>f.value===b.value));
+    return out.concat(FALLBACK_BREEDS.map(b=>({...b})));
+  };
+  const config={breeds:{
+    dog:withFallback([{value:'golden-retriever',label:'Golden Retriever'},{value:'other',label:'Otra raza'}]),
+    cat:withFallback([{value:'common-european',label:'Común europeo'},{value:'other',label:'Otra raza'}])
+  },handlers:{},whatsappUrl:''};
+
+  const busy=new Set();
+  const emit=(name,detail={})=>document.dispatchEvent(new CustomEvent(`affinity:${name}`,{detail}));
+  const snapshot=()=>({schemaVersion:1,
+    pets:state.pets.map(p=>({id:p.id,name:p.name,species:p.species,breed:p.breed,birthDate:p.birthDate})),
+    owner:{postalCode:state.owner.postalCode,birthDate:state.owner.birthDate}});
+  const pet=()=>state.pets[active];
+
+  const experience=$('.experience'), formWrap=$('#formulario'), form=$('.mgc-form'),
+        chat=$('.chat-stage'), body=$('.experience-body'), summaryBox=$('#pet-summary'),
+        progressBox=$('#journey-progress'), note=$('#quote-status');
+
+  function clearQuote(){note.textContent=''; note.dataset.state='idle'; priceReady=false;}
+  function changed(field){clearQuote();emit('change',{field,petId:pet().id,mode});}
+
+  const breeds=p=>config.breeds[p.species] || [];
+  const breedLabel=p=>breeds(p).find(b=>b.value===p.breed)?.label || '';
+  const speciesLabel=p=>p.species==='dog'?'Perro':p.species==='cat'?'Gato':'';
+  const petName=p=>p.name.trim();
+
+  /* ── Validación con mensajes en lenguaje sencillo ───────────── */
+  const validDate=v=>/^\d{4}-\d{2}-\d{2}$/.test(v)&&Number.isFinite(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v;
+  const ageOf=v=>{const d=new Date(v),n=new Date();let a=n.getFullYear()-d.getFullYear();const m=n.getMonth()-d.getMonth();if(m<0||(m===0&&n.getDate()<d.getDate()))a--;return a;};
+
+  function errorFor(key,p=pet()){
+    if(key==='name') return petName(p) ? '' : 'Escribe el nombre de tu mascota. Por ejemplo: Luna.';
+    if(key==='species') return ['dog','cat'].includes(p.species) ? '' : 'Elige si tu mascota es perro o gato.';
+    if(key==='breed'){
+      if(!p.species) return 'Antes de la raza, elige si es perro o gato.';
+      if(p.breed && breeds(p).some(b=>b.value===p.breed)) return '';
+      return (p.breedText||'').trim()
+        ? 'No encontramos esa raza. Escribe las primeras letras y elige una opción de la lista, o usa «Mestizo o cruce» o «No lo sé».'
+        : 'Elige una raza de la lista. Si no la conoces, usa «Mestizo o cruce» o «No lo sé».';
+    }
+    if(key==='birthDate'){
+      if(!p.birthDate) return 'Indica la fecha de nacimiento de tu mascota (día, mes y año).';
+      if(!validDate(p.birthDate)) return 'Esa fecha no es válida. Revisa el día, el mes y el año.';
+      if(p.birthDate>today()) return 'La fecha no puede ser posterior a hoy. Revisa el año.';
+      return '';
+    }
+    if(key==='postalCode') return /^\d{5}$/.test(state.owner.postalCode) ? '' : 'El código postal tiene 5 cifras. Por ejemplo: 08001.';
+    if(key==='ownerBirth'){
+      if(!state.owner.birthDate) return 'Indica tu fecha de nacimiento (día, mes y año).';
+      if(!validDate(state.owner.birthDate)||state.owner.birthDate>today()) return 'Esa fecha no es válida. Revisa el día, el mes y el año.';
+      if(ageOf(state.owner.birthDate)<18) return 'Debes ser mayor de edad para contratar. Revisa el año de nacimiento.';
+      return '';
+    }
+    return '';
+  }
+  const petComplete=p=>!['name','species','breed','birthDate'].some(k=>errorFor(k,p));
+  function firstIncompleteStep(){
+    const p=pet();
+    for(const [st,key] of [[1,'name'],[2,'species'],[3,'breed'],[4,'birthDate']]) if(errorFor(key,p)) return st;
+    if(errorFor('postalCode')) return 6;
+    if(errorFor('ownerBirth')) return 7;
+    return 8;
+  }
+  const ownerComplete=()=>!errorFor('postalCode')&&!errorFor('ownerBirth');
+  const invalidState=()=>state.pets.some(p=>!petComplete(p))||!ownerComplete();
+
+  function showError(inputId,message){
+    const box=document.getElementById(`${inputId}-error`);
+    const input=document.getElementById(inputId);
+    if(box){box.textContent=message||'';box.classList.toggle('is-visible',!!message);}
+    if(input)input.setAttribute('aria-invalid',String(!!message));
+    const fieldset=box&&box.closest('.species-field');
+    if(fieldset)fieldset.dataset.invalid=String(!!message);
+    return !message;
+  }
+  const clearErrors=root=>$$('.field-error',root).forEach(b=>{b.textContent='';b.classList.remove('is-visible');});
+
+  /* ── Campos ────────────────────────────────────────────────── */
+  function field(id,label,key,value,type='text',attrs='',help=''){
+    return `<div class="form-field"><label for="${id}">${label}</label>
+      <input id="${id}" data-field="${key}" name="${key}" type="${type}" value="${esc(value)}" aria-describedby="${id}-error" ${attrs}>
+      ${help?`<p class="field-help">${help}</p>`:''}
+      <p class="field-error" id="${id}-error" role="alert"></p></div>`;
+  }
+  function breedField(id,p){
+    const listId=`${id}-list`;
+    const shown=p.breed?breedLabel(p):(p.breedText||'');
+    return `<div class="form-field"><label for="${id}">Raza</label>
+      <input id="${id}" data-field="breed" name="breed" type="text" list="${listId}" autocomplete="off"
+        placeholder="${p.species?'Escribe las primeras letras…':'Primero elige perro o gato'}"
+        value="${esc(shown)}" aria-describedby="${id}-error" ${p.species?'':'disabled'}>
+      <datalist id="${listId}">${breeds(p).map(b=>`<option value="${esc(b.label)}"></option>`).join('')}</datalist>
+      <p class="field-help">Busca por nombre. Si no la conoces, elige <strong>«Mestizo o cruce»</strong> o <strong>«No lo sé»</strong>.</p>
+      <p class="field-error" id="${id}-error" role="alert"></p></div>`;
+  }
+
+  /* ── Formulario completo ───────────────────────────────────── */
+  function petFields(p,i){
+    return `<fieldset class="pet-fields" data-pet-id="${p.id}"><legend>Mascota ${i+1}${petName(p)?` · ${esc(petName(p))}`:''}</legend>
+      ${field(`${p.id}-name`,'Nombre de tu mascota','name',p.name,'text','maxlength="80" autocomplete="off"')}
+      <fieldset class="species-field"><legend>¿Es perro o gato?</legend>
+        <div class="pet-form-options">${['dog','cat'].map(sp=>`<label class="pet-form-option ${p.species===sp?'selected':''}" for="${p.id}-${sp}"><input id="${p.id}-${sp}" type="radio" name="${p.id}-species" data-field="species" value="${sp}" ${p.species===sp?'checked':''}>${sp==='dog'?'Perro':'Gato'}</label>`).join('')}</div>
+        <p class="field-error" id="${p.id}-species-error" role="alert"></p>
+      </fieldset>
+      ${breedField(`${p.id}-breed`,p)}
+      ${field(`${p.id}-birth`,'Fecha de nacimiento de la mascota','birthDate',p.birthDate,'date',`max="${today()}"`,'Si no recuerdas el día exacto, indica una fecha aproximada.')}
+      ${state.pets.length>1?`<div class="form-field full"><button type="button" class="psc-btn danger" data-action="remove-pet" data-id="${p.id}">Eliminar esta mascota</button></div>`:''}
+      </fieldset>`;
+  }
+  function renderForm(){
+    form.innerHTML=state.pets.map(petFields).join('')+
+      `<div class="form-field full"><div class="add-pet-row"><span>¿Quieres asegurar otra mascota?</span><button class="add-pet-button" type="button" data-action="add-pet">+ Añadir otra mascota</button></div></div>
+      ${field('postal-code','Código postal','postalCode',state.owner.postalCode,'text','inputmode="numeric" maxlength="5" autocomplete="postal-code" data-owner','Cinco cifras. Nos sirve para aplicar las condiciones de tu zona.')}
+      ${field('owner-birth','Fecha de nacimiento del titular','ownerBirth',state.owner.birthDate,'date',`max="${today()}" data-owner`,'La persona que figurará como titular del seguro.')}
+      <div class="form-field full">
+        <button class="form-submit" type="submit" data-action="quote">Consultar precio</button>
+        <p class="action-hint">Al pulsar <strong>Consultar precio</strong> calculamos un importe orientativo con los datos introducidos. No contratas nada y puedes seguir editándolos después.</p>
+        <div class="form-note">Si falta algún dato, te lo indicaremos junto al campo correspondiente.</div>
+      </div>`;
+    updateBusy();
+  }
+
+  /* ── Chat paso a paso ──────────────────────────────────────── */
+  const action=(name,text,primary=false,extra='')=>`<button type="button" class="choice ${primary?'primary':'subtle'} ${extra}" data-action="${name}">${text}</button>`;
+  const CHAT_IDS={1:'chat-name',2:'chat-species',3:'chat-breed',4:'chat-birth',6:'chat-postal',7:'chat-owner-birth'};
+  const STEP_KEYS={1:'name',2:'species',3:'breed',4:'birthDate',6:'postalCode',7:'ownerBirth'};
+
+  function renderChat(focus=false){
+    const p=pet();
+    if(mode==='form'){
+      chat.innerHTML='';
+      renderProgress();renderSummary();
+      experience.classList.toggle('compact-media',!!p.species);
+      return;
+    }
+    const name=esc(petName(p) || 'tu mascota');
+    const questions={
+      1:'Hola 👋 ¿Cómo se llama tu mascota?',
+      2:`¡Encantada, ${name}! ¿Es perro o gato?`,
+      3:`¿Cuál es la raza de ${name}?`,
+      4:`¿Cuál es la fecha de nacimiento de ${name}?`,
+      5:'¿Quieres añadir otra mascota o seguimos con tus datos?',
+      6:'¿Cuál es tu código postal?',
+      7:'¿Cuál es tu fecha de nacimiento?',
+      8:'Revisa los datos. Puedes corregir cualquiera antes de consultar el precio.'
+    };
+    let content='';
+    if(step===1) content=field('chat-name','Nombre de tu mascota','name',p.name,'text','maxlength="80" autocomplete="off"');
+    if(step===2) content=`<div class="choice-row" role="group" aria-label="Tipo de mascota">${['dog','cat'].map(sp=>`<button type="button" class="choice ${p.species===sp?'primary':''}" data-action="species" data-species="${sp}" aria-pressed="${p.species===sp}">${sp==='dog'?'Perro':'Gato'}</button>`).join('')}</div><p class="field-error" id="chat-species-error" role="alert"></p>`;
+    if(step===3) content=breedField('chat-breed',p);
+    if(step===4) content=field('chat-birth','Fecha de nacimiento de tu mascota','birthDate',p.birthDate,'date',`max="${today()}"`,'Si no recuerdas el día exacto, indica una fecha aproximada.');
+    if(step===5) content=`<p class="action-hint">Tienes <strong>${state.pets.length} mascota${state.pets.length>1?'s':''}</strong> en la solicitud. Puedes revisarlas o editarlas en el resumen de arriba.</p>${action('add-pet','+ Añadir otra mascota')}`;
+    if(step===6) content=field('chat-postal','Código postal','postalCode',state.owner.postalCode,'text','inputmode="numeric" maxlength="5" autocomplete="postal-code" data-owner','Cinco cifras. Nos sirve para aplicar las condiciones de tu zona.');
+    if(step===7) content=field('chat-owner-birth','Fecha de nacimiento del titular','ownerBirth',state.owner.birthDate,'date',`max="${today()}" data-owner`,'La persona que figurará como titular del seguro.');
+    if(step===8) content=`<p class="action-hint">Todo lo que ves aquí se puede editar: usa <strong>Editar</strong> en el resumen superior y volverás directamente a esta pantalla.</p>
+      <ul class="review-list">${state.pets.map((q,i)=>`<li><strong>${esc(petName(q)||`Mascota ${i+1}`)}</strong> · ${esc(speciesLabel(q)||'Sin especificar')}<br>${esc(breedLabel(q)||'Raza pendiente')} · ${esc(humanDate(q.birthDate)||'Fecha pendiente')}</li>`).join('')}</ul>
+      <p class="action-hint">Código postal: <strong>${esc(state.owner.postalCode||'pendiente')}</strong> · Nacimiento del titular: <strong>${esc(humanDate(state.owner.birthDate)||'pendiente')}</strong></p>`;
+
+    const primaryLabel = step===8?'Consultar precio':step===7?'Revisar datos':'Continuar';
+    const hint = step===8
+      ? 'Calculamos un importe orientativo con estos datos. No contratas nada.'
+      : step===7
+        ? 'Verás un resumen completo antes de calcular ningún precio.'
+        : 'Guardamos lo que escribes: podrás corregirlo en cualquier momento.';
+
+    chat.innerHTML=`<form class="chat-step" novalidate aria-labelledby="chat-question">
+      <div class="bubble bot" id="chat-question" tabindex="-1">${questions[step]}</div>
+      ${content}
+      <div class="choice-row chat-controls">
+        ${step>1?action('back','← Atrás'):''}
+        ${step!==2?`<button type="submit" class="choice primary ${step===8?'is-quote':''}" data-action="${step===8?'quote':'next'}">${primaryLabel}</button>`:''}
+      </div>
+      <p class="action-hint">${hint}</p>
+    </form>`;
+
+    renderProgress();
+    renderSummary();
+    $$('input[name="flow"]').forEach(r=>{r.checked=r.id===(step<3?`s${step}`:`s${step}${p.species||'dog'}`);r.tabIndex=-1;r.setAttribute('aria-hidden','true');});
+    $$('.pet-image-button').forEach(b=>{const selected=b.dataset.species===p.species;b.setAttribute('aria-pressed',String(selected));b.setAttribute('aria-label',`${selected?'Editar selección:':'Seleccionar'} ${b.dataset.species==='dog'?'perro':'gato'}`);});
+    experience.classList.toggle('compact-media',!!p.species);
+    updateBusy();
+    if(focus) focusStep();
+  }
+
+  /* Al cambiar de paso, lleva la vista y el foco al campo que toca:
+     el usuario no tiene que buscarlo ni pulsarlo. */
+  function focusAndReveal(el){
+    if(!el)return;
+    if(typeof el.scrollIntoView==='function')el.scrollIntoView({block:'center',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    el.focus({preventScroll:true});
+  }
+  function focusStep(){
+    const stage=$('.chat-step'); if(!stage)return;
+    const question=$('#chat-question');
+    const control=stage.querySelector('input:not([disabled]):not([type=hidden]), select, [data-action="species"], button[type="submit"]');
+    const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const anchor=question||stage;
+    if(typeof anchor.scrollIntoView==='function')anchor.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
+    const give=()=>{(control||question)?.focus({preventScroll:true});};
+    if(typeof window.requestAnimationFrame==='function')window.requestAnimationFrame(give);else give();
+  }
+
+  /* ── Progreso por etapas ───────────────────────────────────── */
+  const STAGES=['Tu mascota','Tus datos','Revisar','Precio'];
+  const currentStage=()=>priceReady?3:(step<=5?0:step<=7?1:2);
+  function renderProgress(){
+    const s=currentStage(), p=pet();
+    progressBox.innerHTML=`<div class="stage-track" aria-label="Etapas del cálculo">
+      ${STAGES.map((label,i)=>`${i?'<span class="stage-sep" aria-hidden="true">→</span>':''}<span class="stage-item ${i<s?'is-done':''} ${i===s?'is-current':''}"${i===s?' aria-current="step"':''}><i aria-hidden="true">${i<s?'✓':i+1}</i>${label}</span>`).join('')}
+    </div>
+    <p class="step-context">${state.pets.length>1&&s===0?`Mascota <strong>${active+1} de ${state.pets.length}</strong>${petName(p)?` · ${esc(petName(p))}`:''} · `:''}Paso ${step} de 8</p>`;
+  }
+
+  /* ── Resumen: cerrado por defecto, se abre con «Editar datos» ── */
+  let summaryOpen=false;
+  function chip(index,targetStep,label,value,pending){
+    return `<button type="button" class="psc-chip ${pending?'is-pending':''}" data-action="edit-field" data-index="${index}" data-step="${targetStep}">
+      <b>${label}</b><span>${esc(value)}</span><span class="psc-pen" aria-hidden="true">✎</span></button>`;
+  }
+  const petLine=p=>[speciesLabel(p)||'Tipo pendiente',breedLabel(p)||'Raza pendiente',humanDate(p.birthDate)||'Fecha pendiente']
+    .map(v=>/pendiente/i.test(v)?`<em>${esc(v)}</em>`:esc(v)).join(' · ');
+  function summaryHeadline(){
+    const names=state.pets.map((p,i)=>petName(p)||`Mascota ${i+1}`);
+    const pending=state.pets.filter(p=>!petComplete(p)).length + (ownerComplete()?0:1);
+    return `${names.join(', ')}${pending?` · <em>${pending} bloque${pending>1?'s':''} por completar</em>`:' · <b>Todo completo</b>'}`;
+  }
+  function renderSummary(){
+    const anyData=state.pets.some(p=>petName(p)||p.species||p.breed||p.birthDate)||state.owner.postalCode||state.owner.birthDate||state.pets.length>1;
+    if(!anyData){summaryBox.innerHTML='';summaryBox.hidden=true;return;}
+    summaryBox.hidden=false;
+    summaryBox.innerHTML=`
+      <div class="summary-bar">
+        <p class="summary-bar-copy"><strong>Tus datos</strong><span>${summaryHeadline()}</span></p>
+        <button type="button" class="summary-toggle" data-action="toggle-summary" aria-expanded="${summaryOpen}" aria-controls="summary-panel">
+          ${summaryOpen?'Cerrar':'Editar datos'} <span class="psc-caret" aria-hidden="true">▾</span>
+        </button>
+      </div>
+      <div class="summary-panel ${summaryOpen?'is-open':''}" id="summary-panel" ${summaryOpen?'':'hidden'}>
+        <p class="summary-panel-intro">Elige el dato que quieras cambiar. Volverás a donde estabas.</p>
+        <ul class="pet-summary-list">
+          ${state.pets.map((p,i)=>`<li class="psc ${i===active?'is-active':''}">
+            <div class="psc-top">
+              <span class="psc-name">${esc(petName(p)||`Mascota ${i+1}`)}</span>
+              <span class="psc-badge ${petComplete(p)?'is-ok':''}">${petComplete(p)?'Completa':i===active?'Completando ahora':`Mascota ${i+1}`}</span>
+            </div>
+            <p class="psc-line">${petLine(p)}</p>
+            <div class="psc-chips">
+              ${chip(i,1,'Nombre',petName(p)||'Pendiente',!petName(p))}
+              ${chip(i,2,'Tipo',speciesLabel(p)||'Pendiente',!p.species)}
+              ${chip(i,3,'Raza',breedLabel(p)||'Pendiente',!p.breed)}
+              ${chip(i,4,'Nacimiento',humanDate(p.birthDate)||'Pendiente',!p.birthDate)}
+            </div>
+            ${state.pets.length>1?`<button type="button" class="psc-btn danger" data-action="remove-pet" data-id="${p.id}">Eliminar esta mascota</button>`:''}
+          </li>`).join('')}
+        </ul>
+        <div class="psc psc-owner">
+          <div class="psc-top">
+            <span class="psc-name">Titular</span>
+            <span class="psc-badge ${ownerComplete()?'is-ok':''}">${ownerComplete()?'Completo':'Pendiente'}</span>
+          </div>
+          <p class="psc-line">${state.owner.postalCode?esc(state.owner.postalCode):'<em>Código postal pendiente</em>'} · ${state.owner.birthDate?esc(humanDate(state.owner.birthDate)):'<em>Fecha pendiente</em>'}</p>
+          <div class="psc-chips">
+            ${chip(active,6,'Código postal',state.owner.postalCode||'Pendiente',!state.owner.postalCode)}
+            ${chip(active,7,'Nacimiento titular',humanDate(state.owner.birthDate)||'Pendiente',!state.owner.birthDate)}
+          </div>
+        </div>
+        <button type="button" class="summary-add" data-action="add-pet">+ Añadir otra mascota</button>
+      </div>`;
+  }
+
+  /* ── Modo único: chat o formulario, sin perder datos ───────── */
+  /* Las reglas heredadas (#s3dog:checked ~ .experience-body{display:grid!important})
+     ganan por especificidad a cualquier regla con [hidden]; el estilo en línea
+     con !important es lo único que las supera de forma fiable. */
+  function setVisible(el,visible){
+    if(!el)return;
+    if(visible)el.style.removeProperty('display');
+    else el.style.setProperty('display','none','important');
+  }
+  function setMode(next,announce=true){
+    if(next!==mode){mode=next;}
+    formWrap.hidden = next!=='form';
+    setVisible(formWrap,next==='form');
+    body.hidden = next==='form';
+    setVisible(body,next!=='form');
+    $$('#mode-switch button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===next)));
+    if(next==='form')renderForm();
+    renderChat();
+    renderSummary();
+    if(announce)emit('change',{field:'mode',mode});
+  }
+
+  function updateBusy(){
+    $$('[data-action="quote"]').forEach(b=>{
+      b.disabled=busy.has('quote');
+      b.setAttribute('aria-busy',String(busy.has('quote')));
+      b.textContent=busy.has('quote')?'Consultando…':'Consultar precio';
+    });
+  }
+
+  /* ── Peticiones ────────────────────────────────────────────── */
+  async function request(kind,payload,status){
+    if(busy.has(kind))return;
+    if(typeof config.handlers[kind]!=='function'){
+      status.dataset.state='pending';
+      status.textContent=kind==='quote'
+        ?'El cálculo de precio todavía no está disponible. Tus datos siguen aquí para que puedas revisarlos.'
+        :'La solicitud de llamada todavía no está disponible. No se ha enviado tu teléfono.';
+      return;
+    }
+    const controller=new AbortController(),requestId=globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    busy.add(kind);updateBusy();
+    const callButton=$('#callback-form button'); if(kind==='callback')callButton.disabled=true;
+    status.dataset.state='loading';status.textContent=kind==='quote'?'Consultando tu precio…':'Enviando solicitud…';
+    emit('request',{action:kind,requestId});
+    let timer;
+    try{
+      const result=await Promise.race([
+        Promise.resolve().then(()=>config.handlers[kind](payload,{signal:controller.signal,requestId})),
+        new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('timeout'));},20000);})
+      ]);
+      if(kind==='quote'){
+        if(!result||typeof result.amount!=='number'||!Number.isFinite(result.amount)||result.amount<0||typeof result.currency!=='string'||!/^[A-Z]{3}$/.test(result.currency)||!['mes','año','único'].includes(result.period))throw new Error('invalid response');
+        if(JSON.stringify(payload)!==JSON.stringify(snapshot())){status.textContent='Los datos han cambiado. Vuelve a consultar el precio con los datos actuales.';status.dataset.state='pending';return;}
+        status.textContent=`Tu precio: ${new Intl.NumberFormat('es-ES',{style:'currency',currency:result.currency}).format(result.amount)} / ${result.period}${result.reference?' · Referencia: '+String(result.reference):''}`;
+        priceReady=true;renderProgress();
+      }else{
+        if(result?.accepted!==true)throw new Error('invalid response');
+        status.textContent='Solicitud recibida. Te llamaremos al número indicado, normalmente en pocos minutos.';
+      }
+      status.dataset.state='success';emit('success',{action:kind,requestId});
+    }catch(error){
+      status.dataset.state='error';
+      status.textContent=controller.signal.aborted?'La solicitud ha tardado demasiado. Inténtalo de nuevo.':'No hemos podido completar la solicitud. Conservamos tus datos para que puedas reintentarlo.';
+      emit('error',{action:kind,requestId});
+    }
+    finally{clearTimeout(timer);busy.delete(kind);updateBusy();if(kind==='callback')callButton.disabled=false;}
+  }
+
+  function reportFormErrors(){
+    clearErrors(form);
+    let first=null;
+    for(const p of state.pets){
+      [['name',`${p.id}-name`],['species',`${p.id}-species`],['breed',`${p.id}-breed`],['birthDate',`${p.id}-birth`]].forEach(([key,id])=>{
+        const msg=errorFor(key,p);
+        showError(id,msg);
+        if(msg&&!first)first=key==='species'?`${p.id}-dog`:id;
+      });
+    }
+    [['postalCode','postal-code'],['ownerBirth','owner-birth']].forEach(([key,id])=>{
+      const msg=errorFor(key);showError(id,msg);
+      if(msg&&!first)first=id;
+    });
+    if(first)focusAndReveal(document.getElementById(first));
+    return !first;
+  }
+
+  function quote(){
+    if(invalidState()){
+      setMode('form');
+      note.dataset.state='error';
+      note.textContent='Faltan datos por completar. Te los marcamos junto a cada campo.';
+      reportFormErrors();
+      return;
+    }
+    request('quote',snapshot(),note);
+  }
+
+  function addPet(){
+    state.pets.push(newPet());active=state.pets.length-1;step=1;returnToReview=false;
+    changed('pets');
+    if(mode==='form'){renderForm();renderSummary();renderChat();$(`#${pet().id}-name`)?.focus();}
+    else renderChat(true);
+  }
+  function chooseSpecies(species){
+    if(pet().species!==species){pet().species=species;pet().breed='';pet().breedText='';changed('species');}
+    showError('chat-species','');
+    if(mode==='form'){renderForm();renderSummary();renderChat();return;}
+    step = returnToReview ? 8 : (petName(pet()) ? 3 : 1);
+    if(returnToReview)returnToReview=false;
+    renderChat(true);
+  }
+
+  /* ── Entrada de datos ──────────────────────────────────────── */
+  document.addEventListener('input',e=>{
+    const el=e.target;if(!el.matches('[data-field]'))return;
+    const owner=el.hasAttribute('data-owner');
+    const target=owner?state.owner:(el.closest('[data-pet-id]')?state.pets.find(p=>p.id===el.closest('[data-pet-id]').dataset.petId):pet());
+    const key=el.dataset.field;
+
+    if(key==='breed'){
+      const raw=el.value.trim();
+      target.breedText=el.value;
+      const match=breeds(target).find(b=>b.label.toLowerCase()===raw.toLowerCase()||b.value===raw.toLowerCase());
+      target.breed=match?match.value:'';
+      showError(el.id,'');
+      changed('breed');
+      renderSummary();
+      return;
+    }
+    if(key==='species'){
+      target.species=el.value;target.breed='';target.breedText='';
+      changed('species');renderForm();renderSummary();
+      $(`#${target.id}-${target.species}`)?.focus();
+      return;
+    }
+    if(key==='ownerBirth')state.owner.birthDate=el.value;
+    else target[key]=el.value;
+
+    showError(el.id,'');
+    changed(key);
+    renderSummary();
+  });
+
+  document.addEventListener('submit',e=>{
+    if(e.target===form){e.preventDefault();if(!reportFormErrors()){note.dataset.state='error';note.textContent='Faltan datos por completar. Te los marcamos junto a cada campo.';return;}quote();}
+    if(e.target.matches('.chat-step')){
+      e.preventDefault();
+      if(step===8){if(!invalidState())quote();else{note.dataset.state='error';note.textContent='Faltan datos por completar. Te los marcamos junto a cada campo.';setMode('form');reportFormErrors();}return;}
+      const key=STEP_KEYS[step];
+      if(key){
+        const msg=errorFor(key);
+        if(msg){showError(CHAT_IDS[step],msg);focusAndReveal(document.getElementById(CHAT_IDS[step]));return;}
+      }
+      if(returnToReview){returnToReview=false;step=8;}
+      else step = step===1&&pet().species ? 3 : step+1;
+      renderChat(true);
+    }
+  });
+
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-action]');if(!b)return;
+    const a=b.dataset.action;
+    if(a==='species')chooseSpecies(b.dataset.species);
+    if(a==='back'){returnToReview=false;step=Math.max(1,step-1);renderChat(true);}
+    if(a==='add-pet'){summaryOpen=false;addPet();}
+    if(a==='remove-pet'){
+      const current=pet().id;
+      state.pets=state.pets.filter(p=>p.id!==b.dataset.id);
+      if(!state.pets.length)state.pets=[newPet()];
+      const idx=state.pets.findIndex(p=>p.id===current);
+      active=idx>=0?idx:0;
+      changed('pets');step=firstIncompleteStep();returnToReview=false;
+      renderForm();renderChat();renderSummary();
+      $('.summary-add')?.focus();
+    }
+    if(a==='edit-pet'){
+      active=Number(b.dataset.index);returnToReview=false;step=1;
+      if(mode==='form'){renderForm();renderSummary();document.getElementById(`${pet().id}-name`)?.focus();}
+      else renderChat(true);
+    }
+    if(a==='toggle-summary'){
+      summaryOpen=!summaryOpen;
+      renderSummary();
+      document.querySelector('[data-action="toggle-summary"]')?.focus({preventScroll:true});
+    }
+    if(a==='edit-field'){
+      summaryOpen=false;
+      const target=Number(b.dataset.step);
+      const idx=Number(b.dataset.index);
+      if(Number.isFinite(idx))active=idx;
+      if(mode==='form'){
+        renderForm();renderSummary();
+        const ids={1:`${pet().id}-name`,2:`${pet().id}-dog`,3:`${pet().id}-breed`,4:`${pet().id}-birth`,6:'postal-code',7:'owner-birth'};
+        const el=document.getElementById(ids[target]);
+        el?.focus({preventScroll:false});
+        if(el&&typeof el.scrollIntoView==='function')el.scrollIntoView({block:'center',behavior:'smooth'});
+      }else{
+        returnToReview = step===8;
+        step=target;renderChat(true);
+      }
+    }
+    if(a==='reset')$('#reset-dialog').showModal();
+  });
+
+  $('#confirm-reset').addEventListener('click',()=>{
+    state.pets=[newPet()];state.owner={postalCode:'',birthDate:''};
+    active=0;step=1;returnToReview=false;changed('reset');
+    $('#reset-dialog').close();renderForm();renderChat(true);renderSummary();
+  });
+  $('#cancel-reset').addEventListener('click',()=>$('#reset-dialog').close());
+  $$('#mode-switch button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+  $('#open-journey')?.addEventListener('click',()=>{$('#mode-switch button[data-mode="chat"]')?.focus({preventScroll:true});});
+  $$('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>emit('navigate',{target:a.getAttribute('href')})));
+
+  $('#callback-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const input=$('#callback-phone'); const phone=input.value.replace(/[\s().-]/g,'');
+    const status=$('#callback-status');
+    if(!/^\+?\d{9,15}$/.test(phone)){
+      status.dataset.state='error';
+      status.textContent='Revisa el teléfono: necesitamos entre 9 y 15 cifras, con prefijo si es de fuera de España.';
+      input.focus();return;
+    }
+    request('callback',{phone},status);
+  });
+  $('#callback-phone').addEventListener('input',()=>{const s=$('#callback-status');s.textContent='';s.dataset.state='idle';});
+
+  $('.whatsapp').addEventListener('click',e=>{
+    if(config.whatsappUrl)return;
+    e.preventDefault();$('#contact-dialog').showModal();
+  });
+  $('#close-contact').addEventListener('click',()=>$('#contact-dialog').close());
+
+  function configure(options={}){
+    if(options.breeds){for(const species of ['dog','cat'])if(options.breeds[species]){
+      const list=options.breeds[species];
+      if(!Array.isArray(list)||!list.length||list.some(b=>typeof b.value!=='string'||!b.value||typeof b.label!=='string'||!b.label)||new Set(list.map(b=>b.value)).size!==list.length)throw new TypeError('Invalid breed catalog');
+      config.breeds[species]=withFallback(list.map(b=>({value:b.value,label:b.label})));
+      state.pets.filter(p=>p.species===species&&!config.breeds[species].some(b=>b.value===p.breed)).forEach(p=>{p.breed='';p.breedText='';});
+    }}
+    if(options.handlers){for(const key of ['quote','callback'])if(key in options.handlers){if(options.handlers[key]!==null&&typeof options.handlers[key]!=='function')throw new TypeError('Handler must be a function or null');config.handlers[key]=options.handlers[key];}}
+    if('whatsappUrl' in options){
+      if(options.whatsappUrl){const u=new URL(options.whatsappUrl);if(u.protocol!=='https:'||!['wa.me','api.whatsapp.com','web.whatsapp.com'].includes(u.hostname))throw new TypeError('Invalid WhatsApp URL');}
+      config.whatsappUrl=options.whatsappUrl;$('.whatsapp').href=config.whatsappUrl||'#ayuda';
+    }
+    clearQuote();renderForm();renderChat();renderSummary();
+  }
+  window.AffinityMenu=Object.freeze({configure,getState:snapshot});
+
+  setMode('chat',false);
+  emit('ready',{schemaVersion:1});
+})();
+
+</script>
+</body>
+</html>
