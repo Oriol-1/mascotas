@@ -3927,6 +3927,47 @@ section,details,#conversacion{scroll-margin-top:145px}
   .contact-card p{font-size:14px}
 }
 
+
+/* --- V24e · formulario de llamada dentro del diálogo -------- */
+.contact-dialog .call-form{
+  display:grid;
+  grid-template-columns:1fr;      /* antes heredaba 2 columnas de .call-form */
+  gap:8px;
+  margin:22px 0 0;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.contact-dialog .call-form label{margin:0 0 2px}
+.contact-dialog .call-form input{
+  width:100%;
+  height:auto;
+  min-height:54px;
+  padding:14px 16px;
+  border:1px solid #aabfaf;
+  border-radius:8px;
+  background:#fff;
+  color:var(--ink);
+  font-size:16px;
+}
+.contact-dialog .call-form input:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(25,88,62,.14)}
+.contact-dialog .call-form button{
+  width:100%;
+  height:auto;
+  min-height:54px;
+  margin-top:6px;
+  padding:14px 20px;
+  border-radius:8px;
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep,#0f4a42) 100%);
+  color:#fff;
+  font-size:15px;
+  font-weight:650;
+  white-space:normal;
+}
+.contact-dialog{padding:clamp(22px,5vw,32px)}
+.contact-dialog h2{font-size:clamp(24px,6vw,29px)}
+
 </style>
 </head>
 <body>
