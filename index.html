@@ -20,7 +20,7 @@
   --wa:#176b51;
   --radius:22px;
   --shadow:0 24px 70px rgba(21,33,37,.10);
-  --container:1220px;
+  --container:1680px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -3164,6 +3164,769 @@ section,details,#conversacion{scroll-margin-top:145px}
   .pet-summary{padding:12px 14px 14px}
   .psc-chip{font-size:10px}
 }
+
+/* HERO COMERCIAL · sin calculador integrado */
+.hero{
+  padding:42px 0 64px;
+}
+.hero-grid{
+  min-height:650px;
+  grid-template-columns:minmax(0,.88fr) minmax(520px,1.12fr);
+  gap:0;
+  border-radius:32px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#f4f8f7 0%,#edf4f2 100%);
+  box-shadow:0 26px 72px rgba(21,33,37,.12);
+}
+.hero-copy{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:64px clamp(36px,5vw,84px);
+}
+.hero-copy h1{max-width:720px}
+.hero-copy .hero-lead{max-width:630px}
+.hero-link{
+  min-height:54px;
+  padding:0 22px;
+  border-radius:14px;
+  box-shadow:0 12px 28px rgba(23,105,95,.18);
+}
+.hero-note{max-width:500px}
+.hero-visual{
+  position:relative;
+  min-height:650px;
+  overflow:hidden;
+  background:#cbd8d4;
+  isolation:isolate;
+}
+.hero-visual:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(90deg,rgba(237,244,242,.30) 0%,transparent 34%),linear-gradient(180deg,transparent 43%,rgba(8,25,24,.12) 64%,rgba(8,25,24,.72) 100%);
+  pointer-events:none;
+}
+.hero-slide{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  margin:0;
+  opacity:0;
+  visibility:hidden;
+  transform:scale(1.045);
+  transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform 5.8s cubic-bezier(.2,.65,.3,1),visibility .75s;
+}
+.hero-slide.is-active{
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+}
+.hero-slide img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.hero-slide.dog img{object-position:50% 39%}
+.hero-slide.cat img{object-position:50% 35%}
+.hero-slider-top{
+  position:absolute;
+  z-index:4;
+  top:28px;
+  left:28px;
+  right:28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.hero-slider-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:34px;
+  padding:0 13px;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  color:#29433f;
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(11,28,28,.10);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.065em;
+  text-transform:uppercase;
+}
+.hero-slider-badge:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(23,105,95,.12)}
+.hero-slider-count{color:#fff;font-size:12px;font-weight:800;text-shadow:0 1px 8px rgba(0,0,0,.28)}
+.hero-visual-label{
+  position:absolute;
+  z-index:4;
+  left:28px;
+  right:28px;
+  bottom:82px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  color:#fff;
+}
+.hero-visual-copy{max-width:430px}
+.hero-visual-kicker{display:block;margin-bottom:7px;font-size:10px!important;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)!important}
+.hero-visual-label strong{display:block;font-size:clamp(25px,2.2vw,34px);line-height:1.05;letter-spacing:-.04em}
+.hero-visual-label span{display:block;margin-top:8px;font-size:12px;line-height:1.5;color:rgba(255,255,255,.82)}
+.hero-slider-controls{
+  position:absolute;
+  z-index:5;
+  left:28px;
+  right:28px;
+  bottom:27px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.hero-slider-dots{display:flex;flex:1;gap:8px}
+.hero-slider-dot{
+  position:relative;
+  width:clamp(54px,7vw,92px);
+  height:3px;
+  padding:0;
+  overflow:hidden;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.30);
+  cursor:pointer;
+}
+.hero-slider-dot:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:#fff;
+  transform:scaleX(0);
+  transform-origin:left;
+}
+.hero-slider-dot.is-active:before{animation:hero-progress 6s linear forwards}
+.hero-slider-arrow{
+  width:42px;
+  height:42px;
+  padding:0;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:50%;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  backdrop-filter:blur(12px);
+  cursor:pointer;
+  transition:background .2s ease,transform .2s ease;
+}
+.hero-slider-arrow:hover{background:rgba(255,255,255,.26);transform:translateY(-1px)}
+.hero-slider-arrow:focus-visible,.hero-slider-dot:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@keyframes hero-progress{to{transform:scaleX(1)}}
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .hero-copy{padding:52px 44px}
+  .hero-visual{min-height:480px}
+}
+@media(max-width:600px){
+  .hero{padding:22px 0 42px}
+  .hero-grid{border-radius:24px}
+  .hero-copy{padding:38px 24px 34px}
+  .hero-visual{min-height:380px}
+  .hero-slider-top{top:18px;left:18px;right:18px}
+  .hero-visual-label{left:20px;right:20px;bottom:72px}
+  .hero-visual-label strong{font-size:20px}
+  .hero-slider-controls{left:20px;right:20px;bottom:20px}
+  .hero-slider-arrow{width:38px;height:38px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-slide{transition:opacity .2s ease;transform:none}
+  .hero-slider-dot.is-active:before{animation:none;transform:scaleX(1)}
+}
+</style>
+<style>
+/* Composición basada en la referencia visual Canva aportada */
+:root{--container:1320px;--page-gutter:clamp(20px,4.5vw,72px);--brand:#19583e;--brand-dark:#12452f;--brand-soft:#eaf0e5}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.container{width:min(var(--container),calc(100% - var(--page-gutter)*2));margin-inline:auto}
+.hero{padding:0;background:#f1f2ee}
+.hero-grid{position:relative;width:100%;max-width:none;margin:0;display:flex;align-items:center;min-height:clamp(440px,34vw,580px);gap:0;border:0;border-radius:0;box-shadow:none;background:#f1f2ee;isolation:isolate;overflow:hidden}
+.hero-content-shell{position:relative;z-index:2;width:min(var(--container),calc(100% - var(--page-gutter)*2));margin-inline:auto;pointer-events:none}.hero-copy{position:relative;display:block;width:54%;max-width:650px;padding:56px 0;pointer-events:none}
+.hero-copy a{pointer-events:auto}
+.hero-eyebrow{margin:0 0 24px;color:#1c513b;font-size:11px;font-weight:650;letter-spacing:.15em;line-height:1.5;text-transform:uppercase}
+.hero-copy h1{margin:0 0 26px;max-width:650px;font-size:clamp(36px,3.35vw,52px);line-height:1.13;letter-spacing:-.025em;font-weight:650;color:#111710}
+.hero-copy .hero-lead{margin:0 0 28px;max-width:470px;font-size:clamp(16px,1.25vw,18px);line-height:1.5;color:#29312a}
+.hero-actions{display:block}
+.hero-link{display:inline-flex;align-items:center;justify-content:center;min-width:244px;min-height:54px;padding:14px 28px;border:1px solid #19583e;border-radius:6px;background:#19583e;color:white;font-size:15px;font-weight:600;box-shadow:none;transition:background .18s}
+.hero-link:hover{background:#12452f;box-shadow:none}
+.hero-visual{position:absolute;inset:0;min-height:0;z-index:0;overflow:hidden;background:#f1f2ee;isolation:auto}
+.hero-visual:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#f1f2ee 0%,#f1f2ee 37%,rgba(241,242,238,.97) 43%,rgba(241,242,238,.72) 50%,rgba(241,242,238,.18) 61%,rgba(241,242,238,0) 70%);pointer-events:none}
+.hero-slide{position:absolute;inset:0;z-index:1;margin:0;opacity:0;visibility:hidden;transform:none;transition:opacity .35s ease,visibility .35s}
+.hero-slide.is-active{opacity:1;visibility:visible;transform:none}
+.hero-slide img{display:block;position:absolute;inset:0;width:100%;max-width:none;height:100%;object-fit:cover}
+.hero-slide.dog{--focal-x:68%;--focal-y:36%}.hero-slide.dog img{object-position:var(--focal-x) var(--focal-y)}
+.hero-slide.cat{--focal-x:68%;--focal-y:32%}.hero-slide.cat img{object-position:var(--focal-x) var(--focal-y)}
+.hero-slider-arrow{position:absolute;top:50%;z-index:3;display:grid;place-items:center;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:#e4ebd9e8;color:#487252;box-shadow:none;cursor:pointer;transition:background .18s}
+.hero-slider-arrow[data-direction="prev"]{left:clamp(8px,1.2vw,24px)}
+.hero-slider-arrow[data-direction="next"]{right:clamp(8px,1.2vw,24px)}
+.hero-slider-arrow svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hero-slider-arrow:hover{background:#d7e4c9;transform:translateY(-50%)}
+.hero-slider-arrow:focus-visible{outline:3px solid #19583e;outline-offset:4px}
+.help-section{background:white;padding:32px 0 52px;scroll-margin-top:90px}
+.contact-heading{display:block;margin:0 0 24px;text-align:center}
+.contact-heading h2{margin:0;font-size:19px;font-weight:500;line-height:1.4;letter-spacing:-.01em;color:#232c24}
+.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,26px)}
+.contact-card{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;padding:28px clamp(20px,2.4vw,36px);border:0;border-radius:10px;background:#fff;box-shadow:none;transition:background .18s}
+.contact-card:hover{border:0;box-shadow:none;background:#fafbf8}
+.contact-card:first-child{background:#e9efe3;border:0}
+.contact-card:first-child:hover{background:#e4ecdc}
+.contact-card-top{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:11px}
+.contact-icon{display:grid;place-items:center;flex:none;width:52px;height:52px;margin:0;border-radius:0;border:0;background:transparent;color:#276044}
+.contact-icon svg{width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
+.contact-card:nth-child(2) .contact-icon,.contact-card:nth-child(3) .contact-icon{background:transparent;color:#276044}
+.contact-card h3{font-family:inherit;font-size:23px;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin:0;color:#174c35}
+.contact-card p{font-size:14px;font-weight:400;line-height:1.6;color:#38423a;margin:0 0 22px;max-width:290px;min-height:45px}
+.contact-action{display:flex;align-items:center;justify-content:center;width:100%;max-width:320px;min-height:52px;margin-top:auto;padding:12px 16px;border:1px solid #b5c4b8;border-radius:5px;background:white;color:#23533b;font-size:14px;font-weight:600;line-height:1.4;text-align:center;cursor:pointer;transition:background .18s,border-color .18s}
+.contact-card:first-child .contact-action{background:#d0dcc8;border-color:#d0dcc8;color:#204b32}
+.contact-action:hover{background:#edf3e9;border-color:#7d9a82}
+.contact-card:first-child .contact-action:hover{background:#becfb3;border-color:#becfb3}
+.contact-action:active,.hero-link:active{transform:translateY(1px)}
+.contact-dialog{width:min(460px,calc(100% - 32px));max-height:calc(100dvh - 40px);overflow:auto;border:1px solid #dce5dc;border-radius:16px;padding:30px;color:var(--ink);box-shadow:0 20px 80px #102e2430}
+.contact-dialog::backdrop{background:rgba(16,34,28,.48)}
+.contact-dialog .contact-icon{margin-bottom:18px;width:48px;height:48px}
+.contact-dialog h2{font-size:29px;font-weight:650;line-height:1.16;letter-spacing:-.035em;margin:0 0 12px}
+.contact-dialog p{font-size:14px;color:#58655c;line-height:1.6}
+.contact-dialog .call-form{display:grid;gap:9px;margin:24px 0 0}
+.contact-dialog .call-form label{font-size:13px;font-weight:650;color:#344c3c}
+.contact-dialog .call-form input{width:100%;min-width:0;padding:13px 15px;border:1px solid #aabfaf;border-radius:7px;background:#fff;color:var(--ink);min-height:52px;font-size:17px}
+.contact-dialog .call-form button{margin-top:7px;background:var(--brand);color:white;border:0;border-radius:7px;min-height:52px;padding:13px;font-weight:650;cursor:pointer}
+.contact-dialog #callback-status{color:#344c3c;font-size:13px;margin-bottom:0}
+.dialog-close{display:block;margin:-9px -8px 8px auto;background:transparent;border:0;color:#5f7166;min-height:44px;padding:10px;cursor:pointer;font-size:13px}
+.hero-link:focus-visible,.contact-action:focus-visible,.dialog-close:focus-visible,.contact-dialog input:focus-visible,.contact-dialog button:focus-visible{outline:3px solid #17695f;outline-offset:4px}
+.contact-action[disabled]{opacity:.6;cursor:wait}
+
+
+@media(min-width:1800px){.hero-grid{min-height:600px}.hero-visual:after{background:linear-gradient(90deg,#f1f2ee 0%,#f1f2ee 30%,rgba(241,242,238,.95) 39%,rgba(241,242,238,.7) 49%,transparent 69%)}}
+@media(max-width:1100px) and (min-width:821px){.hero-copy{width:58%;padding:46px 0}.hero-copy h1{font-size:36px}.hero-copy .hero-lead{font-size:16px}.hero-slider-arrow{width:36px;height:36px}.contact-card{padding:24px 18px}.contact-card p{font-size:13px}.contact-card h3{font-size:21px}.contact-action{font-size:13px}}
+@media(max-width:820px){
+ .hero-grid{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+ .hero-content-shell{order:0;width:min(600px,calc(100% - var(--page-gutter)*2));margin-inline:auto}
+ .hero-copy{width:100%;max-width:none;padding:36px 0 20px}
+ .hero-copy h1{font-size:clamp(32px,5.2vw,43px);max-width:600px;margin-bottom:20px}
+ .hero-eyebrow{margin-bottom:20px;font-size:10px}
+ .hero-copy .hero-lead{font-size:16px;margin-bottom:24px;max-width:430px}
+ .hero-link{width:auto;min-width:230px;min-height:52px;font-size:14px}
+ .hero-visual{order:1;position:relative;inset:auto;width:100%;height:clamp(300px,55vw,420px);min-height:0;margin-top:0}
+ .hero-visual:after{background:linear-gradient(180deg,#f1f2ee 0%,rgba(241,242,238,.56) 10%,rgba(241,242,238,0) 29%)}
+ .hero-slide.dog{--focal-x:50%;--focal-y:35%}.hero-slide.cat{--focal-x:50%;--focal-y:30%}
+ .hero-slider-arrow{top:auto;bottom:calc(clamp(300px,55vw,420px)/2 - 22px);transform:none;width:44px;height:44px}
+ .hero-slider-arrow:hover{transform:none}.hero-slider-arrow[data-direction="prev"]{left:16px}.hero-slider-arrow[data-direction="next"]{right:16px}
+ .contact-grid{grid-template-columns:1fr;gap:0;max-width:600px;margin-inline:auto}
+ .contact-card{padding:24px 26px;display:grid;grid-template-columns:52px 1fr;column-gap:18px;row-gap:8px;text-align:left;align-items:center}
+ .contact-card-top{display:contents}.contact-icon{grid-column:1;grid-row:1 / span 2}
+ .contact-card h3{grid-column:2;font-size:22px}.contact-card p{grid-column:2;max-width:none;min-height:0;margin:0;font-size:14px}
+ .contact-action{grid-column:2;max-width:none;margin:12px 0 0;min-height:50px}
+ .contact-card+.contact-card{border-top:1px solid #e9eee4;border-radius:0}
+ .help-section{padding:28px 0 38px}.contact-heading h2{font-size:19px}
+ .whatsapp-label{display:none}.desktop-break{display:none}
+}
+@media(max-width:400px){.hero-copy h1{font-size:30px;letter-spacing:-.035em}.hero-copy{padding-top:28px}.hero-link{width:100%}.contact-card{padding:22px 18px;column-gap:12px;grid-template-columns:40px 1fr}.contact-icon{width:40px;height:44px}.contact-icon svg{width:32px;height:32px}.contact-action{grid-column:1 / -1}.contact-card p{font-size:13px}.contact-heading h2{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-slide,.contact-card,.contact-action,.hero-link,.hero-slider-arrow{transition:none}}
+
+/* ============================================================
+   V23 · SISTEMA UNIFICADO DE ICONOS E IMÁGENES
+   No modifica el ancho del sitio (--container sigue en 1680px).
+   ============================================================ */
+
+/* --- 1. Trazo común para todos los iconos ------------------- */
+.ui-icon,
+.pet-icon-svg{
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.ui-icon.is-solid,
+.pet-icon-svg.is-solid{fill:currentColor;stroke:none}
+
+/* --- 2. Iconos de las tarjetas de contacto ------------------ */
+.contact-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:rgba(39,96,68,.07);
+  color:#22593f;
+}
+.contact-card:first-child .contact-icon{background:rgba(32,75,50,.10)}
+.contact-icon svg{
+  width:26px;
+  height:26px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.contact-icon svg.is-solid{width:25px;height:25px;fill:currentColor;stroke:none}
+.contact-dialog .contact-icon{width:48px;height:48px;border-radius:14px}
+
+/* --- 3. Tiles de icono de producto (mismo peso visual) ------ */
+.pet-symbol,
+.pet-symbol.soft{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  border:1px solid rgba(23,105,95,.14);
+  background:var(--brand-soft);
+  color:var(--brand);
+  box-shadow:none;
+}
+.pet-symbol .pet-icon-svg{width:24px;height:24px}
+.pet-symbol.small{width:34px;height:34px;border-radius:11px}
+.pet-symbol.small .pet-icon-svg{width:18px;height:18px}
+.pet-symbol.white{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22);color:#fff}
+
+/* --- 4. Rejilla de producto: tarjetas alineadas ------------- */
+.info-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(14px,1.4vw,22px);
+  align-items:stretch;
+}
+.info-card{
+  min-height:0;
+  height:100%;
+  padding:clamp(24px,1.7vw,30px);
+  border-radius:18px;
+}
+.info-card .pet-symbol{margin-bottom:18px}
+.info-card h3{margin-bottom:9px;font-size:19px}
+.info-card p{font-size:14px;max-width:34ch}
+.info-card:after{display:none}
+
+/* --- 5. Fila de iconos de ventajas -------------------------- */
+.discounts-pets{gap:10px;margin-bottom:20px}
+
+/* --- 6. Logos: caja fija, sin saltos de maquetación --------- */
+.brand-lockup{gap:13px}
+.brand img,
+.footer-brand img{
+  height:38px;
+  width:auto;
+  max-width:190px;
+  object-fit:contain;
+  object-position:left center;
+}
+.brand .logo-compact{height:36px;width:36px;object-fit:contain}
+.footer-brand img{height:26px;max-width:150px}
+.footer-inner{align-items:center}
+.footer-brand{align-items:center}
+
+/* --- 7. Hero: encuadre y transición de la imagen ------------ */
+.hero-visual{background:#f1f2ee}
+.hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:var(--focal-x,65%) var(--focal-y,36%);
+}
+.hero-slide.dog{--focal-x:66%;--focal-y:34%}
+.hero-slide.cat{--focal-x:66%;--focal-y:30%}
+.hero-slider-arrow svg{width:19px;height:19px}
+
+/* --- 8. Tiles de marca en el bloque de ventajas ------------- */
+.offer{gap:13px;min-height:66px;padding:12px 14px;border-radius:14px}
+.offer-logo{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  border:1px solid rgba(23,105,95,.13);
+  background:var(--brand-soft);
+  color:var(--brand);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.01em;
+}
+.offer strong{font-size:13px}
+.offer span{font-size:11px}
+
+/* --- 9. Tablet ---------------------------------------------- */
+@media(max-width:1024px){
+  .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .info-card p{max-width:none}
+}
+
+/* --- 10. Móvil: imagen del hero y tarjetas ------------------ */
+@media(max-width:820px){
+  .hero-visual{
+    height:auto;
+    aspect-ratio:4/3;
+    max-height:440px;
+    overflow:hidden;
+  }
+  .hero-slide.dog{--focal-x:52%;--focal-y:34%}
+  .hero-slide.cat{--focal-x:52%;--focal-y:28%}
+  .hero-visual:after{background:linear-gradient(180deg,rgba(241,242,238,.55) 0%,rgba(241,242,238,0) 26%)}
+  .hero-slider-arrow{
+    top:auto;
+    bottom:16px;
+    transform:none;
+    width:42px;
+    height:42px;
+    background:rgba(255,255,255,.92);
+    box-shadow:0 6px 18px rgba(11,28,28,.14);
+  }
+  .hero-slider-arrow[data-direction="prev"]{left:16px}
+  .hero-slider-arrow[data-direction="next"]{right:16px}
+  .info-grid{grid-template-columns:1fr}
+  .contact-icon{width:46px;height:46px;border-radius:13px}
+  .contact-icon svg{width:24px;height:24px}
+  .contact-icon svg.is-solid{width:23px;height:23px}
+}
+
+@media(max-width:600px){
+  .brand img{height:34px}
+  .brand .logo-compact{height:34px;width:34px}
+  .pet-symbol,.pet-symbol.soft{width:44px;height:44px;border-radius:13px}
+  .pet-symbol .pet-icon-svg{width:22px;height:22px}
+  .offer-logo{width:40px;height:40px;border-radius:11px;font-size:12px}
+}
+
+@media(max-width:400px){
+  .contact-icon{width:44px;height:44px}
+  .contact-icon svg{width:23px;height:23px}
+}
+
+
+/* ============================================================
+   V24 · MÁS AIRE, COLUMNAS MÁS ANCHAS Y MÁS CARÁCTER VISUAL
+   El ancho máximo del sitio no cambia (--container:1680px).
+   ============================================================ */
+
+:root{
+  --container:1560px;                 /* antes 1320px: columnas más anchas */
+  --page-gutter:clamp(20px,3vw,56px);
+  --accent-warm:#e8b04b;
+  --brand-deep:#0f4a42;
+}
+
+/* --- 1. El contenido usa todo el ancho disponible ----------- */
+.container,
+.hero-content-shell{width:min(var(--container),calc(100% - var(--page-gutter)*2));margin-inline:auto}
+
+/* --- 2. Cabecera con más presencia -------------------------- */
+.header-inner{min-height:86px}
+.nav{gap:clamp(18px,2vw,38px);font-size:15px}
+.nav a:not(.cta){position:relative;padding:6px 0;font-weight:550}
+.nav a:not(.cta):after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;
+  border-radius:2px;background:var(--brand);
+  transition:right .28s cubic-bezier(.22,.61,.36,1);
+}
+.nav a:not(.cta):hover:after{right:0}
+.nav .cta{
+  min-height:48px;padding:0 24px;font-size:14px;
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%);
+  box-shadow:0 10px 26px rgba(15,74,66,.22);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.nav .cta:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(15,74,66,.28)}
+
+/* --- 3. Hero: texto más grande y mejor repartido ------------ */
+.hero{padding:0}
+.hero-grid{min-height:clamp(480px,36vw,660px)}
+.hero-copy{
+  width:54%;
+  max-width:860px;
+  padding:clamp(56px,6vw,96px) 0;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  margin-bottom:22px;padding:7px 15px 7px 12px;
+  border-radius:999px;background:rgba(25,88,62,.08);
+  color:#19583e;font-size:11px;letter-spacing:.13em;
+}
+.hero-eyebrow:before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:var(--accent-warm);box-shadow:0 0 0 4px rgba(232,176,75,.22);
+}
+.hero-copy h1{
+  max-width:none;
+  font-size:clamp(38px,4.1vw,68px);
+  line-height:1.06;letter-spacing:-.035em;font-weight:600;
+}
+.hero-copy .hero-lead{max-width:34em;font-size:clamp(17px,1.35vw,21px);line-height:1.55}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.hero-link{
+  min-height:60px;padding:16px 34px;border-radius:8px;font-size:16px;
+  background:linear-gradient(135deg,#19583e 0%,#0f4234 100%);
+  border-color:#19583e;
+  box-shadow:0 14px 34px rgba(15,66,52,.24);
+}
+.hero-link:hover{box-shadow:0 18px 40px rgba(15,66,52,.3)}
+.hero-visual:after{
+  background:
+    linear-gradient(90deg,#f1f2ee 0%,#f1f2ee 30%,rgba(241,242,238,.96) 40%,rgba(241,242,238,.6) 52%,rgba(241,242,238,0) 68%),
+    linear-gradient(180deg,rgba(12,32,26,0) 62%,rgba(12,32,26,.18) 100%);
+}
+
+/* --- 4. Bloque de ayuda: tarjetas más anchas ---------------- */
+.help-section{padding:clamp(44px,5vw,78px) 0}
+.contact-heading{margin-bottom:34px}
+.contact-heading h2{font-size:clamp(24px,2.4vw,34px);font-weight:600;letter-spacing:-.03em}
+.contact-grid{gap:clamp(16px,1.6vw,28px)}
+.contact-card{
+  padding:clamp(30px,2.6vw,44px) clamp(24px,2.4vw,44px);
+  border-radius:20px;
+  background:#fbfcfa;
+  border:1px solid #e7ece3;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.contact-card:hover{
+  transform:translateY(-3px);
+  border-color:#cfdcc9;
+  box-shadow:0 18px 44px rgba(24,54,40,.09);
+}
+.contact-card:first-child{border-color:#dbe6d3}
+.contact-card p{max-width:46ch;font-size:15px}
+.contact-card h3{font-size:clamp(21px,1.6vw,26px)}
+.contact-action{max-width:none;width:100%;border-radius:8px;font-size:15px;min-height:56px}
+
+/* --- 5. Información de producto ----------------------------- */
+.product-info{padding:clamp(64px,6.5vw,110px) 0}
+.info-head{max-width:none;margin-bottom:clamp(30px,3vw,52px)}
+.info-head h2{max-width:20ch;font-size:clamp(34px,3.7vw,58px)}
+.info-head p{max-width:62ch;font-size:clamp(15px,1.15vw,18px)}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11px;letter-spacing:.14em;
+}
+.kicker:before{
+  content:"";width:26px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--brand),var(--accent-warm));
+}
+.info-grid{gap:clamp(16px,1.5vw,26px)}
+.info-card{
+  position:relative;overflow:hidden;
+  padding:clamp(28px,2.2vw,40px);
+  border-radius:22px;
+  background:linear-gradient(180deg,#fff 0%,#fbfdfc 100%);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.info-card:before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--brand),var(--accent-warm));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s cubic-bezier(.22,.61,.36,1);
+}
+.info-card:hover{
+  transform:translateY(-4px);
+  border-color:#cfdedb;
+  box-shadow:0 22px 50px rgba(21,45,42,.09);
+}
+.info-card:hover:before{transform:scaleX(1)}
+.info-card .pet-symbol{width:56px;height:56px;border-radius:17px;margin-bottom:22px}
+.info-card .pet-symbol .pet-icon-svg{width:27px;height:27px}
+.info-card h3{font-size:clamp(19px,1.5vw,24px);letter-spacing:-.03em}
+.info-card p{max-width:44ch;font-size:15px;line-height:1.65}
+.eligibility{
+  margin-top:clamp(18px,1.6vw,26px);
+  padding:20px 24px;border-radius:16px;font-size:14px;
+  display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;
+  background:linear-gradient(120deg,#f4f8f6 0%,#f8faf7 100%);
+  border-color:#e2e9e4;
+}
+
+/* --- 6. Cómo funciona --------------------------------------- */
+.how{padding:clamp(64px,6.5vw,110px) 0;background:linear-gradient(180deg,#f6f8f7 0%,#f1f5f2 100%)}
+.how-layout{grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr);gap:clamp(32px,4vw,88px);align-items:center}
+.how-copy h2{font-size:clamp(34px,3.7vw,58px);max-width:14ch}
+.how-copy p{max-width:52ch;font-size:clamp(15px,1.1vw,17px)}
+.how-cta{min-height:56px;padding:0 26px;border-radius:8px;font-size:15px;font-weight:600;
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%);
+  box-shadow:0 12px 30px rgba(15,74,66,.2);transition:transform .18s ease}
+.how-cta:hover{transform:translateY(-1px)}
+.how-cta span{transition:transform .22s ease}
+.how-cta:hover span{transform:translateX(4px)}
+.steps{gap:clamp(12px,1.2vw,18px)}
+.step-card{
+  grid-template-columns:64px 1fr;gap:clamp(18px,1.6vw,28px);
+  padding:clamp(22px,1.9vw,32px);border-radius:20px;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.step-card:hover{transform:translateX(4px);box-shadow:0 16px 38px rgba(21,45,42,.08)}
+.step-number{
+  width:64px;height:64px;border-radius:19px;font-size:16px;
+  background:linear-gradient(140deg,var(--brand) 0%,var(--brand-deep) 100%);
+  box-shadow:0 10px 24px rgba(15,74,66,.22);
+}
+.step-card h3{font-size:clamp(17px,1.25vw,21px)}
+.step-card p{font-size:14px;line-height:1.6;max-width:60ch}
+
+/* --- 7. Ventajas y descuentos ------------------------------- */
+.discounts{padding:clamp(64px,6.5vw,110px) 0;background:linear-gradient(140deg,#f5f1e9 0%,#f0efe6 55%,#eef2ec 100%)}
+.discounts-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,4vw,80px)}
+.discounts-copy h2{max-width:16ch;font-size:clamp(34px,3.8vw,60px)}
+.discounts-copy p{max-width:52ch;font-size:clamp(15px,1.15vw,18px)}
+.discount-main-cta{min-height:56px;padding:0 26px;border-radius:8px;font-size:15px;
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%)}
+.discount-main-cta span{transition:transform .22s ease}
+.discount-main-cta:hover span{transform:translateX(4px)}
+.access-card{border-radius:26px;box-shadow:0 28px 70px rgba(39,39,31,.10)}
+.access-head{padding:clamp(24px,2vw,34px) clamp(24px,2.2vw,38px) 20px}
+.access-head strong{font-size:clamp(19px,1.5vw,24px)}
+.access-head span{font-size:13px}
+.benefits-offers{padding:0 clamp(20px,2.2vw,34px) clamp(22px,2.2vw,34px)}
+.offer-list{gap:12px}
+.offer{
+  min-height:76px;padding:14px 18px;border-radius:16px;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.offer:hover{transform:translateX(4px);border-color:#c9dad6}
+.offer strong{font-size:15px}
+.offer span{font-size:12px;margin-top:3px}
+.offer>span[aria-hidden]{margin-left:auto;color:var(--brand);font-size:15px}
+.offer-logo{width:50px;height:50px;border-radius:14px;font-size:14px}
+.benefits-link{min-height:52px;border-radius:10px;font-size:13px}
+
+/* --- 8. Pie de página --------------------------------------- */
+.footer{padding:40px 0;font-size:13px}
+.footer-brand span{font-size:14px;font-weight:650;color:#3c4b50}
+
+/* --- 9. Adaptación ------------------------------------------ */
+@media(max-width:1240px){
+  .how-layout{grid-template-columns:1fr;gap:36px}
+  .how-copy h2,.discounts-copy h2{max-width:22ch}
+  .discounts-grid{grid-template-columns:1fr;gap:36px}
+}
+@media(max-width:1024px){
+  .hero-copy{width:60%}
+}
+@media(max-width:820px){
+  .hero-copy{width:100%;max-width:none;padding:36px 0 24px}
+  .contact-card{padding:26px 24px}
+  .contact-card p{max-width:none}
+  .step-card{grid-template-columns:56px 1fr}
+  .step-number{width:56px;height:56px;border-radius:17px}
+}
+@media(max-width:600px){
+  .info-card{padding:24px}
+  .info-card .pet-symbol{width:50px;height:50px;border-radius:15px}
+  .offer-logo{width:44px;height:44px}
+  .offer{min-height:68px;padding:12px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .info-card,.contact-card,.step-card,.offer,.nav .cta,.how-cta{transition:none!important}
+}
+
+
+/* --- V24b · ajustes finos --------------------------------- */
+.contact-card .contact-icon,
+.contact-card:nth-child(2) .contact-icon,
+.contact-card:nth-child(3) .contact-icon{
+  width:58px;height:58px;border-radius:17px;
+  background:linear-gradient(150deg,#eef3e9 0%,#e6eee0 100%);
+  border:1px solid rgba(25,88,62,.10);
+  color:#1c5b40;
+}
+.contact-card:first-child .contact-icon{background:linear-gradient(150deg,#dfe9d6 0%,#d6e3cb 100%);border-color:rgba(25,88,62,.16)}
+.contact-card .contact-icon svg{width:29px;height:29px}
+.contact-card .contact-icon svg.is-solid{width:28px;height:28px}
+.contact-card-top{gap:14px;margin-bottom:14px}
+
+.info-card .pet-symbol,
+.discounts-pets .pet-symbol{
+  background:linear-gradient(150deg,#e9f1e6 0%,#dfeada 100%);
+  border-color:rgba(25,88,62,.14);
+  color:#19583e;
+}
+.discounts-pets .pet-symbol{width:56px;height:56px;border-radius:17px}
+.discounts-pets .pet-symbol .pet-icon-svg{width:27px;height:27px}
+
+/* Burbuja de WhatsApp: la etiqueta ya no tapa las tarjetas */
+.whatsapp-label{
+  opacity:0;transform:translateX(10px);
+  transition:opacity .22s ease,transform .22s ease;
+  pointer-events:none;
+}
+.whatsapp-wrap:hover .whatsapp-label,
+.whatsapp-wrap:focus-within .whatsapp-label{opacity:1;transform:none}
+
+/* Cabecera del bloque de ventajas con un acento de color */
+.benefits-card .access-head{
+  position:relative;
+  background:linear-gradient(120deg,#f7faf6 0%,#fff 60%);
+}
+.benefits-card .access-head:before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--brand),var(--accent-warm));
+}
+
+
+/* --- V24c · móvil: cabecera y CTA del hero ------------------ */
+@media(max-width:820px){
+  .hero-actions{display:flex;justify-content:flex-start}
+  .hero-link{align-self:flex-start;margin-inline:0}
+  .header-inner{gap:10px;padding-block:10px}
+  .nav{gap:12px;justify-content:flex-start;align-items:center}
+  .nav a:not(.cta){font-size:13px;padding:4px 0}
+  .nav .cta{margin-left:auto;min-height:42px;padding:0 16px;font-size:12px}
+}
+@media(max-width:430px){
+  .nav a:not(.cta){font-size:12px}
+  .nav{gap:10px}
+  .nav .cta{padding:0 13px}
+}
+
+
+/* --- V24d · móvil: icono encima del texto en las tarjetas --- */
+@media(max-width:820px){
+  .contact-grid{gap:14px;max-width:640px}
+  .contact-card{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:left;
+    grid-template-columns:none;
+    padding:26px 24px 24px;
+    border-radius:18px;
+    border:1px solid #e7ece3;
+  }
+  .contact-card+.contact-card{border-top:1px solid #e7ece3;border-radius:18px}
+  .contact-card-top{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+    margin-bottom:12px;
+  }
+  .contact-card .contact-icon{
+    grid-column:auto;
+    grid-row:auto;
+    width:54px;
+    height:54px;
+    border-radius:16px;
+  }
+  .contact-card .contact-icon svg{width:27px;height:27px}
+  .contact-card h3{grid-column:auto;font-size:22px}
+  .contact-card p{grid-column:auto;margin:0 0 20px;min-height:0;max-width:none;font-size:15px}
+  .contact-action{grid-column:auto;width:100%;max-width:none;margin:0;min-height:54px}
+}
+@media(max-width:400px){
+  .contact-card{padding:24px 20px}
+  .contact-card .contact-icon{width:50px;height:50px;border-radius:15px}
+  .contact-card .contact-icon svg{width:25px;height:25px}
+  .contact-card h3{font-size:20px}
+  .contact-card p{font-size:14px}
+}
+
 </style>
 </head>
 <body>
@@ -3176,13 +3939,15 @@ section,details,#conversacion{scroll-margin-top:145px}
           class="logo-horizontal"
           src="https://www.affinitysoluciones.com/wp-content/uploads/2020/04/Logo-Affinity2.jpg"
           alt="Affinity Soluciones"
-          loading="eager"
+          width="320" height="80"
+          loading="eager" decoding="async"
         >
         <img
           class="logo-compact"
           src="https://www.affinitysoluciones.com/wp-content/uploads/2021/04/Logo-Affinity.png"
           alt="Affinity"
-          loading="eager"
+          width="96" height="96"
+          loading="eager" decoding="async"
         >
         <span class="brand-product">Mascotas</span>
       </span>
@@ -3191,192 +3956,35 @@ section,details,#conversacion{scroll-margin-top:145px}
       <a href="#inicio">Seguro</a>
       <a href="#informacion">Qué incluye</a>
       <a href="#descuentos">Descuentos</a>
-      <a class="cta" href="#conversacion">Calcula tu precio</a>
+      <a class="cta" href="https://example.com/calcular-seguro-mascotas" target="_blank" rel="noopener">Calcula tu precio</a>
     </nav>
   </div>
 </header>
 
 <main>
 <section class="hero" id="inicio">
-  <div class="container hero-grid">
-
-    <div>
-      <div class="pet-type-row">
-        <div class="icon-pair">
-          <span class="pet-symbol small">
-<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M19 24c-5-7-10-9-13-6-2 3 0 10 7 15"/>
-  <path d="M45 24c5-7 10-9 13-6 2 3 0 10-7 15"/>
-  <path d="M18 30c1-9 6-15 14-15s13 6 14 15v10c0 9-6 16-14 16S18 49 18 40Z"/>
-  <path d="M25 34h.01M39 34h.01"/>
-  <path d="M28 43c2 2 6 2 8 0"/>
-  <path d="M29 39c1-2 5-2 6 0-1 3-5 3-6 0Z"/>
-</svg></span>
-          <span class="pet-symbol small">
-<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="m19 24-7-13 15 7"/>
-  <path d="m45 24 7-13-15 7"/>
-  <path d="M17 29c1-8 7-14 15-14s14 6 15 14v11c0 9-6 16-15 16S17 49 17 40Z"/>
-  <path d="M25 34h.01M39 34h.01"/>
-  <path d="M32 38v5"/>
-  <path d="M29 43c2 2 4 2 6 0"/>
-  <path d="M20 40 8 38m12 7L9 48m35-8 12-2m-12 7 11 3"/>
-</svg></span>
-        </div>
-        <span class="pet-type-copy">Seguro para perros y gatos</span>
-      </div>
-      <h1>Tu mascota, protegida. Tú eliges veterinario.</h1>
-      <p class="hero-lead">
-        Calcula tu presupuesto conversando con nuestro asistente y descubre una protección pensada para perros y gatos.
-      </p>
-
-      <ul class="benefits">
-        <li><span class="check">✓</span> Reembolso del 80% de los gastos veterinarios cubiertos</li>
-        <li><span class="check">✓</span> Libertad para elegir centro veterinario</li>
-        <li><span class="check">✓</span> Presupuesto en pocos pasos y sin compromiso</li>
-      </ul>
-
-      <div class="hero-actions" aria-label="Empieza a calcular tu precio">
-        <a class="hero-link" id="open-journey" href="#conversacion">Calcular mi precio <span>→</span></a>
-      </div>
-      <div class="hero-note"><strong>Tú eliges cómo:</strong> chat paso a paso o formulario completo. Puedes cambiar cuando quieras y no perderás lo que ya hayas escrito.</div>
-    </div>
-
-    <div class="experience journey-v17" id="conversacion">
-      <input type="radio" name="flow" id="s1" checked>
-      <input type="radio" name="flow" id="s2">
-      <input type="radio" name="flow" id="s3dog">
-      <input type="radio" name="flow" id="s3cat">
-      <input type="radio" name="flow" id="s4dog">
-      <input type="radio" name="flow" id="s4cat">
-      <input type="radio" name="flow" id="s5dog">
-      <input type="radio" name="flow" id="s5cat">
-      <input type="radio" name="flow" id="s6dog">
-      <input type="radio" name="flow" id="s6cat">
-      <input type="radio" name="flow" id="s7dog">
-      <input type="radio" name="flow" id="s7cat">
-      <input type="radio" name="flow" id="s8dog">
-      <input type="radio" name="flow" id="s8cat">
-
-      <div class="experience-head">
-        <div class="assistant">
-          <img class="assistant-logo" src="https://www.affinitysoluciones.com/wp-content/uploads/2021/04/Logo-Affinity.png" alt="" aria-hidden="true">
-          <span class="online"></span>
-          Asistente Affinity Mascotas
-        </div>
-      </div>
-
-      <div class="mode-block">
-        <span class="mode-label" id="mode-switch-label">¿Cómo prefieres darnos los datos?</span>
-        <div id="mode-switch" class="mode-switch" role="group" aria-labelledby="mode-switch-label">
-          <button type="button" data-mode="chat" aria-pressed="true">
-            <strong>Chat paso a paso</strong>
-            <span>Una pregunta cada vez</span>
-          </button>
-          <button type="button" data-mode="form" aria-pressed="false">
-            <strong>Formulario completo</strong>
-            <span>Todos los campos a la vez</span>
-          </button>
-        </div>
-        <p class="mode-note">Puedes cambiar de una opción a otra en cualquier momento: <strong>los datos que ya hayas introducido se conservan</strong>.</p>
-      </div>
-      <div class="form-panel-wrap" id="formulario" hidden>
-        <div class="form-panel">
-          <div class="form-intro">
-            <h3>Formulario completo</h3>
-            <p>Introduce todos los datos en una sola vista. Al cambiar al chat conservarás lo que ya hayas rellenado.</p>
-          </div>
-
-          <form class="mgc-form" novalidate aria-label="Datos para calcular tu precio"></form>
-        </div>
-      </div>
-
-      <div id="pet-summary" class="pet-summary" aria-label="Resumen de tus datos"></div>
-
-      <div class="experience-body">
-
-        <!-- Fotografías reales de Pexels:
-         Perro: Masood Aslami · pexels.com/photo/30810888
-         Gato: Tuğçe Açıkyürek · pexels.com/photo/15660834 -->
-        <div class="pet-selector-top" aria-label="Selecciona perro o gato">
-          <button type="button" class="pet-image-button dog" data-action="species" data-species="dog" aria-label="Seleccionar perro" aria-pressed="false">
-            <img
-              src="https://images.pexels.com/photos/30810888/pexels-photo-30810888.jpeg?cs=srgb&fm=jpg" loading="eager" decoding="async" referrerpolicy="no-referrer"
-              alt="Perro"
-            >
-            <span class="pet-selected-mark">✓ Perro seleccionado</span>
-            <span class="pet-button-copy">
-              <span>
-                <span class="pet-button-name">Perro</span>
-                <span class="pet-button-sub">Continúa con los datos de tu perro</span>
-              </span>
-              <span class="pet-button-action">Elegir perro →</span>
-            </span>
-          </button>
-
-          <button type="button" class="pet-image-button cat" data-action="species" data-species="cat" aria-label="Seleccionar gato" aria-pressed="false">
-            <img
-              src="https://images.pexels.com/photos/15660834/pexels-photo-15660834.jpeg?cs=srgb&fm=jpg" loading="eager" decoding="async" referrerpolicy="no-referrer"
-              alt="Gato"
-            >
-            <span class="pet-selected-mark">✓ Gato seleccionado</span>
-            <span class="pet-button-copy">
-              <span>
-                <span class="pet-button-name">Gato</span>
-                <span class="pet-button-sub">Continúa con los datos de tu gato</span>
-              </span>
-              <span class="pet-button-action">Elegir gato →</span>
-            </span>
-          </button>
-        </div>
-
-        <div class="chat">
-          <div class="step-top" id="journey-progress"></div>
-
-          <div class="chat-stage"></div>
-        </div>
-      </div>
-
-      <div id="quote-status" class="ui-status" role="status" aria-live="polite" aria-atomic="true"></div>
-    </div>
-
+  <div class="hero-grid" role="region" aria-roledescription="carrusel" aria-label="Seguro para perros y gatos" tabindex="0">
+    <div class="hero-visual" aria-hidden="true"><figure class="hero-slide dog is-active" data-slide="0" data-title="Siempre a su lado." data-copy="Cuida de su salud con libertad para elegir el veterinario que prefieras." aria-hidden="false">
+        <img src="https://images.pexels.com/photos/30810888/pexels-photo-30810888.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" srcset="https://images.pexels.com/photos/30810888/pexels-photo-30810888.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800 800w, https://images.pexels.com/photos/30810888/pexels-photo-30810888.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200 1200w, https://images.pexels.com/photos/30810888/pexels-photo-30810888.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600 1600w, https://images.pexels.com/photos/30810888/pexels-photo-30810888.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2000 2000w" sizes="(max-width:820px) 100vw, 62vw" width="1600" height="1067" alt="Perro protegido por Affinity Mascotas" loading="eager" fetchpriority="high" decoding="async" referrerpolicy="no-referrer">
+      </figure>
+<figure class="hero-slide cat" data-slide="1" data-title="Cuidado para sus siete vidas." data-copy="Protección clara para disfrutar juntos de cada etapa." aria-hidden="true">
+        <img src="https://images.pexels.com/photos/15660834/pexels-photo-15660834.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" srcset="https://images.pexels.com/photos/15660834/pexels-photo-15660834.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800 800w, https://images.pexels.com/photos/15660834/pexels-photo-15660834.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200 1200w, https://images.pexels.com/photos/15660834/pexels-photo-15660834.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600 1600w, https://images.pexels.com/photos/15660834/pexels-photo-15660834.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2000 2000w" sizes="(max-width:820px) 100vw, 62vw" width="1600" height="1067" alt="Gato protegido por Affinity Mascotas" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+      </figure></div>
+    <div class="hero-content-shell"><div class="hero-copy">
+      <p class="hero-eyebrow">Seguro para perros y gatos</p>
+      <h1>Tu mascota, protegida.<br>Tú eliges veterinario.</h1>
+      <p class="hero-lead">Conoce las coberturas y encuentra<br class="desktop-break"> la protección para tu mascota.</p>
+      <div class="hero-actions"><a class="hero-link" href="https://example.com/calcular-seguro-mascotas" target="_blank" rel="noopener">Calcular mi precio</a></div>
+    </div></div>
+    <button class="hero-slider-arrow" type="button" data-direction="prev" aria-label="Ver imagen anterior"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.2 5.6-6.4 6.4 6.4 6.4"/></svg></button>
+    <button class="hero-slider-arrow" type="button" data-direction="next" aria-label="Ver imagen siguiente"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9.8 5.6 6.4 6.4-6.4 6.4"/></svg></button>
+    <span class="sr-only" id="hero-image-status" aria-live="polite" aria-atomic="true">Imagen 1 de 2: perro.</span>
   </div>
 </section>
 
-<section class="help-section" id="ayuda">
-  <div class="container">
-    <div class="call-card">
-      <div class="call-copy">
-        <div class="call-icon">
-<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M20 10 13 17c-2 2 2 12 12 22s20 14 22 12l7-7-11-9-6 6c-5-2-12-9-14-14l6-6Z"/>
-</svg></div>
-        <div>
-          <span class="call-eyebrow">Atención inmediata</span>
-          <h2>¿Prefieres hablar? Te llamamos ahora.</h2>
-          <p>Solo te pedimos el teléfono. Te llamamos normalmente en pocos minutos, las 24 horas. En la llamada te preguntaremos por tu mascota y tu código postal para darte el precio.</p>
-        </div>
-      </div>
-
-      <div class="call-action">
-        <form class="call-form" id="callback-form">
-          <input id="callback-phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="Introduce tu teléfono" aria-label="Introduce tu teléfono" aria-describedby="callback-status">
-          <button type="submit">Quiero que me llamen</button>
-        </form>
-        <p id="callback-status" class="ui-status" role="status" aria-live="polite"></p>
-        <ul class="call-steps">
-          <li>Solo pedimos tu teléfono, nada más.</li>
-          <li>Te llamamos normalmente en pocos minutos.</li>
-          <li>Sin compromiso: puedes colgar cuando quieras.</li>
-        </ul>
-        <div class="call-meta">
-          <span>Sin esperas · Sin compromiso</span>
-          <span><strong>Servicio 24 h</strong></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="help-section" id="ayuda" aria-labelledby="contact-heading"><div class="container"><div class="contact-heading"><h2 id="contact-heading">¿Prefieres que te ayudemos?</h2></div><div class="contact-grid"><article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1 .9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><h3>Te llamamos</h3></div><p>Déjanos tu número y te ayudamos a resolver tus dudas sobre el seguro.</p><button type="button" class="contact-action" data-contact-dialog="call-dialog" aria-haspopup="dialog">Solicitar una llamada</button></article>
+<article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"/></svg></span><h3>WhatsApp</h3></div><p>Escríbenos por WhatsApp y consulta tus dudas con nosotros.</p><button type="button" class="contact-action" data-contact-dialog="contact-dialog" aria-haspopup="dialog">Escribir por WhatsApp</button></article>
+<article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><h3>Chat</h3></div><p>Consulta tus dudas en el chat sin salir de esta página.</p><button type="button" class="contact-action" data-contact-dialog="chat-help-dialog" aria-haspopup="dialog">Iniciar chat en línea</button></article></div></div></section>
 
 
 
@@ -3393,12 +4001,10 @@ section,details,#conversacion{scroll-margin-top:145px}
     <div class="info-grid">
       <article class="info-card">
         <span class="pet-symbol">
-<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M32 8 50 15v13c0 13-8 23-18 28-10-5-18-15-18-28V21Z"/>
-  <ellipse cx="25" cy="28" rx="3" ry="4"/>
-  <ellipse cx="33" cy="25" rx="3" ry="4"/>
-  <ellipse cx="41" cy="28" rx="3" ry="4"/>
-  <path d="M33 32c-5 0-9 4-9 8 0 3 3 5 6 4 2-1 2-2 3-2s2 1 4 2c3 1 6-1 6-4 0-4-5-8-10-8Z"/>
+<svg class="pet-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path d="M12 2.8 19.2 5.7v6.1c0 4.6-2.9 8.3-7.2 9.4-4.3-1.1-7.2-4.8-7.2-9.4V5.7Z"/>
+  <path d="M14.4 9.6a3.4 3.4 0 0 0-4.8 1 4.4 4.4 0 0 0 0 3.6 3.4 3.4 0 0 0 4.8 1"/>
+  <path d="M8.3 11.1h4.1M8.3 12.9h4.1"/>
 </svg></span>
         <h3>80% de reembolso</h3>
         <p>
@@ -3408,11 +4014,10 @@ section,details,#conversacion{scroll-margin-top:145px}
 
       <article class="info-card">
         <span class="pet-symbol soft">
-<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M14 52V21h36v32"/>
-  <path d="M24 20V21h16v9"/>
-  <path d="M32 27v14M25 34h14"/>
-  <path d="M21 52h22"/>
+<svg class="pet-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path d="M3.4 20.6h17.2"/>
+  <path d="M5.4 20.6V9.4L12 5.1l6.6 4.3v11.2"/>
+  <path d="M12 10.9v5M9.5 13.4h5"/>
 </svg></span>
         <h3>Elige tu veterinario</h3>
         <p>
@@ -3422,9 +4027,9 @@ section,details,#conversacion{scroll-margin-top:145px}
 
       <article class="info-card">
         <span class="pet-symbol soft">
-<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M32 54S11 42 11 25c0-7 5-12 12-12 5 0 8 3 9 6 1-3 4-6 9-6 7 0 12 5 12 12 0 17-21 29-21 29Z"/>
-  <path d="M23 33h6l3-7 4 14 3-7h5"/>
+<svg class="pet-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path d="M20.5 5.8a4.9 4.9 0 0 0-7 0L12 7.3l-1.5-1.5a4.9 4.9 0 0 0-7 7l1.5 1.5L12 21l7-7 1.5-1.5a4.9 4.9 0 0 0 0-6.7Z"/>
+  <path d="M4.3 11.9h3.2l1.4-2.6 2.4 5.3 1.6-3.4 1 .7h3.8"/>
 </svg></span>
         <h3>Accidentes y enfermedad</h3>
         <p>
@@ -3449,7 +4054,7 @@ section,details,#conversacion{scroll-margin-top:145px}
         Elige tu veterinario, envía la documentación necesaria y recibe el reembolso correspondiente
         según las coberturas de tu seguro.
       </p>
-      <a class="how-cta" href="#conversacion">Calcular mi precio <span>→</span></a>
+      <a class="how-cta" href="https://example.com/calcular-seguro-mascotas" target="_blank" rel="noopener">Calcular mi precio <span>→</span></a>
     </div>
 
     <div class="steps">
@@ -3485,12 +4090,12 @@ section,details,#conversacion{scroll-margin-top:145px}
     <div class="discounts-copy">
       <div class="discounts-pets">
         <span class="pet-symbol">
-<svg class="pet-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-  <path d="M12 27h40v27H12Z"/>
-  <path d="M9 20h46v9H9Z"/>
-  <path d="M32 20v34"/>
-  <path d="M32 20c-8 0-14-2-14-7 0-3 2-5 5-5 5 0 9 7 9 12Z"/>
-  <path d="M32 20c8 0 14-2 14-7 0-3-2-5-5-5-5 0-9 7-9 12Z"/>
+<svg class="pet-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <ellipse cx="7.5" cy="10.5" rx="1.6" ry="2"/>
+  <ellipse cx="11.1" cy="8.5" rx="1.6" ry="2.1"/>
+  <ellipse cx="14.8" cy="8.8" rx="1.6" ry="2.1"/>
+  <ellipse cx="18" cy="11.2" rx="1.5" ry="1.9"/>
+  <path d="M12.3 12.4c-2.7 0-4.8 2-4.8 4.1 0 1.5 1.3 2.5 2.7 2 .8-.3 1.3-.7 2.1-.7s1.3.4 2.1.7c1.4.5 2.7-.5 2.7-2 0-2.1-2.1-4.1-4.8-4.1Z"/>
 </svg></span>
       </div>
 
@@ -3516,15 +4121,15 @@ section,details,#conversacion{scroll-margin-top:145px}
       <div class="offers benefits-offers">
         <div class="offer-list">
           <a class="offer" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener noreferrer" aria-label="Consultar Zooplus en el catálogo de ventajas (nueva pestaña)">
-            <div class="offer-logo">Z+</div>
+            <div class="offer-logo" aria-hidden="true">Z+</div>
             <div><strong>Zooplus</strong><span>Ventajas en productos para mascotas</span></div>
           <span aria-hidden="true">↗</span></a>
           <a class="offer" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener noreferrer" aria-label="Consultar Tiendanimal en el catálogo de ventajas (nueva pestaña)">
-            <div class="offer-logo">TA</div>
+            <div class="offer-logo" aria-hidden="true">TA</div>
             <div><strong>Tiendanimal</strong><span>Ventajas para su cuidado diario</span></div>
           <span aria-hidden="true">↗</span></a>
           <a class="offer" href="https://tria.club-affinity.es/Cashbackbb?cat=Compres@Mascotes" target="_blank" rel="noopener noreferrer" aria-label="Consultar Kiwoko en el catálogo de ventajas (nueva pestaña)">
-            <div class="offer-logo">KW</div>
+            <div class="offer-logo" aria-hidden="true">KW</div>
             <div><strong>Kiwoko</strong><span>Ventajas en alimentación y accesorios</span></div>
           <span aria-hidden="true">↗</span></a>
         </div>
@@ -3553,7 +4158,7 @@ section,details,#conversacion{scroll-margin-top:145px}
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <img src="https://www.affinitysoluciones.com/wp-content/uploads/2020/04/Logo-Affinity2.jpg" alt="Affinity Soluciones">
+      <img src="https://www.affinitysoluciones.com/wp-content/uploads/2020/04/Logo-Affinity2.jpg" alt="Affinity Soluciones" width="320" height="80" loading="lazy" decoding="async">
       <span>Affinity Mascotas</span>
     </div>
     <div>Seguro para perros y gatos</div>
@@ -3562,10 +4167,10 @@ section,details,#conversacion{scroll-margin-top:145px}
 
 
 
-<dialog id="contact-dialog" aria-labelledby="contact-title"><h2 id="contact-title">Contacto por WhatsApp</h2><p>Este canal todavía no está disponible. Puedes consultar la información del seguro en esta página.</p><button type="button" class="choice primary" id="close-contact">Entendido</button></dialog>
-<dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title">¿Empezar de nuevo?</h2><p>Se borrarán los datos introducidos de todas tus mascotas y del titular.</p><div class="choice-row"><button type="button" class="choice subtle" id="cancel-reset" autofocus>Conservar datos</button><button type="button" class="choice primary" id="confirm-reset">Borrar y empezar</button></div></dialog>
-<noscript><p style="padding:20px">Activa JavaScript para usar el formulario y el asistente interactivo.</p></noscript>
-<script>
+<dialog id="call-dialog" class="contact-dialog" aria-labelledby="call-title"><button class="dialog-close" type="button" data-close-dialog>Cerrar ✕</button><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1 .9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><h2 id="call-title">¿A qué número te llamamos?</h2><p>Te ayudamos a resolver tus dudas sobre el seguro. El servicio de llamadas está pendiente de activación.</p><form class="call-form" id="callback-form"><label for="callback-phone">Tu teléfono</label><input id="callback-phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="Tu número de teléfono" inputmode="tel" aria-describedby="callback-status"><button type="submit">Solicitar llamada</button></form><p id="callback-status" class="ui-status" role="status" aria-live="polite"></p></dialog>
+<dialog id="chat-help-dialog" class="contact-dialog" aria-labelledby="chat-help-title"><button class="dialog-close" type="button" data-close-dialog>Cerrar ✕</button><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><h2 id="chat-help-title">¿En qué podemos ayudarte?</h2><p>El chat de atención todavía no está disponible. Mientras tanto, puedes consultar las coberturas y cómo funciona el seguro.</p><a class="contact-action" href="#informacion" data-close-dialog>Consultar el seguro <span aria-hidden="true">→</span></a></dialog>
+<dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-title"><button class="dialog-close" type="button" data-close-dialog>Cerrar ✕</button><span class="contact-icon"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"/></svg></span><h2 id="contact-title">Hablemos por WhatsApp</h2><p>Este canal todavía no está disponible. Puedes consultar la información del seguro en esta página.</p><button type="button" class="choice primary" id="close-contact">Entendido</button></dialog>
+<script type="text/plain" data-obsolete-calculator>
 /* Affinity UI v2 — Integration contract (sin cambios respecto a v1)
  * AffinityMenu.configure({
  *   breeds: {dog:[{value:'golden',label:'Golden Retriever'}],cat:[...]},
@@ -3613,6 +4218,8 @@ section,details,#conversacion{scroll-margin-top:145px}
   const experience=$('.experience'), formWrap=$('#formulario'), form=$('.mgc-form'),
         chat=$('.chat-stage'), body=$('.experience-body'), summaryBox=$('#pet-summary'),
         progressBox=$('#journey-progress'), note=$('#quote-status');
+
+  if (!experience || !form || !chat || !note) return;
 
   function clearQuote(){note.textContent=''; note.dataset.state='idle'; priceReady=false;}
   function changed(field){clearQuote();emit('change',{field,petId:pet().id,mode});}
@@ -3912,6 +4519,7 @@ section,details,#conversacion{scroll-margin-top:145px}
     status.dataset.state='loading';status.textContent=kind==='quote'?'Consultando tu precio…':'Enviando solicitud…';
     emit('request',{action:kind,requestId});
     let timer;
+    let paused = false;
     try{
       const result=await Promise.race([
         Promise.resolve().then(()=>config.handlers[kind](payload,{signal:controller.signal,requestId})),
@@ -4120,6 +4728,75 @@ section,details,#conversacion{scroll-margin-top:145px}
   emit('ready',{schemaVersion:1});
 })();
 
+</script>
+<script>
+(() => {
+  'use strict';
+
+  document.querySelectorAll('[data-contact-dialog]').forEach(button => button.addEventListener('click', () => {
+    const dialog = document.getElementById(button.dataset.contactDialog);
+    dialog.showModal();
+    if (dialog.id === 'call-dialog') dialog.querySelector('input').focus();
+  }));
+  document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
+  const callbackForm = document.querySelector('#callback-form');
+  const callbackPhone = document.querySelector('#callback-phone');
+  const callbackStatus = document.querySelector('#callback-status');
+  const whatsapp = document.querySelector('.whatsapp');
+  const contactDialog = document.querySelector('#contact-dialog');
+  const slider = document.querySelector('.hero-grid');
+
+  if (slider) {
+    const slides = [...slider.querySelectorAll('.hero-slide')];
+    const status = slider.querySelector('#hero-image-status');
+    let active = 0;
+    const showSlide = index => {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === active);
+        slide.setAttribute('aria-hidden', String(i !== active));
+      });
+      status.textContent = `Imagen ${active + 1} de ${slides.length}: ${active === 0 ? 'perro' : 'gato'}.`;
+    };
+    slider.querySelectorAll('[data-direction]').forEach(button => button.addEventListener('click', () => {
+      showSlide(active + (button.dataset.direction === 'next' ? 1 : -1));
+    }));
+    slider.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        showSlide(active + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+  }
+
+  callbackForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    const phone = callbackPhone.value.replace(/[\s().-]/g, '');
+    if (!/^\+?\d{9,15}$/.test(phone)) {
+      callbackPhone.setAttribute('aria-invalid', 'true');
+      callbackStatus.dataset.state = 'error';
+      callbackStatus.textContent = 'Revisa el teléfono: necesitamos entre 9 y 15 cifras, con prefijo si es de fuera de España.';
+      callbackPhone.focus();
+      return;
+    }
+    callbackPhone.removeAttribute('aria-invalid');
+    callbackStatus.dataset.state = 'pending';
+    callbackStatus.textContent = 'La solicitud de llamada todavía no está disponible. No se ha enviado tu teléfono.';
+  });
+
+  callbackPhone?.addEventListener('input', () => {
+    callbackPhone.removeAttribute('aria-invalid');
+    callbackStatus.textContent = '';
+    callbackStatus.dataset.state = 'idle';
+  });
+
+  whatsapp?.addEventListener('click', event => {
+    event.preventDefault();
+    contactDialog?.showModal();
+  });
+
+  document.querySelector('#close-contact')?.addEventListener('click', () => contactDialog?.close());
+})();
 </script>
 </body>
 </html>
