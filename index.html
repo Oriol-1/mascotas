@@ -5543,9 +5543,9 @@ body{font-size:var(--t-base);line-height:var(--lh-base)}
 <ellipse class="pet-shadow" cx="106" cy="93" rx="61" ry="3"/>
 <path class="pet-tail" stroke-width="5"/>
 <g class="pet-far"><path class="pet-leg" data-leg="0"/><path class="pet-leg" data-leg="1"/></g>
-<path class="pet-body" d="M52 69 C50 58 60 52 75 54 C90 57 108 53 119 54 C130 54 135 48 140 44 L148 51 C145 63 136 72 121 76 C105 78 98 70 84 73 C69 80 56 81 52 69Z"/>
+<path class="pet-body" d="M51 69 C49 61 54 55 66 53 C81 50 94 56 111 54 C124 53 132 47 139 43 L150 51 C147 63 138 71 124 75 C109 79 97 71 84 73 C70 78 55 80 51 69Z"/>
 <path class="pet-leg" data-leg="2"/><path class="pet-leg" data-leg="3"/>
-<g class="pet-head"><path d="M133 46 L133 28 Q134 26 143 36 Q149 32 155 35 L161 25 L163 43 L170 49 Q171 53 164 55 Q150 63 139 54Z"/><path class="pet-detail" d="M136 33 L140 38 M159 33 L159 39 M160 53 L174 54 M159 55 L172 59"/><ellipse class="pet-eye" cx="157" cy="45" rx="1.35" ry="1.6"/><path class="pet-detail" d="M164 50 L167 50"/></g>
+<g class="pet-head"><path d="M132 47 L134 29 Q134 26 137 29 L145 37 Q151 34 157 37 L163 27 Q165 24 165 29 L165 45 Q171 49 171 53 Q170 57 165 59 Q154 64 143 59 Q134 56 132 47Z"/><path class="pet-detail" d="M136 32 L143 39 M162 31 L158 39 M144 55 Q150 59 157 55 M160 53 L175 52 M160 56 L175 58 M159 59 L172 63"/><ellipse class="pet-eye" cx="158" cy="45" rx="1.4" ry="1.7"/><path class="pet-detail" d="M164 50 L167 51 L164 52"/></g>
 </svg>
 </div></section>
 
@@ -6628,6 +6628,7 @@ body{font-size:var(--t-base);line-height:var(--lh-base)}
     svg,cat:svg.dataset.kind==='gato',legs:Array.from(svg.querySelectorAll('.pet-leg')),
     body:svg.querySelector('.pet-body'),head:svg.querySelector('.pet-head'),
     tail:svg.querySelector('.pet-tail'),eye:svg.querySelector('.pet-eye'),
+    shadow:svg.querySelector('.pet-shadow'),ear:svg.querySelector('.pet-ear'),
     cycle:svg.dataset.kind==='gato'?.88:.78,stride:svg.dataset.kind==='gato'?32:36,
     width:0,scale:1,x:0,time:0
   }));
@@ -6644,11 +6645,15 @@ body{font-size:var(--t-base);line-height:var(--lh-base)}
   }
   function pose(p){
     const {cycle,stride}=p;
-    const phase=p.time/cycle;
-    const bob=Math.cos(phase*4*pi)*.45;
+    const phase=p.time/cycle,step=phase*4*pi;
+    const bob=Math.cos(step)*.62+Math.cos(step*2+.35)*.1;
+    const weight=Math.sin(step);
+    const pitch=weight*(p.cat ? .42 : .58);
+    const surge=Math.sin(phase*2*pi)*.34;
     p.svg.style.transform=`translate3d(${p.x}px,0,0)${p.cat?' scaleX(-1)':''}`;
-    p.body.setAttribute('transform',`translate(0 ${bob})`);
-    p.head.setAttribute('transform',`translate(0 ${bob*.55}) rotate(${Math.sin(phase*2*pi)*.8} 139 48)`);
+    p.body.setAttribute('transform',`translate(${surge} ${bob}) rotate(${pitch} 103 66)`);
+    p.head.setAttribute('transform',`translate(${surge*.55} ${bob*.62}) rotate(${-pitch*.72+Math.sin(phase*2*pi+.5)*(p.cat ? .38 : .55)} 139 48)`);
+    if(p.ear)p.ear.setAttribute('transform',`rotate(${Math.sin(phase*4*pi+.8)*1.35} 141 31)`);
     // Four staggered contacts. During stance the paw moves backwards exactly
     // as fast as the animal advances; swing matches velocity and acceleration at both contacts.
     const offsets=p.cat?[.5,.75,0,.25]:[.5,.77,0,.27];
@@ -6658,10 +6663,15 @@ body{font-size:var(--t-base);line-height:var(--lh-base)}
       const hipY=(hind?(p.cat?68:63):(p.cat?64:59))+bob;
       const reach=stride*stance,ground=90;
       let footX,footY;
-      if(f<stance){footX=hipX+reach/2-stride*f;footY=ground;}
+      if(f<stance){
+        footX=hipX+reach/2-stride*f;
+        const plant=Math.min(f/.08,(stance-f)/.1,1);
+        footY=ground-Math.max(0,1-plant)*.35;
+      }
       else{const u=(f-stance)/(1-stance),ease=u*u*u*(10+u*(-15+6*u));
         footX=hipX-reach/2-stride*(1-stance)*u+stride*ease;
-        footY=ground-(p.cat?6:7)*Math.sin(pi*u)**3;
+        const lift=Math.sin(pi*u);
+        footY=ground-(p.cat?7.2:8.4)*lift*lift*(.72+.28*lift);
       }
       const l1=p.cat?(hind?16:17):(hind?18:19),l2=p.cat?17:19;
       const dx=footX-hipX,dy=footY-hipY,dist=Math.min(Math.hypot(dx,dy),l1+l2-.01);
@@ -6678,10 +6688,14 @@ body{font-size:var(--t-base);line-height:var(--lh-base)}
         L${footX+ankle} ${footY-4} Q${kx+joint} ${ky+3} ${kx+joint} ${ky}
         Q${hipX+thigh} ${hipY+7} ${hipX+thigh} ${hipY-2} Z`);
     });
-    const sway=Math.sin(phase*pi*.85);
+    const sway=Math.sin(phase*2*pi*.72)+Math.sin(phase*2*pi*1.43+.8)*.28;
     p.tail.setAttribute('d',p.cat
-      ?`M55 ${65+bob} C33 ${63+bob} 30 ${36+sway*3} 22 ${26+sway*3} Q14 ${17+sway*4} 12 ${29+sway*3}`
-      :`M57 ${53+bob} C41 ${48+bob} 33 ${35+sway*4} 22 ${35+sway*5}`);
+      ?`M55 ${65+bob} C34 ${63+bob} 30 ${38+sway*2.8} 22 ${27+sway*4} Q14 ${17+sway*5.2} 12 ${29+sway*3.6}`
+      :`M57 ${53+bob} C42 ${49+bob} 34 ${36+sway*3.4} 22 ${35+sway*5.2}`);
+    const compression=(1+Math.cos(step))*.5;
+    p.shadow.setAttribute('rx',String(59+compression*3));
+    p.shadow.setAttribute('ry',String(2.65+compression*.45));
+    p.shadow.style.opacity=String(.065+compression*.035);
     const blink=(p.time+(p.cat?1.7:0))%5.7;
     p.eye.setAttribute('ry',blink>5.5?Math.max(.18,1.6*Math.abs(blink-5.6)/.1):1.6);
   }
