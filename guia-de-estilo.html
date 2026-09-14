@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Guía de estilo de Affinity Mascotas para diseñar los componentes de atención personalizada.">
+<meta name="robots" content="noindex,follow">
+<title>Guía de estilo | Affinity Mascotas</title>
+<link rel="icon" type="image/png" sizes="256x256" href="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/A-Mascotas_256_256_fa_1.png">
+<meta name="theme-color" content="#1c6b4a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600;12..96,75..100,700;12..96,75..100,800&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161d18;
+  --ink-2:#3a463d;
+  --muted:#697268;
+  --brand:#1c6b4a;
+  --brand-deep:#0f4630;
+  --brand-soft:#dceee2;
+  --accent:#e2653a;
+  --accent-deep:#c44f28;
+  --accent-soft:#fde8de;
+  --butter:#f8e7bd;
+  --paper:#fdfbf6;
+  --paper-2:#f6f1e6;
+  --sand:#f7ecd9;
+  --hairline:#e6ded0;
+  --hairline-strong:#d0c6b3;
+  --danger:#a63b2b;
+  --danger-soft:#fbe8e3;
+  --shadow-sm:0 1px 2px rgba(20,35,28,.05);
+  --shadow-md:0 12px 30px rgba(20,35,28,.07);
+  --shadow-lg:0 26px 60px rgba(20,35,28,.11);
+  --r-sm:10px;
+  --r-md:14px;
+  --r-lg:20px;
+  --btn-lg:54px;
+  --btn-md:46px;
+  --btn-r:10px;
+  --container:1480px;
+  --page-gutter:clamp(20px,3vw,56px);
+  --font-display:"Bricolage Grotesque","Archivo",system-ui,sans-serif;
+  --font-ui:"Archivo",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --grano:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:104px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-ui);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body:after{content:"";position:fixed;inset:0;z-index:9998;background-image:var(--grano);background-size:240px 240px;opacity:.05;mix-blend-mode:multiply;pointer-events:none}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{color:inherit}
+svg{display:block}
+::selection{background:var(--brand);color:#fff}
+:is(a,button,input):focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.container{width:min(var(--container),calc(100% - var(--page-gutter)*2));margin-inline:auto}
+.site-header{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--hairline);background:rgba(253,251,246,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.reading-progress{position:absolute;left:0;bottom:-1px;width:100%;height:3px;transform:scaleX(0);transform-origin:left;background:var(--accent);transition:transform .1s linear}
+.header-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand-logo{display:block;width:174px;height:auto}
+.document-label{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border:1px solid var(--hairline-strong);border-radius:999px;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.guide-hero{padding:clamp(58px,7vw,110px) 0 clamp(50px,6vw,90px);background:var(--paper-2);border-bottom:1px solid var(--hairline);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.6fr);gap:clamp(44px,7vw,120px);align-items:end}
+.eyebrow,.kicker{display:inline-flex;align-items:center;width:max-content;padding:5px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.guide-hero h1{max-width:13ch;margin:20px 0 22px;font-family:var(--font-display);font-size:clamp(44px,6vw,82px);font-weight:700;font-variation-settings:"wdth" 100,"opsz" 32;letter-spacing:-.04em;line-height:.96}
+.guide-hero h1 em{color:var(--accent);font-style:normal}
+.hero-lead{max-width:57ch;margin:0;color:var(--ink-2);font-size:clamp(17px,1.5vw,20px);line-height:1.65}
+.hero-note{position:relative;padding:26px;border:1px solid var(--hairline);border-radius:var(--r-lg);background:#fff;box-shadow:var(--shadow-sm)}
+.hero-note:before{content:"01";display:block;margin-bottom:24px;color:var(--accent);font-family:var(--font-display);font-size:44px;font-weight:700;line-height:1}
+.hero-note strong{display:block;margin-bottom:8px;font-size:17px}
+.hero-note p{margin:0;color:var(--muted);font-size:14.5px}
+.guide-shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(36px,5vw,80px);align-items:start;padding-block:clamp(48px,6vw,90px)}
+.contents{position:sticky;top:104px;padding:20px 0}
+.contents strong{display:block;margin-bottom:12px;font-size:12px;letter-spacing:.13em;text-transform:uppercase}
+.contents a{display:block;padding:8px 0;border-bottom:1px solid transparent;color:var(--muted);font-size:14px}
+.contents a:hover,.contents a[aria-current="true"]{border-bottom-color:var(--accent);color:var(--brand);font-weight:700}
+.guide-content{min-width:0}
+.guide-section{padding:0 0 clamp(70px,8vw,116px)}
+.guide-section+.guide-section{padding-top:clamp(64px,7vw,100px);border-top:1px solid var(--hairline)}
+.section-head{display:grid;grid-template-columns:minmax(0,.72fr) minmax(280px,.28fr);gap:32px;align-items:end;margin-bottom:40px}
+.section-index{margin:0 0 10px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.section-head h2,.subsection h3{margin:0;font-family:var(--font-display);font-weight:700;letter-spacing:-.028em;line-height:1.04}
+.section-head h2{max-width:16ch;font-size:clamp(32px,4vw,52px)}
+.section-head>p{margin:0;color:var(--muted);font-size:14.5px}
+.subsection{margin-top:44px}
+.subsection h3{margin-bottom:18px;font-size:clamp(23px,2.3vw,30px)}
+.subsection-lead{max-width:66ch;margin:-7px 0 24px;color:var(--muted);font-size:14.5px}
+.rule{padding:20px 22px;border-left:4px solid var(--accent);background:var(--accent-soft);color:#70381f;font-size:14.5px}
+.rule strong{color:var(--accent-deep)}
+.token-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.color-token{overflow:hidden;padding:0;border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff;color:var(--ink);text-align:left;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+.color-token:hover{transform:translateY(-2px);border-color:var(--hairline-strong);box-shadow:var(--shadow-md)}
+.color-swatch{display:block;height:94px;background:var(--swatch)}
+.token-copy{display:block;padding:16px 16px 18px}
+.token-copy strong,.token-copy code{display:block}
+.token-copy strong{font-size:14px}
+.token-copy code{margin-top:3px;color:var(--muted);font-family:var(--font-ui);font-size:12px}
+.type-board{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--hairline);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+.type-sample{min-width:0;padding:clamp(24px,3vw,40px)}
+.type-sample+.type-sample{border-left:1px solid var(--hairline);background:var(--paper-2)}
+.type-label{display:block;margin-bottom:24px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.display-sample{margin:0;font-family:var(--font-display);font-size:clamp(38px,4.2vw,60px);font-weight:700;letter-spacing:-.03em;line-height:1}
+.ui-sample{margin:0;font-size:17px;line-height:1.65}
+.ui-sample strong{font-weight:700}
+.scale-row{display:grid;grid-template-columns:100px 1fr 90px;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--hairline)}
+.scale-row code,.scale-row small{color:var(--muted);font-size:12px}
+.shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.shape{min-height:126px;padding:20px;border:1px solid var(--hairline);background:#fff;display:flex;flex-direction:column;justify-content:flex-end}
+.shape strong{font-size:14px}.shape span{color:var(--muted);font-size:12px}
+.shape-sm{border-radius:var(--r-sm)}.shape-md{border-radius:var(--r-md);box-shadow:var(--shadow-md)}.shape-lg{border-radius:var(--r-lg);box-shadow:var(--shadow-lg)}
+.space-scale{display:grid;gap:12px;padding:24px;border:1px solid var(--hairline);border-radius:var(--r-lg);background:#fff}
+.space-row{display:grid;grid-template-columns:76px minmax(0,1fr) 54px;gap:16px;align-items:center;font-size:12px}
+.space-row code{color:var(--muted)}.space-row span:last-child{text-align:right;color:var(--muted)}
+.space-bar{height:12px;width:var(--space);max-width:100%;border-radius:3px;background:var(--brand)}
+.specimen{overflow:hidden;border:1px solid var(--hairline);border-radius:var(--r-lg);background:#fff}
+.specimen-bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 18px;border-bottom:1px solid var(--hairline);background:var(--paper-2);color:var(--muted);font-size:12px}
+.viewport-dots{display:flex;gap:6px}.viewport-dots span{width:7px;height:7px;border-radius:50%;background:var(--hairline-strong)}
+.component-canvas{padding:clamp(30px,4vw,58px);background:var(--paper)}
+.contact-heading{margin-bottom:30px}
+.contact-heading .kicker{margin-bottom:12px}
+.contact-heading h3{max-width:18ch;margin:0;font-family:var(--font-display);font-size:clamp(31px,3.3vw,50px);font-weight:700;letter-spacing:-.028em;line-height:1.04}
+.contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.5vw,24px)}
+.contact-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:clamp(24px,2vw,30px);border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff;transition:border-color .18s ease,box-shadow .18s ease}
+.contact-card:hover,.contact-card.is-hovered{border-color:var(--hairline-strong);box-shadow:0 14px 30px rgba(30,20,10,.08)}
+.contact-card-top{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.contact-icon{display:grid;place-items:center;width:auto;height:auto;color:var(--brand)}
+.contact-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.contact-icon svg.is-solid{fill:currentColor;stroke:none}
+.contact-card:hover .contact-icon,.contact-card.is-hovered .contact-icon{color:var(--accent)}
+.contact-card h4{margin:0;font-size:18.5px;font-weight:600;letter-spacing:-.008em;line-height:1.28}
+.contact-card p{max-width:40ch;margin:0 0 18px;color:var(--muted);font-size:14.5px;line-height:1.6}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:var(--btn-md);padding:0 20px;border:2px solid var(--brand);border-radius:var(--btn-r);background:#fff;color:var(--brand);font-weight:700;font-size:14.5px;line-height:1;letter-spacing:.01em;white-space:nowrap;cursor:pointer}
+.btn:hover,.btn.is-hovered{background:var(--brand);color:#fff}
+.btn-primary{min-height:var(--btn-lg);padding:0 26px;border:0;background:var(--brand);color:#fff;font-size:15.5px}
+.btn-primary:hover{background:var(--brand-deep)}
+.btn-accent{min-height:var(--btn-lg);padding:0 26px;border-color:var(--accent);background:var(--accent);color:#fff;font-size:15.5px;box-shadow:0 6px 0 var(--accent-deep)}
+.btn-accent:hover{border-color:var(--accent);background:var(--accent);color:#fff;transform:translateY(3px);box-shadow:0 3px 0 var(--accent-deep)}
+.btn:disabled,.btn.is-disabled{border-color:#b8beb9;background:#f0f1ee;color:#7b827c;cursor:not-allowed}
+.contact-card .btn{margin-top:auto}
+.anatomy{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:24px;align-items:stretch}
+.anatomy-card{position:relative;min-height:360px;padding:32px;border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff}
+.anatomy-card .contact-card{height:100%}
+.anatomy-list{counter-reset:anatomy;margin:0;padding:0;list-style:none}
+.anatomy-list li{position:relative;padding:14px 0 14px 42px;border-bottom:1px solid var(--hairline);color:var(--muted);font-size:13.5px}
+.anatomy-list li:before{counter-increment:anatomy;content:counter(anatomy);position:absolute;left:0;top:11px;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700}
+.anatomy-list strong{display:block;color:var(--ink);font-size:14px}
+.state-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.state{padding:20px;border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff}
+.state-label{display:block;margin-bottom:20px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.focus-demo{outline:3px solid var(--brand);outline-offset:3px}
+.button-showcase{display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;border:1px solid var(--hairline);border-radius:var(--r-lg);background:#fff}
+.button-example{display:flex;flex-direction:column;align-items:flex-start;gap:18px;min-width:0;padding:24px}.button-example+.button-example{border-left:1px solid var(--hairline)}
+.button-example small{color:var(--muted);font-size:12.5px;line-height:1.5}.button-example strong{display:block;margin-bottom:4px;color:var(--ink);font-size:14px}
+.decision-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.decision-card{padding:22px;border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff}
+.decision-card.is-do{border-top:4px solid var(--brand)}.decision-card.is-dont{border-top:4px solid var(--accent)}
+.decision-label{display:block;margin-bottom:15px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.is-do .decision-label{color:var(--brand)}.is-dont .decision-label{color:var(--accent-deep)}
+.decision-card p{margin:12px 0 0;color:var(--muted);font-size:13.5px}
+.bad-card{padding:20px;border:0;border-radius:30px;background:var(--brand-soft);text-align:center}.bad-card strong,.bad-card span{display:block}.bad-card span{margin:8px 0 14px;color:var(--muted);font-size:13px}.bad-card .btn{border-radius:999px}
+.icon-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--hairline);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+.icon-cell{display:grid;place-items:center;gap:14px;min-height:180px;padding:24px;text-align:center}
+.icon-cell+.icon-cell{border-left:1px solid var(--hairline)}
+.icon-cell .contact-icon svg{width:40px;height:40px}
+.icon-cell strong{font-size:14px}.icon-cell small{display:block;color:var(--muted);font-size:12px}
+.dialog-board{padding:clamp(24px,4vw,48px);border-radius:var(--r-lg);background:rgba(15,70,48,.13)}
+.dialog-preview{width:min(100%,460px);margin:auto;padding:clamp(24px,4vw,32px);border:1px solid var(--hairline);border-radius:var(--r-lg);background:#fff;box-shadow:0 20px 80px rgba(16,46,36,.18)}
+.dialog-close{display:block;margin:-9px -8px 8px auto;padding:10px;border:0;background:transparent;color:var(--muted);font-size:13px;cursor:pointer}
+.dialog-preview>.contact-icon{margin-bottom:18px}
+.dialog-preview h4{margin:0 0 12px;font-family:var(--font-display);font-size:29px;font-weight:700;letter-spacing:-.028em;line-height:1.04}
+.dialog-preview>p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.call-form{display:grid;gap:9px;margin-top:24px}
+.call-form label{font-size:13px;font-weight:700;color:var(--ink-2)}
+.field{width:100%;min-height:52px;padding:13px 15px;border:1px solid #aabfaf;border-radius:7px;background:#fff;color:var(--ink);font-size:17px}
+.field:focus{border-color:var(--brand)}
+.field[aria-invalid="true"]{border-color:var(--danger);box-shadow:0 0 0 3px rgba(166,59,43,.1)}
+.field-success{border-color:var(--brand);background:#fbfefc}.field-disabled{border-color:var(--hairline);background:#f0f1ee;color:#7b827c}
+.status{margin:3px 0 0;color:var(--danger);font-size:13px;line-height:1.5}.status:empty{display:none}.status[data-state="success"]{color:var(--brand)}
+.field-state-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field-state{padding:18px;border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff}.field-state label{display:block;margin-bottom:8px;font-size:12px;font-weight:700}.field-state small{display:block;margin-top:8px;color:var(--muted);font-size:11.5px}.field-state .field{font-size:14px}
+.dialog-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+dialog.contact-dialog{width:min(460px,calc(100% - 32px));max-height:calc(100dvh - 40px);padding:0;border:0;border-radius:var(--r-lg);background:transparent;color:var(--ink)}
+dialog.contact-dialog::backdrop{background:rgba(16,34,28,.54);backdrop-filter:blur(2px)}
+dialog .dialog-preview{width:100%;box-shadow:none}
+.responsive-table{width:100%;border-collapse:collapse;border:1px solid var(--hairline);background:#fff;font-size:14px}
+.responsive-table th,.responsive-table td{padding:16px 18px;border-bottom:1px solid var(--hairline);text-align:left;vertical-align:top}
+.responsive-table th{background:var(--paper-2);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.responsive-table td:first-child{font-weight:700;color:var(--brand);white-space:nowrap}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.check-card{padding:22px;border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff}
+.check-card h4{margin:0 0 14px;font-size:16px}
+.check-card ul{margin:0;padding:0;list-style:none}
+.check-card li{position:relative;padding:7px 0 7px 26px;color:var(--muted);font-size:14px}
+.check-card li:before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:700}
+.copy-table{display:grid;grid-template-columns:160px 1fr;border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;background:#fff}
+.copy-table dt,.copy-table dd{margin:0;padding:15px 18px;border-bottom:1px solid var(--hairline);font-size:14px}
+.copy-table dt{background:var(--paper-2);font-weight:700}.copy-table dd{color:var(--muted)}
+.code-block{overflow:auto;margin:0;padding:22px;border-radius:var(--r-md);background:var(--brand-deep);color:#dff3e6;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}
+.site-footer{padding:38px 0;border-top:1px solid var(--hairline);background:var(--paper)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-logo{display:block;width:155px;height:auto}
+.footer-meta{display:flex;align-items:center;gap:18px;color:var(--muted);font-size:12.5px}
+.copy-toast{position:fixed;right:22px;bottom:22px;z-index:200;max-width:calc(100% - 44px);padding:12px 16px;border-radius:var(--r-sm);background:var(--brand-deep);color:#fff;font-size:13px;font-weight:700;box-shadow:var(--shadow-lg);opacity:0;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease;pointer-events:none}.copy-toast.is-visible{opacity:1;transform:translateY(0)}
+@media(max-width:1100px){
+  .guide-shell{grid-template-columns:1fr}.contents{position:static;display:flex;gap:8px;overflow:auto;padding:0 0 18px;border-bottom:1px solid var(--hairline)}
+  .contents strong{display:none}.contents a{flex:none;padding:8px 12px;border:1px solid var(--hairline);border-radius:999px;background:#fff}
+  .state-grid{grid-template-columns:repeat(2,1fr)}.button-showcase{grid-template-columns:1fr}.button-example+.button-example{border-left:0;border-top:1px solid var(--hairline)}
+}
+@media(max-width:820px){
+  html{scroll-padding-top:82px}.header-inner{min-height:68px}.brand-logo{width:138px}.document-label{font-size:10.5px}
+  .guide-hero{padding-top:48px}.hero-grid,.section-head,.anatomy{grid-template-columns:1fr}.guide-hero h1{font-size:clamp(40px,12vw,60px)}
+  .hero-note{max-width:520px}.token-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}.contact-card .btn{width:100%}
+  .type-board{grid-template-columns:1fr}.type-sample+.type-sample{border-left:0;border-top:1px solid var(--hairline)}
+  .icon-grid{grid-template-columns:1fr}.icon-cell+.icon-cell{border-left:0;border-top:1px solid var(--hairline)}
+  .shape-grid,.field-state-grid{grid-template-columns:1fr}.check-grid,.decision-grid{grid-template-columns:1fr}.responsive-table{display:block;overflow-x:auto}
+}
+@media(max-width:520px){
+  .token-grid,.state-grid{grid-template-columns:1fr}.component-canvas{padding:24px 18px}.specimen-bar{align-items:flex-start;flex-direction:column}
+  .scale-row{grid-template-columns:80px 1fr}.scale-row small{display:none}.copy-table{grid-template-columns:1fr}.copy-table dt{border-bottom:0;padding-bottom:4px}.copy-table dd{padding-top:4px}
+  .footer-inner,.footer-meta{align-items:flex-start;flex-direction:column}.dialog-actions .btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="reading-progress" aria-hidden="true"></div>
+  <div class="container header-inner">
+    <img class="brand-logo" src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/A-Mascotas_700_300_3.png" alt="Affinity Mascotas" width="700" height="300">
+    <span class="document-label">Documento de diseño</span>
+  </div>
+</header>
+
+<main>
+  <section class="guide-hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Guía de estilo · Atención personalizada</div>
+        <h1>Diseñar para <em>ayudar</em>.</h1>
+        <p class="hero-lead">Fundamentos y reglas para crear, ampliar o entregar los componentes conectados con “¿Prefieres que te ayudemos?”. Esta es la referencia visual y funcional del flujo de llamada, WhatsApp y chat.</p>
+      </div>
+      <aside class="hero-note">
+        <strong>Principio del sistema</strong>
+        <p>Los tres canales tienen la misma jerarquía. El usuario elige cómo hablar, no qué opción es más importante.</p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="container guide-shell">
+    <nav class="contents" aria-label="Contenido de la guía">
+      <strong>Contenido</strong>
+      <a href="#fundamentos">Fundamentos</a>
+      <a href="#seccion">Sección de ayuda</a>
+      <a href="#tarjetas">Tarjetas y acciones</a>
+      <a href="#iconos">Iconografía</a>
+      <a href="#dialogos">Diálogos y campos</a>
+      <a href="#responsive">Responsive</a>
+      <a href="#contenido">Contenido y accesibilidad</a>
+      <a href="#entrega">Entrega</a>
+    </nav>
+
+    <div class="guide-content">
+      <section class="guide-section" id="fundamentos">
+        <header class="section-head">
+          <div><p class="section-index">01 · Fundamentos</p><h2>Una base cálida y directa.</h2></div>
+          <p>El sistema combina confianza, cercanía y claridad. El verde estructura, el coral llama la atención y los fondos cálidos evitan una estética clínica.</p>
+        </header>
+
+        <div class="subsection">
+          <h3>Color</h3>
+          <div class="token-grid">
+            <button class="color-token" type="button" data-copy="#1C6B4A" aria-label="Copiar color Marca, #1C6B4A"><span class="color-swatch" style="--swatch:#1c6b4a"></span><span class="token-copy"><strong>Marca</strong><code>#1C6B4A</code></span></button>
+            <button class="color-token" type="button" data-copy="#0F4630" aria-label="Copiar color Marca profunda, #0F4630"><span class="color-swatch" style="--swatch:#0f4630"></span><span class="token-copy"><strong>Marca profunda</strong><code>#0F4630</code></span></button>
+            <button class="color-token" type="button" data-copy="#E2653A" aria-label="Copiar color Coral, #E2653A"><span class="color-swatch" style="--swatch:#e2653a"></span><span class="token-copy"><strong>Coral</strong><code>#E2653A</code></span></button>
+            <button class="color-token" type="button" data-copy="#FDE8DE" aria-label="Copiar color Coral suave, #FDE8DE"><span class="color-swatch" style="--swatch:#fde8de"></span><span class="token-copy"><strong>Coral suave</strong><code>#FDE8DE</code></span></button>
+            <button class="color-token" type="button" data-copy="#F8E7BD" aria-label="Copiar color Mantequilla, #F8E7BD"><span class="color-swatch" style="--swatch:#f8e7bd"></span><span class="token-copy"><strong>Mantequilla</strong><code>#F8E7BD</code></span></button>
+            <button class="color-token" type="button" data-copy="#FDFBF6" aria-label="Copiar color Papel, #FDFBF6"><span class="color-swatch" style="--swatch:#fdfbf6"></span><span class="token-copy"><strong>Papel</strong><code>#FDFBF6</code></span></button>
+            <button class="color-token" type="button" data-copy="#161D18" aria-label="Copiar color Tinta, #161D18"><span class="color-swatch" style="--swatch:#161d18"></span><span class="token-copy"><strong>Tinta</strong><code>#161D18</code></span></button>
+            <button class="color-token" type="button" data-copy="#697268" aria-label="Copiar color Texto secundario, #697268"><span class="color-swatch" style="--swatch:#697268"></span><span class="token-copy"><strong>Texto secundario</strong><code>#697268</code></span></button>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Tipografía</h3>
+          <div class="type-board">
+            <div class="type-sample"><span class="type-label">Bricolage Grotesque · Titulares · 700</span><p class="display-sample">Estamos para ayudarte.</p></div>
+            <div class="type-sample"><span class="type-label">Archivo · Interfaz y texto · 400-700</span><p class="ui-sample"><strong>Una interfaz cercana y legible.</strong><br>Archivo se utiliza en botones, etiquetas, campos y textos explicativos.</p></div>
+          </div>
+          <div aria-label="Escala tipográfica">
+            <div class="scale-row"><code>Sección</code><span style="font-family:var(--font-display);font-size:32px;font-weight:700;line-height:1.04">¿Te ayudamos?</span><small>31-50 px</small></div>
+            <div class="scale-row"><code>Tarjeta</code><span style="font-size:18.5px;font-weight:600">Te llamamos</span><small>18.5 px</small></div>
+            <div class="scale-row"><code>Cuerpo</code><span>Texto de interfaz y explicación.</span><small>16 px</small></div>
+            <div class="scale-row"><code>Apoyo</code><span style="font-size:14.5px;color:var(--muted)">Información dentro de tarjetas.</span><small>14.5 px</small></div>
+            <div class="scale-row"><code>Meta</code><span style="font-size:12.5px;color:var(--muted)">Estados y notas breves.</span><small>12.5 px</small></div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>Forma y profundidad</h3>
+          <div class="shape-grid">
+            <div class="shape shape-sm"><strong>Radio pequeño</strong><span>10 px · botones y avisos</span></div>
+            <div class="shape shape-md"><strong>Radio medio</strong><span>14 px · tarjetas</span></div>
+            <div class="shape shape-lg"><strong>Radio grande</strong><span>20 px · diálogos y paneles</span></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h3>Espaciado</h3>
+          <p class="subsection-lead">Usa múltiplos de 4 para ajustes pequeños y esta escala para separar piezas del componente. Evita valores intermedios arbitrarios.</p>
+          <div class="space-scale">
+            <div class="space-row"><code>space-1</code><span class="space-bar" style="--space:8px"></span><span>8 px</span></div>
+            <div class="space-row"><code>space-2</code><span class="space-bar" style="--space:12px"></span><span>12 px</span></div>
+            <div class="space-row"><code>space-3</code><span class="space-bar" style="--space:16px"></span><span>16 px</span></div>
+            <div class="space-row"><code>space-4</code><span class="space-bar" style="--space:24px"></span><span>24 px</span></div>
+            <div class="space-row"><code>space-5</code><span class="space-bar" style="--space:32px"></span><span>32 px</span></div>
+            <div class="space-row"><code>space-6</code><span class="space-bar" style="--space:48px"></span><span>48 px</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-section" id="seccion">
+        <header class="section-head">
+          <div><p class="section-index">02 · Sección de ayuda</p><h2>La composición canónica.</h2></div>
+          <p>Una invitación breve seguida de tres caminos equivalentes. Mantén el orden: llamada, WhatsApp y chat.</p>
+        </header>
+        <div class="rule"><strong>Texto canónico:</strong> “¿Prefieres que te ayudemos?”. No se elimina la interrogación, no se centra y no se sustituye “ayudemos” por lenguaje comercial.</div>
+        <div class="subsection">
+          <div class="specimen">
+            <div class="specimen-bar"><span>Muestra a escala real · Escritorio</span><span class="viewport-dots" aria-hidden="true"><span></span><span></span><span></span></span></div>
+            <div class="component-canvas">
+              <div class="contact-heading"><div class="kicker">Atención personalizada</div><h3>¿Prefieres que te ayudemos?</h3></div>
+              <div class="contact-grid">
+                <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1.9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><h4>Te llamamos</h4></div><p>Déjanos tu número y te ayudamos a resolver tus dudas sobre el seguro.</p><button class="btn" type="button" data-open-dialog="guide-call-dialog">Solicitar una llamada</button></article>
+                <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="is-solid" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Z"/></svg></span><h4>WhatsApp</h4></div><p>Escríbenos por WhatsApp y consulta tus dudas con nosotros.</p><button class="btn" type="button">Escribir por WhatsApp</button></article>
+                <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><h4>Chat</h4></div><p>Consulta tus dudas en el chat sin salir de esta página.</p><button class="btn" type="button">Iniciar chat en línea</button></article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h3>Decisión de composición</h3>
+          <div class="decision-grid">
+            <div class="decision-card is-do"><span class="decision-label">Sí</span><article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/></svg></span><h4>Chat</h4></div><p>Consulta tus dudas sin salir de esta página.</p><button class="btn" type="button">Iniciar chat</button></article><p>Misma jerarquía, alineación izquierda y una acción descriptiva.</p></div>
+            <div class="decision-card is-dont"><span class="decision-label">Evita</span><div class="bad-card"><strong>¡Habla ya con nosotros!</strong><span>La mejor opción para conseguir tu seguro.</span><button class="btn" type="button">Haz clic aquí</button></div><p>No uses tono urgente, tarjetas destacadas sin motivo ni acciones ambiguas.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-section" id="tarjetas">
+        <header class="section-head">
+          <div><p class="section-index">03 · Tarjetas y estados</p><h2>Una anatomía, tres canales.</h2></div>
+          <p>La estructura no cambia entre canales. El contenido puede variar, pero todos conservan icono, título, explicación y una acción clara.</p>
+        </header>
+        <div class="anatomy">
+          <div class="anatomy-card">
+            <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1.9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><h4>Te llamamos</h4></div><p>Déjanos tu número y te ayudamos a resolver tus dudas sobre el seguro.</p><button class="btn" type="button">Solicitar una llamada</button></article>
+          </div>
+          <ol class="anatomy-list"><li><strong>Icono</strong>28 px, trazo 1.4 px.</li><li><strong>Título</strong>18.5 px, semibold.</li><li><strong>Descripción</strong>Máximo recomendado: 90 caracteres.</li><li><strong>Acción</strong>Verbo explícito y altura de 46 px.</li><li><strong>Contenedor</strong>Radio 14 px, borde de 1 px.</li></ol>
+        </div>
+        <div class="subsection">
+          <h3>Estados obligatorios</h3>
+          <p class="subsection-lead">Cada nuevo canal debe especificar como mínimo reposo, hover, foco de teclado y no disponible.</p>
+          <div class="state-grid">
+            <div class="state"><span class="state-label">Reposo</span><button class="btn" type="button">Solicitar llamada</button></div>
+            <div class="state"><span class="state-label">Hover</span><button class="btn is-hovered" type="button">Solicitar llamada</button></div>
+            <div class="state"><span class="state-label">Foco visible</span><button class="btn focus-demo" type="button">Solicitar llamada</button></div>
+            <div class="state"><span class="state-label">No disponible</span><button class="btn" type="button" disabled>Próximamente</button></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h3>Jerarquía de acciones</h3>
+          <p class="subsection-lead">La apariencia depende del contexto, no del canal. Solo puede existir una acción primaria dentro de cada diálogo.</p>
+          <div class="button-showcase">
+            <div class="button-example"><button class="btn btn-accent" type="button">Acción de campaña</button><small><strong>Coral · 54 px</strong>Solo para la entrada principal al flujo desde una sección promocional.</small></div>
+            <div class="button-example"><button class="btn btn-primary" type="button">Solicitar llamada</button><small><strong>Verde · 54 px</strong>Acción principal dentro de un diálogo o formulario.</small></div>
+            <div class="button-example"><button class="btn" type="button">Abrir canal</button><small><strong>Contorno · 46 px</strong>Acción de tarjeta o alternativa secundaria.</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-section" id="iconos">
+        <header class="section-head">
+          <div><p class="section-index">04 · Iconografía</p><h2>Reconocible, nunca decorativa.</h2></div>
+          <p>Los iconos identifican el canal. Se muestran sin burbuja, en verde y cambian a coral con la interacción de la tarjeta.</p>
+        </header>
+        <div class="icon-grid">
+          <div class="icon-cell"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1.9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><div><strong>Llamada</strong><small>Trazo · viewBox 24</small></div></div>
+          <div class="icon-cell"><span class="contact-icon"><svg class="is-solid" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Z"/></svg></span><div><strong>WhatsApp</strong><small>Sólido · viewBox 32</small></div></div>
+          <div class="icon-cell"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><div><strong>Chat</strong><small>Trazo · viewBox 24</small></div></div>
+        </div>
+        <div class="rule" style="margin-top:18px"><strong>Regla:</strong> conserva `currentColor`, extremos redondos y un área visual de 28 px. Un icono nuevo debe comunicar el canal sin etiqueta antes de incorporarse.</div>
+      </section>
+
+      <section class="guide-section" id="dialogos">
+        <header class="section-head">
+          <div><p class="section-index">05 · Diálogos y campos</p><h2>Continuidad después del clic.</h2></div>
+          <p>El diálogo confirma el canal elegido y pide solo la información imprescindible. Nunca cambia de lenguaje visual respecto a la tarjeta.</p>
+        </header>
+        <div class="dialog-board">
+          <div class="dialog-preview">
+            <button class="dialog-close" type="button" aria-label="Ejemplo de cierre">Cerrar ✕</button>
+            <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1.9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span>
+            <h4>¿A qué número te llamamos?</h4>
+            <p>Te ayudamos a resolver tus dudas sobre el seguro.</p>
+            <div class="call-form"><label for="name-example">Nombre y apellidos</label><input class="field" id="name-example" type="text" value="Laura García" autocomplete="name"><label for="phone-example">Teléfono</label><input class="field" id="phone-example" type="tel" value="612 34" aria-invalid="true" aria-describedby="phone-error"><p class="status" id="phone-error">Revisa el teléfono: necesitamos entre 9 y 15 cifras.</p><button class="btn btn-primary" type="button">Solicitar llamada</button></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h3>Comportamiento</h3>
+          <div class="check-grid">
+            <div class="check-card"><h4>Al abrir</h4><ul><li>Fondo oscurecido con opacidad suficiente.</li><li>Foco inicial en el primer campo útil.</li><li>Título enlazado mediante `aria-labelledby`.</li><li>Cierre disponible con botón y Escape.</li></ul></div>
+            <div class="check-card"><h4>Al validar</h4><ul><li>No borres el valor introducido.</li><li>Explica cómo corregir el dato.</li><li>Usa `aria-invalid` en el campo.</li><li>Anuncia el estado con `aria-live="polite"`.</li></ul></div>
+          </div>
+        </div>
+        <div class="subsection">
+          <h3>Estados de campo</h3>
+          <div class="field-state-grid">
+            <div class="field-state"><label for="field-default">Reposo</label><input class="field" id="field-default" type="text" placeholder="Nombre y apellidos"><small>Borde neutro y etiqueta persistente.</small></div>
+            <div class="field-state"><label for="field-error">Error</label><input class="field" id="field-error" type="tel" value="612 34" aria-invalid="true"><small style="color:var(--danger)">Explica cómo corregir el valor.</small></div>
+            <div class="field-state"><label for="field-success">Validado</label><input class="field field-success" id="field-success" type="tel" value="612 345 678" readonly><small style="color:var(--brand)">Confirma sin bloquear la lectura.</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-section" id="responsive">
+        <header class="section-head">
+          <div><p class="section-index">06 · Responsive</p><h2>La jerarquía no cambia de pantalla.</h2></div>
+          <p>El diseño se compacta, no se simplifica. Los canales mantienen el mismo orden y las acciones ganan ancho táctil en móvil.</p>
+        </header>
+        <table class="responsive-table">
+          <thead><tr><th>Anchura</th><th>Composición</th><th>Acciones</th><th>Validación</th></tr></thead>
+          <tbody>
+            <tr><td>≥ 1241 px</td><td>3 tarjetas en una fila.</td><td>Ancho según contenido.</td><td>Sin saltos y alturas equilibradas.</td></tr>
+            <tr><td>821-1240 px</td><td>Grid flexible, mínimo 260 px.</td><td>Ancho según contenido.</td><td>Admite 2+1 sin comprimir texto.</td></tr>
+            <tr><td>≤ 820 px</td><td>1 tarjeta por fila.</td><td>100% del ancho disponible.</td><td>Objetivos táctiles de al menos 46 px.</td></tr>
+            <tr><td>≤ 390 px</td><td>Gutter mínimo de 18-20 px.</td><td>Texto puede ocupar dos líneas.</td><td>Sin desplazamiento horizontal.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="guide-section" id="contenido">
+        <header class="section-head">
+          <div><p class="section-index">07 · Contenido y accesibilidad</p><h2>Ayudar también es escribir claro.</h2></div>
+          <p>Los textos anticipan qué ocurrirá y no prometen disponibilidad que el canal todavía no tiene.</p>
+        </header>
+        <dl class="copy-table">
+          <dt>Nombre</dt><dd>Sustantivo reconocible: “WhatsApp”, “Chat”. Para llamada, usa la acción cercana “Te llamamos”.</dd>
+          <dt>Descripción</dt><dd>Una frase. Explica qué puede resolver el canal, no sus características técnicas.</dd>
+          <dt>Acción</dt><dd>Verbo + resultado: “Solicitar una llamada”, “Escribir por WhatsApp”, “Iniciar chat en línea”.</dd>
+          <dt>No disponible</dt><dd>Di qué no está activo, ofrece una alternativa y confirma que no se han enviado datos.</dd>
+          <dt>Error</dt><dd>Indica qué revisar y el formato esperado. Evita “Error” sin contexto.</dd>
+        </dl>
+        <div class="subsection">
+          <div class="check-grid">
+            <div class="check-card"><h4>Antes de aprobar diseño</h4><ul><li>Contraste AA en texto y controles.</li><li>Foco visible en todas las acciones.</li><li>Orden de lectura igual al visual.</li><li>El color no comunica estados por sí solo.</li></ul></div>
+            <div class="check-card"><h4>Antes de aprobar contenido</h4><ul><li>Canal y acción coinciden.</li><li>No se usan tecnicismos internos.</li><li>No hay más de una acción principal.</li><li>Los mensajes caben a 320 px.</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-section" id="entrega">
+        <header class="section-head">
+          <div><p class="section-index">08 · Entrega</p><h2>Lista para pasar a desarrollo.</h2></div>
+          <p>La especificación debe incluir estructura semántica, estados y variantes responsive, no solo una captura estática.</p>
+        </header>
+        <pre class="code-block" aria-label="Estructura HTML recomendada"><code>&lt;article class="contact-card"&gt;
+  &lt;div class="contact-card-top"&gt;
+    &lt;span class="contact-icon" aria-hidden="true"&gt;...&lt;/span&gt;
+    &lt;h3&gt;Nombre del canal&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Qué puede resolver este canal.&lt;/p&gt;
+  &lt;button class="contact-action"
+          type="button"
+          aria-haspopup="dialog"&gt;
+    Acción explícita
+  &lt;/button&gt;
+&lt;/article&gt;</code></pre>
+        <div class="rule" style="margin-top:18px"><strong>Criterio de aceptación:</strong> una entrega está completa cuando documenta reposo, hover, foco, no disponible, error, escritorio y móvil, junto con el texto final.</div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img class="footer-logo" src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/A-Mascotas_700_300_3.png" alt="Affinity Mascotas" width="700" height="300" loading="lazy" decoding="async">
+    <div class="footer-meta"><span>Guía de componentes de atención</span><span>Documento de uso interno</span></div>
+  </div>
+</footer>
+
+<div class="copy-toast" role="status" aria-live="polite"></div>
+
+<dialog class="contact-dialog" id="guide-call-dialog" aria-labelledby="guide-call-title">
+  <div class="dialog-preview">
+    <button class="dialog-close" type="button" data-close-dialog>Cerrar ✕</button>
+    <span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1.9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span>
+    <h4 id="guide-call-title">¿A qué número te llamamos?</h4>
+    <p>Esta muestra permite comprobar el diálogo y su escala real.</p>
+    <form class="call-form" id="guide-call-form"><label for="guide-call-name">Nombre y apellidos</label><input class="field" id="guide-call-name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="Tu nombre y apellidos" aria-describedby="guide-call-status"><label for="guide-call-phone">Teléfono</label><input class="field" id="guide-call-phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="Tu número de teléfono" inputmode="tel" aria-describedby="guide-call-status"><button class="btn btn-primary" type="submit">Solicitar llamada</button><p class="status" id="guide-call-status" role="status" aria-live="polite"></p></form>
+  </div>
+</dialog>
+
+<script>
+document.querySelectorAll('[data-open-dialog]').forEach(button => {
+  button.addEventListener('click', () => {
+    const dialog = document.getElementById(button.dataset.openDialog);
+    dialog?.showModal();
+    dialog?.querySelector('input')?.focus();
+  });
+});
+document.querySelectorAll('[data-close-dialog]').forEach(button => {
+  button.addEventListener('click', () => button.closest('dialog')?.close());
+});
+const guideCallForm = document.querySelector('#guide-call-form');
+const guideCallName = document.querySelector('#guide-call-name');
+const guideCallPhone = document.querySelector('#guide-call-phone');
+const guideCallStatus = document.querySelector('#guide-call-status');
+const copyToast = document.querySelector('.copy-toast');
+const progress = document.querySelector('.reading-progress');
+let toastTimer;
+
+document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(button.dataset.copy);
+    copyToast.textContent = `${button.dataset.copy} copiado`;
+  } catch {
+    copyToast.textContent = `Color: ${button.dataset.copy}`;
+  }
+  copyToast.classList.add('is-visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => copyToast.classList.remove('is-visible'), 1600);
+}));
+
+const sectionLinks = [...document.querySelectorAll('.contents a')];
+const sections = sectionLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
+if ('IntersectionObserver' in window) {
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      sectionLinks.forEach(link => link.setAttribute('aria-current', String(link.hash === `#${entry.target.id}`)));
+    });
+  }, {rootMargin:'-18% 0px -70% 0px'});
+  sections.forEach(section => navObserver.observe(section));
+}
+
+const updateProgress = () => {
+  const available = document.documentElement.scrollHeight - innerHeight;
+  progress.style.transform = `scaleX(${available > 0 ? scrollY / available : 0})`;
+};
+addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+guideCallForm?.addEventListener('submit', event => {
+  event.preventDefault();
+  const name = guideCallName.value.trim().replace(/\s+/g, ' ');
+  if (name.length < 3 || !name.includes(' ')) {
+    guideCallName.setAttribute('aria-invalid', 'true');
+    guideCallStatus.dataset.state = 'error';
+    guideCallStatus.textContent = 'Escribe tu nombre y al menos un apellido.';
+    guideCallName.focus();
+    return;
+  }
+  const phone = guideCallPhone.value.replace(/[\s().-]/g, '');
+  if (!/^\+?\d{9,15}$/.test(phone)) {
+    guideCallPhone.setAttribute('aria-invalid', 'true');
+    guideCallStatus.dataset.state = 'error';
+    guideCallStatus.textContent = 'Revisa el teléfono: necesitamos entre 9 y 15 cifras.';
+    guideCallPhone.focus();
+    return;
+  }
+  guideCallName.removeAttribute('aria-invalid');
+  guideCallPhone.removeAttribute('aria-invalid');
+  guideCallStatus.dataset.state = 'success';
+  guideCallStatus.textContent = 'Ejemplo validado. Esta guía no envía ningún dato.';
+});
+[guideCallName, guideCallPhone].forEach(field => field?.addEventListener('input', () => {
+  field.removeAttribute('aria-invalid');
+  guideCallStatus.textContent = '';
+  guideCallStatus.dataset.state = 'idle';
+}));
+</script>
+</body>
+</html>
