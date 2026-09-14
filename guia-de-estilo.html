@@ -166,6 +166,17 @@ svg{display:block}
 .icon-cell+.icon-cell{border-left:1px solid var(--hairline)}
 .icon-cell .contact-icon svg{width:40px;height:40px}
 .icon-cell strong{font-size:14px}.icon-cell small{display:block;color:var(--muted);font-size:12px}
+.floating-specimen{position:relative;min-height:340px;overflow:hidden;border:1px solid var(--hairline);border-radius:var(--r-lg);background:linear-gradient(145deg,var(--paper-2),#fff)}
+.floating-specimen:before{content:"Zona de contenido";position:absolute;left:28px;top:26px;color:var(--hairline-strong);font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:700}
+.wa-demo-wrap{position:absolute;right:24px;bottom:24px;display:flex;align-items:center;gap:10px}
+.wa-label{padding:10px 13px;border:1px solid var(--hairline);border-radius:12px;background:#fff;color:var(--muted);box-shadow:0 10px 28px rgba(24,33,38,.12);font-size:11px;line-height:1.35;opacity:0;transform:translateX(10px);transition:opacity .22s ease,transform .22s ease;pointer-events:none}
+.wa-label strong{display:block;color:var(--ink);font-size:12px}
+.wa-demo-wrap:hover .wa-label,.wa-demo-wrap:focus-within .wa-label{opacity:1;transform:none}
+.wa-floating{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;padding:0;border:0;border-radius:50%;background:#25d366;color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.92),0 12px 28px rgba(10,40,25,.22);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.wa-floating:hover{transform:translateY(-2px);box-shadow:0 0 0 4px rgba(255,255,255,.92),0 15px 34px rgba(37,211,102,.38)}
+.wa-floating svg{width:30px;height:30px;fill:currentColor}
+.floating-specs{display:grid;grid-template-columns:repeat(4,1fr);margin-top:14px;border:1px solid var(--hairline);border-radius:var(--r-md);background:#fff}
+.floating-specs div{padding:16px}.floating-specs div+div{border-left:1px solid var(--hairline)}.floating-specs strong,.floating-specs span{display:block}.floating-specs strong{font-size:13px}.floating-specs span{margin-top:3px;color:var(--muted);font-size:12px}
 .dialog-board{padding:clamp(24px,4vw,48px);border-radius:var(--r-lg);background:rgba(15,70,48,.13)}
 .dialog-preview{width:min(100%,460px);margin:auto;padding:clamp(24px,4vw,32px);border:1px solid var(--hairline);border-radius:var(--r-lg);background:#fff;box-shadow:0 20px 80px rgba(16,46,36,.18)}
 .dialog-close{display:block;margin:-9px -8px 8px auto;padding:10px;border:0;background:transparent;color:var(--muted);font-size:13px;cursor:pointer}
@@ -214,11 +225,12 @@ dialog .dialog-preview{width:100%;box-shadow:none}
   .hero-note{max-width:520px}.token-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}.contact-card .btn{width:100%}
   .type-board{grid-template-columns:1fr}.type-sample+.type-sample{border-left:0;border-top:1px solid var(--hairline)}
   .icon-grid{grid-template-columns:1fr}.icon-cell+.icon-cell{border-left:0;border-top:1px solid var(--hairline)}
-  .shape-grid,.field-state-grid{grid-template-columns:1fr}.check-grid,.decision-grid{grid-template-columns:1fr}.responsive-table{display:block;overflow-x:auto}
+  .shape-grid,.field-state-grid{grid-template-columns:1fr}.check-grid,.decision-grid{grid-template-columns:1fr}.floating-specs{grid-template-columns:1fr 1fr}.floating-specs div:nth-child(3){border-left:0}.floating-specs div:nth-child(n+3){border-top:1px solid var(--hairline)}.responsive-table{display:block;overflow-x:auto}
 }
 @media(max-width:520px){
   .token-grid,.state-grid{grid-template-columns:1fr}.component-canvas{padding:24px 18px}.specimen-bar{align-items:flex-start;flex-direction:column}
   .scale-row{grid-template-columns:80px 1fr}.scale-row small{display:none}.copy-table{grid-template-columns:1fr}.copy-table dt{border-bottom:0;padding-bottom:4px}.copy-table dd{padding-top:4px}
+  .wa-label{display:none}.wa-demo-wrap{right:14px;bottom:14px}.wa-floating{width:56px;height:56px;flex-basis:56px}.floating-specs{grid-template-columns:1fr}.floating-specs div+div,.floating-specs div:nth-child(3){border-left:0}.floating-specs div:nth-child(n+2){border-top:1px solid var(--hairline)}
   .footer-inner,.footer-meta{align-items:flex-start;flex-direction:column}.dialog-actions .btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
@@ -254,7 +266,7 @@ dialog .dialog-preview{width:100%;box-shadow:none}
       <a href="#fundamentos">Fundamentos</a>
       <a href="#seccion">Sección de ayuda</a>
       <a href="#tarjetas">Tarjetas y acciones</a>
-      <a href="#iconos">Iconografía</a>
+      <a href="#iconos">Iconos y acceso flotante</a>
       <a href="#dialogos">Diálogos y campos</a>
       <a href="#responsive">Responsive</a>
       <a href="#contenido">Contenido y accesibilidad</a>
@@ -332,7 +344,7 @@ dialog .dialog-preview{width:100%;box-shadow:none}
               <div class="contact-heading"><div class="kicker">Atención personalizada</div><h3>¿Prefieres que te ayudemos?</h3></div>
               <div class="contact-grid">
                 <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1.9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><h4>Te llamamos</h4></div><p>Déjanos tu número y te ayudamos a resolver tus dudas sobre el seguro.</p><button class="btn" type="button" data-open-dialog="guide-call-dialog">Solicitar una llamada</button></article>
-                <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="is-solid" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Z"/></svg></span><h4>WhatsApp</h4></div><p>Escríbenos por WhatsApp y consulta tus dudas con nosotros.</p><button class="btn" type="button">Escribir por WhatsApp</button></article>
+                <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"></path></svg></span><h4>WhatsApp</h4></div><p>Escríbenos por WhatsApp y consulta tus dudas con nosotros.</p><button class="btn" type="button">Escribir por WhatsApp</button></article>
                 <article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><h4>Chat</h4></div><p>Consulta tus dudas en el chat sin salir de esta página.</p><button class="btn" type="button">Iniciar chat en línea</button></article>
               </div>
             </div>
@@ -386,10 +398,27 @@ dialog .dialog-preview{width:100%;box-shadow:none}
         </header>
         <div class="icon-grid">
           <div class="icon-cell"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1.9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><div><strong>Llamada</strong><small>Trazo · viewBox 24</small></div></div>
-          <div class="icon-cell"><span class="contact-icon"><svg class="is-solid" viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Z"/></svg></span><div><strong>WhatsApp</strong><small>Sólido · viewBox 32</small></div></div>
+          <div class="icon-cell"><span class="contact-icon"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"></path></svg></span><div><strong>WhatsApp</strong><small>Sólido · viewBox 32</small></div></div>
           <div class="icon-cell"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><div><strong>Chat</strong><small>Trazo · viewBox 24</small></div></div>
         </div>
         <div class="rule" style="margin-top:18px"><strong>Regla:</strong> conserva `currentColor`, extremos redondos y un área visual de 28 px. Un icono nuevo debe comunicar el canal sin etiqueta antes de incorporarse.</div>
+        <div class="subsection">
+          <h3>Acceso flotante de WhatsApp</h3>
+          <p class="subsection-lead">Es una entrada persistente al mismo diálogo de WhatsApp, no un canal diferente. Debe permanecer separado del contenido y nunca ocultar acciones o mensajes.</p>
+          <div class="floating-specimen">
+            <div class="wa-demo-wrap">
+              <div class="wa-label"><strong>¿Prefieres WhatsApp?</strong>Escríbenos por aquí</div>
+              <button class="wa-floating" type="button" aria-label="Abrir muestra del canal de WhatsApp" data-open-dialog="guide-whatsapp-dialog"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"></path></svg></button>
+            </div>
+          </div>
+          <div class="floating-specs">
+            <div><strong>Tamaño</strong><span>58 px · móvil 56 px</span></div>
+            <div><strong>Posición</strong><span>24 px · móvil 14 px</span></div>
+            <div><strong>Etiqueta</strong><span>Hover y foco · oculta en móvil</span></div>
+            <div><strong>Capa</strong><span>Sobre contenido, bajo diálogos</span></div>
+          </div>
+          <div class="rule" style="margin-top:18px"><strong>Zona segura:</strong> reserva como mínimo 88 px en la esquina inferior derecha y comprueba barras de cookies, navegación móvil y áreas de envío de formularios.</div>
+        </div>
       </section>
 
       <section class="guide-section" id="dialogos">
@@ -498,6 +527,16 @@ dialog .dialog-preview{width:100%;box-shadow:none}
     <h4 id="guide-call-title">¿A qué número te llamamos?</h4>
     <p>Esta muestra permite comprobar el diálogo y su escala real.</p>
     <form class="call-form" id="guide-call-form"><label for="guide-call-name">Nombre y apellidos</label><input class="field" id="guide-call-name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="Tu nombre y apellidos" aria-describedby="guide-call-status"><label for="guide-call-phone">Teléfono</label><input class="field" id="guide-call-phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="Tu número de teléfono" inputmode="tel" aria-describedby="guide-call-status"><button class="btn btn-primary" type="submit">Solicitar llamada</button><p class="status" id="guide-call-status" role="status" aria-live="polite"></p></form>
+  </div>
+</dialog>
+
+<dialog class="contact-dialog" id="guide-whatsapp-dialog" aria-labelledby="guide-whatsapp-title">
+  <div class="dialog-preview">
+    <button class="dialog-close" type="button" data-close-dialog>Cerrar ✕</button>
+    <span class="contact-icon"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"></path></svg></span>
+    <h4 id="guide-whatsapp-title">Hablemos por WhatsApp</h4>
+    <p>El acceso flotante abre este mismo diálogo. La muestra no conecta con ningún canal ni con la web original.</p>
+    <div class="dialog-actions"><button class="btn btn-primary" type="button" data-close-dialog>Entendido</button></div>
   </div>
 </dialog>
 
