@@ -346,8 +346,7 @@
 .how-copy p{margin:20px 0 24px;color:#354239;line-height:1.7}
 .how .steps{
   grid-area:steps;min-width:0;align-self:center;
-  padding:0;background:rgba(255,243,221,.96);
-  box-shadow:0 0 24px 16px rgba(255,243,221,.96);
+  padding:0;
 }
 .how .step-card{padding:24px 0;grid-template-columns:42px minmax(0,1fr);gap:14px}
 .how .step-card:first-child{padding-top:0}
@@ -355,9 +354,13 @@
 .how .step-card h3{font-size:clamp(20px,1.5vw,23px)}
 .how .step-card p{color:#354239}
 
+@media(min-width:821px) and (max-width:1599px){
+  .how{background-position:center,calc(100% + clamp(48px,6vw,96px)) center}
+}
+
 @media(max-width:1100px){
   .how-layout{padding-right:0}
-  .how-copy,.how .steps{background:rgba(255,243,221,.96);box-shadow:0 0 20px 12px rgba(255,243,221,.96)}
+  .how-copy{background:rgba(255,243,221,.96);box-shadow:0 0 20px 12px rgba(255,243,221,.96)}
 }
 
 @media(max-width:820px){
