@@ -47,11 +47,31 @@
 <style>
 :root{--ink:#182720;--muted:#626960;--brand:#234e3c;--brand-dark:#16392a;--brand-deep:#16392a;--brand-soft:#edf3ed;--accent:#ffbf57;--paper:#fffefa;--tint:#f0f3eb;--tint-soft:#f3f6ef;--warm:#fff3dd;--line-soft:#dce2d6;--line:#dedfd5;--hairline:#dedfd5;--hairline-strong:#bfc9bc;--container:1200px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Arial',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}h1,h2,h3,p,figure{margin:0}h1,h2,h3{line-height:1.08;letter-spacing:-.045em}p{color:var(--muted)}h2{font-size:clamp(32px,3.7vw,49px);font-weight:700}h3{font-size:23px;letter-spacing:-.025em}.container{width:min(var(--container),calc(100% - 80px));margin-inline:auto}section{scroll-margin-top:90px}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #a96908;outline-offset:5px}.sr-only,.hero-pet-picker legend{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.header{position:sticky;top:0;z-index:100;background:rgba(255,254,250,.97);border-bottom:1px solid var(--line)}.header-inner{display:flex;justify-content:space-between;align-items:center;min-height:92px;gap:28px}.brand-logo{width:164px}.nav{display:flex;align-items:center;gap:34px;font-size:14px;font-weight:600}.nav a:not(.cta):hover{color:#946013}.cta,.hero-link,.how-cta,.discount-main-cta,.call-form button,.choice.primary{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-height:52px;padding:14px 24px;border:0;border-radius:100px;background:var(--brand);color:#fff;font-weight:700;font-size:15px;transition:background .2s,transform .2s}.cta:hover,.hero-link:hover,.how-cta:hover,.call-form button:hover{background:var(--brand-dark);transform:translateY(-2px)}.mobile-menu-toggle{display:none}
-.hero{overflow:hidden}.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;max-width:1360px;margin:auto;min-height:685px;padding:38px 80px 65px;align-items:center;gap:20px}.hero-content-shell{grid-column:1;grid-row:1;z-index:2}.hero-copy{max-width:610px}.hero-eyebrow,.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:22px}.hero-eyebrow:before{content:'';display:inline-block;width:28px;height:5px;background:var(--accent);border-radius:5px;margin-right:12px;vertical-align:middle}h1{font-size:clamp(44px,4.8vw,67px);line-height:1.04;letter-spacing:-.06em;max-width:620px}h1 em{font-style:normal;position:relative;z-index:0}h1 em:after{content:'';position:absolute;left:0;right:0;bottom:3px;height:13px;background:var(--accent);z-index:-1;border-radius:40% 30% 45% 20%}.hero-lead{font-size:18px;line-height:1.6;margin:26px 0 28px}.hero-link{min-height:56px;padding-inline:28px}.hero-link:after{content:'↗';font-size:22px;font-weight:400}.hero-pet-picker{padding:0;border:0;margin:34px 0 0}.hero-pet-options{display:flex;gap:10px}.hero-pet-option{display:flex;align-items:center;gap:9px;padding:11px 16px;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:14px;min-height:46px}.hero-pet-option[aria-pressed=true]{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}.selection-mark{opacity:0}.hero-pet-option[aria-pressed=true] .selection-mark{opacity:1}.slider-pet-icon,.pet-icon-svg,.ui-icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.ui-icon.is-solid{fill:currentColor;stroke:none}.hero-visual{position:relative;grid-column:2;grid-row:1;height:560px;isolation:isolate;touch-action:pan-y}.hero-visual:before{content:'';position:absolute;inset:65px -25px 60px 10px;background:var(--accent);border-radius:42% 58% 29% 71% / 54% 35% 65% 46%;transform:rotate(-9deg);z-index:-1}.hero-visual:after{content:'';position:absolute;width:60px;height:90px;left:4px;top:33px;background:#dce6d8;border-radius:65% 35% 63% 37%;transform:rotate(-35deg);z-index:-1}.hero-slide{position:absolute;inset:0 0 95px;opacity:0;visibility:hidden;transition:opacity .5s}.hero-slide.is-active{opacity:1;visibility:visible}.hero-slide img{width:100%;height:100%;object-fit:contain;object-position:var(--focal-x,50%) var(--focal-y,100%)}.hero-slide.cat img{padding:8px 35px 0}.hero-photo-label{position:absolute;bottom:8px;left:32px;right:0;max-width:340px;border-left:3px solid var(--accent);padding:0 0 0 16px}.hero-photo-label strong{font-size:19px;letter-spacing:-.025em}.hero-photo-label p{font-size:13px;line-height:1.5;margin-top:5px}.hero-photo-navigation{position:absolute;bottom:22px;right:80px;display:flex;align-items:center;gap:10px}.hero-photo-count{font-size:11px;letter-spacing:.1em;margin-right:8px}.hero-slider-arrow{display:grid;place-items:center;width:40px;height:40px;border:1px solid #bac4b8;border-radius:50%;background:transparent;color:var(--brand)}.hero-slider-arrow:hover{background:var(--accent)}.hero-dots{display:none}
-.help-section{padding:60px 0 116px;background:var(--paper)}.contact-heading{margin-bottom:30px}.contact-heading h2{font-size:30px}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.contact-card{padding:28px;background:var(--tint-soft);border:1px solid var(--line-soft);border-radius:16px;display:flex;flex-direction:column}.contact-card-top{display:flex;align-items:center;gap:14px;margin-bottom:16px}.contact-card h3{font-size:22px}.contact-icon,.pet-symbol{width:48px;height:48px;display:inline-grid;place-items:center;flex-shrink:0;border-radius:17px;background:#ffe6b9;color:var(--brand)}.contact-card p{font-size:15px;margin-bottom:24px;line-height:1.65}.contact-action{border:0;border-bottom:1px solid #b9c6b5;background:none;padding:0 0 7px;color:var(--brand);font-weight:700;font-size:14px;align-self:flex-start;margin-top:auto;text-align:left;min-height:38px}.contact-action:hover{border-color:var(--brand)}.product-info{padding:100px 0 90px;background:var(--tint)}.info-head{max-width:760px;margin-bottom:44px}.info-head p{max-width:570px;margin-top:24px;font-size:17px}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.info-card{padding:34px;border-radius:25px;background:var(--paper);border:1px solid var(--line-soft);min-width:0}.info-card:first-child{background:var(--accent);border-color:transparent;border-radius:48px 20px 48px 20px}.info-card:first-child .pet-symbol{background:rgba(255,255,255,.45)}.info-card .pet-symbol{margin-bottom:30px}.info-card h3{font-size:26px;max-width:240px;margin-bottom:17px}.info-card p{font-size:15px;line-height:1.7;color:#475044}.eligibility{margin-top:28px;padding-top:23px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.eligibility strong{color:var(--ink);margin-right:8px}.eligibility a{color:var(--brand);font-weight:700;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}.eligibility a:hover{text-decoration-color:var(--brand)}.how{padding:85px 0;background:var(--warm);overflow:hidden}.how-layout{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.how-copy p{margin:24px 0;font-size:16px}.how-copy h2{max-width:480px}.how-illustration{width:370px;margin:32px auto -85px 0}.steps{display:grid;gap:0}.step-card{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:32px 0;border-bottom:1px solid #decfb5}.step-card:last-child{border-bottom:0}.step-number{font-size:25px;font-weight:700;color:var(--brand);padding-top:4px}.step-card h3{font-size:23px;line-height:1.2}.step-card p{font-size:15px;margin-top:12px}.discounts{padding:100px 0}.discounts-grid{display:grid;grid-template-columns:1fr 1fr;gap:85px;align-items:center}.discounts-pets{margin-bottom:20px}.discounts-copy p{margin:24px 0;font-size:16px}.discount-main-cta{background:var(--accent);color:var(--ink)}.discount-main-cta:hover{background:#f8b53f}.discounts-illustration{width:290px;margin:30px 0 -20px 40px}.access-card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--paper)}.access-head{padding:30px;background:var(--tint)}.access-head strong{display:block;font-size:24px;line-height:1.2;letter-spacing:-.03em}.access-head>span{display:block;font-size:13px;color:var(--muted);margin-top:10px}.offers{padding:0 28px 25px}.offer{display:grid;grid-template-columns:48px 1fr 20px;align-items:center;gap:16px;padding:25px 0;border-bottom:1px solid var(--line)}.offer-logo{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:var(--tint);color:var(--brand);font-weight:700;font-size:16px}.offer strong{display:block;font-size:17px}.offer div>span{display:block;font-size:12px;color:var(--muted);margin-top:3px}.offer:hover strong{text-decoration:underline}.benefits-link{display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:14px;padding-top:24px;color:var(--brand)}.footer{border-top:1px solid var(--line);background:var(--tint);padding:30px 0}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}.footer-logo{width:155px}.footer-meta{font-size:12px}.whatsapp-wrap{position:fixed;bottom:22px;right:24px;z-index:50;display:flex;align-items:center;gap:12px}.whatsapp{width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:var(--brand);color:white;box-shadow:0 5px 20px #18352b25;border:3px solid white}.whatsapp svg{width:28px;fill:currentColor}.whatsapp-label{background:white;padding:8px 12px;border:1px solid var(--line);border-radius:10px;font-size:11px;line-height:1.4}.whatsapp-label strong{display:block}.contact-dialog{width:min(490px,calc(100% - 32px));padding:34px;border:0;border-radius:24px;color:var(--ink);background:var(--paper);box-shadow:0 30px 100px #102b3440;max-height:90dvh;overflow:auto}.contact-dialog::backdrop{background:#14291fc0;backdrop-filter:blur(5px)}.dialog-close{display:block;margin:0 0 20px auto;border:0;background:none;color:var(--muted);min-height:36px;font-size:13px}.contact-dialog h2{font-size:32px;margin:20px 0}.contact-dialog p{font-size:15px;margin-bottom:22px}.call-form{display:grid;gap:10px}.call-form label{font-weight:700;font-size:13px}.call-form input{border:1px solid #bec8b8;border-radius:10px;padding:13px;background:white;min-width:0;width:100%}.call-form button{margin-top:12px}.ui-status{margin-top:15px}.ui-status[data-state=error]{color:#aa3026}.contact-dialog .choice{margin-top:8px}.focus-tuner{position:fixed;z-index:150;bottom:20px;left:20px;background:white;padding:20px;max-width:300px;border:1px solid var(--line)}
+.hero{overflow:hidden}.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;max-width:1360px;margin:auto;min-height:685px;padding:38px 80px 65px;align-items:center;gap:20px}.hero-content-shell{grid-column:1;grid-row:1;z-index:2}.hero-copy{max-width:610px}.hero-eyebrow,.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:22px}.hero-eyebrow:before{content:'';display:inline-block;width:28px;height:5px;background:var(--accent);border-radius:5px;margin-right:12px;vertical-align:middle}h1{font-size:clamp(44px,4.8vw,67px);line-height:1.04;letter-spacing:-.06em;max-width:620px}h1 em{font-style:normal;position:relative;z-index:0}h1 em:after{content:'';position:absolute;left:0;right:0;bottom:3px;height:13px;background:var(--accent);z-index:-1;border-radius:40% 30% 45% 20%}.hero-lead{font-size:18px;line-height:1.6;margin:26px 0 28px}.hero-link{min-height:56px;padding-inline:28px}.hero-link:after{content:'→';font-size:22px;font-weight:400}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.hero-link-soft{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:14px 26px;border:1px solid var(--hairline-strong);border-radius:100px;background:transparent;color:var(--brand);font-weight:700;font-size:15px;transition:border-color .2s,background .2s,transform .2s}
+.hero-link-soft:after{content:'→';font-size:20px;font-weight:400}
+.hero-link-soft:hover{border-color:var(--brand);background:var(--brand-soft);transform:translateY(-2px)}
+@media(max-width:520px){.hero-actions{gap:10px}.hero-actions>*{width:100%}}
+/* Club Mascotas: aviso discreto bajo el selector de mascota, sin competir con el titular */
+.hero-club{max-width:445px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.hero-club-copy{margin:0;font-size:13.5px;line-height:1.65;color:var(--muted)}
+.hero-club-copy strong{color:var(--brand)}
+.hero-club-copy a{color:var(--brand);font-weight:700;white-space:nowrap;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
+.hero-club-copy a:hover{text-decoration-color:var(--brand)}
+.hero-club-brands{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin:18px 0 0;padding:0;list-style:none}
+.hero-club-brands li{display:flex;align-items:center}
+.hero-club-brands a{display:flex;align-items:center;border-radius:6px;transition:transform .2s,opacity .2s}
+.hero-club-brands a:hover{transform:translateY(-2px);opacity:.82}
+.hero-club-brands img{height:38px;width:auto}
+@media(max-width:820px){.hero-club{max-width:600px;margin-top:22px;padding-top:18px}.hero-club-brands{gap:12px 22px;margin-top:15px}.hero-club-brands img{height:33px}}.hero-pet-picker{padding:0;border:0;margin:34px 0 0}.hero-pet-options{display:flex;gap:10px}.hero-pet-option{display:flex;align-items:center;gap:9px;padding:11px 16px;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:14px;min-height:46px}.hero-pet-option[aria-pressed=true]{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}.selection-mark{opacity:0}.hero-pet-option[aria-pressed=true] .selection-mark{opacity:1}.slider-pet-icon,.pet-icon-svg,.ui-icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.ui-icon.is-solid{fill:currentColor;stroke:none}.hero-visual{position:relative;grid-column:2;grid-row:1;height:560px;isolation:isolate;touch-action:pan-y}.hero-visual:before{content:'';position:absolute;inset:65px -25px 60px 10px;background:var(--accent);border-radius:42% 58% 29% 71% / 54% 35% 65% 46%;transform:rotate(-9deg);z-index:-1}.hero-visual:after{content:'';position:absolute;width:60px;height:90px;left:4px;top:33px;background:#dce6d8;border-radius:65% 35% 63% 37%;transform:rotate(-35deg);z-index:-1}.hero-slide{position:absolute;inset:0 0 95px;opacity:0;visibility:hidden;transition:opacity .5s}.hero-slide.is-active{opacity:1;visibility:visible}.hero-slide img{width:100%;height:100%;object-fit:contain;object-position:var(--focal-x,50%) var(--focal-y,100%)}.hero-slide.cat img{padding:8px 35px 0}.hero-photo-label{position:absolute;bottom:8px;left:clamp(0px,13%,116px);right:0;width:max-content;max-width:calc(100% - 32px);margin-inline:auto;text-align:center}
+/* El gato va centrado en su marco: su mensaje no lleva el desplazamiento del perro */
+.hero-slide.cat.is-active ~ .hero-photo-label{left:0}
+.hero-photo-label:before{content:"";display:block;width:32px;height:4px;margin:0 auto 9px;border-radius:4px;background:var(--accent)}.hero-photo-label strong{font-size:19px;letter-spacing:-.025em}.hero-photo-navigation{position:absolute;bottom:22px;right:80px;display:flex;align-items:center;gap:10px}.hero-photo-count{font-size:11px;letter-spacing:.1em;margin-right:8px}.hero-slider-arrow{display:grid;place-items:center;width:40px;height:40px;border:1px solid #bac4b8;border-radius:50%;background:transparent;color:var(--brand)}.hero-slider-arrow:hover{background:var(--accent)}.hero-dots{display:none}
+.help-section{padding:60px 0 116px;background:var(--paper)}.contact-heading{margin-bottom:30px}.contact-heading h2{font-size:30px}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.contact-card{padding:28px;background:var(--tint-soft);border:1px solid var(--line-soft);border-radius:16px;display:flex;flex-direction:column}.contact-card-top{display:flex;align-items:center;gap:14px;margin-bottom:16px}.contact-card h3{font-size:22px}.contact-icon,.pet-symbol{width:48px;height:48px;display:inline-grid;place-items:center;flex-shrink:0;border-radius:17px;background:#ffe6b9;color:var(--brand)}.contact-card p{font-size:15px;margin-bottom:24px;line-height:1.65}.contact-action{border:0;border-bottom:1px solid #b9c6b5;background:none;padding:0 0 7px;color:var(--brand);font-weight:700;font-size:14px;align-self:flex-start;margin-top:auto;text-align:left;min-height:38px}.contact-action:hover{border-color:var(--brand)}.how{padding:85px 0;background:var(--warm);overflow:hidden}.how-layout{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.how-copy p{margin:24px 0;font-size:16px}.how-copy h2{max-width:480px}.how-illustration{width:370px;margin:32px auto -85px 0}.steps{display:grid;gap:0}.step-card{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:32px 0;border-bottom:1px solid #decfb5}.step-card:last-child{border-bottom:0}.step-number{font-size:25px;font-weight:700;color:var(--brand);padding-top:4px}.step-card h3{font-size:23px;line-height:1.2}.step-card p{font-size:15px;margin-top:12px}.discounts{padding:100px 0}.discounts-grid{display:grid;grid-template-columns:1fr 1fr;gap:85px;align-items:center}.discounts-pets{margin-bottom:20px}.discounts-copy p{margin:24px 0;font-size:16px}.discount-main-cta{background:var(--accent);color:var(--ink)}.discount-main-cta:hover{background:#f8b53f}.discounts-illustration{width:290px;margin:30px 0 -20px 40px}.access-card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--paper)}.access-head{padding:30px;background:var(--tint)}.access-head strong{display:block;font-size:24px;line-height:1.2;letter-spacing:-.03em}.access-head>span{display:block;font-size:13px;color:var(--muted);margin-top:10px}.offers{padding:0 28px 25px}.offer{display:grid;grid-template-columns:48px 1fr 20px;align-items:center;gap:16px;padding:25px 0;border-bottom:1px solid var(--line)}.offer-logo{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:var(--tint);color:var(--brand);font-weight:700;font-size:16px}.offer strong{display:block;font-size:17px}.offer div>span{display:block;font-size:12px;color:var(--muted);margin-top:3px}.offer:hover strong{text-decoration:underline}.benefits-link{display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:14px;padding-top:24px;color:var(--brand)}.footer{border-top:1px solid var(--line);background:var(--tint);padding:30px 0}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}.footer-logo{width:155px}.footer-meta{font-size:12px}.whatsapp-wrap{position:fixed;bottom:22px;right:24px;z-index:50;display:flex;align-items:center;gap:12px}.whatsapp{width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:var(--brand);color:white;box-shadow:0 5px 20px #18352b25;border:3px solid white}.whatsapp svg{width:28px;fill:currentColor}.whatsapp-label{background:white;padding:8px 12px;border:1px solid var(--line);border-radius:10px;font-size:11px;line-height:1.4}.whatsapp-label strong{display:block}.contact-dialog{width:min(490px,calc(100% - 32px));padding:34px;border:0;border-radius:24px;color:var(--ink);background:var(--paper);box-shadow:0 30px 100px #102b3440;max-height:90dvh;overflow:auto}.contact-dialog::backdrop{background:#14291fc0;backdrop-filter:blur(5px)}.dialog-close{display:block;margin:0 0 20px auto;border:0;background:none;color:var(--muted);min-height:36px;font-size:13px}.contact-dialog h2{font-size:32px;margin:20px 0}.contact-dialog p{font-size:15px;margin-bottom:22px}.call-form{display:grid;gap:10px}.call-form label{font-weight:700;font-size:13px}.call-form input{border:1px solid #bec8b8;border-radius:10px;padding:13px;background:white;min-width:0;width:100%}.call-form button{margin-top:12px}.ui-status{margin-top:15px}.ui-status[data-state=error]{color:#aa3026}.contact-dialog .choice{margin-top:8px}.focus-tuner{position:fixed;z-index:150;bottom:20px;left:20px;background:white;padding:20px;max-width:300px;border:1px solid var(--line)}
 @media(min-width:1600px){.hero-grid{max-width:1440px;min-height:740px}.hero-visual{height:600px}}
-@media(max-width:1050px){.hero-grid{padding:35px 40px 75px;min-height:630px}.hero-visual{height:480px}h1{font-size:52px}.hero-photo-navigation{right:40px}.how-layout,.discounts-grid{gap:40px}.contact-card,.info-card{padding:24px}.nav{gap:20px}}
-@media(max-width:820px){.container{width:calc(100% - 40px)}.hero-grid{display:flex;flex-direction:column;padding:40px 24px 74px;gap:12px;min-height:0}.hero-content-shell{align-self:stretch;order:0}.hero-visual{order:1;width:min(100%,480px);height:435px}.hero-copy{max-width:600px;margin:auto}h1{font-size:clamp(40px,7vw,58px)}.hero-eyebrow{font-size:10px;margin-bottom:20px}.hero-lead{font-size:16px;margin:22px 0}.hero-pet-picker{margin-top:22px}.hero-photo-navigation{right:25px;bottom:19px}.hero-photo-label{left:18px;bottom:0;max-width:290px}.hero-visual:before{inset:50px 5px 50px 20px}.hero-slide{bottom:85px}.contact-grid{grid-template-columns:1fr;gap:14px}.contact-card{padding:23px}.contact-card p{margin-bottom:15px}.contact-heading h2{font-size:28px}.help-section{padding-top:40px}.product-info,.discounts{padding:65px 0}.info-head{margin-bottom:30px}.info-grid{grid-template-columns:1fr;gap:16px}.info-card{padding:28px}.info-card h3{max-width:none}.info-card .pet-symbol{margin-bottom:20px}.how{padding:60px 0}.how-layout,.discounts-grid{grid-template-columns:1fr;gap:35px}.how-illustration{width:280px;margin:26px auto 0}.steps{margin-top:0}.step-card{padding:25px 0}.discounts-illustration{width:250px;margin:25px auto 0}.footer-inner{align-items:flex-start;flex-direction:column;gap:16px}.footer{padding-bottom:90px}.whatsapp-label{display:none}.whatsapp-wrap{right:16px;bottom:16px}.desktop-break{display:none}.contact-dialog{padding:24px}.eligibility strong{display:block;margin-bottom:6px}}
+@media(max-width:1050px){.hero-grid{padding:35px 40px 75px;min-height:630px}.hero-visual{height:480px}h1{font-size:52px}.hero-photo-navigation{right:40px}.how-layout,.discounts-grid{gap:40px}.contact-card{padding:24px}.nav{gap:20px}}
+@media(max-width:820px){.container{width:calc(100% - 40px)}.hero-grid{display:flex;flex-direction:column;padding:40px 24px 74px;gap:12px;min-height:0}.hero-content-shell{align-self:stretch;order:0}.hero-visual{order:1;width:min(100%,480px);height:435px}.hero-copy{max-width:600px;margin:auto}h1{font-size:clamp(40px,7vw,58px)}.hero-eyebrow{font-size:10px;margin-bottom:20px}.hero-lead{font-size:16px;margin:22px 0}.hero-pet-picker{margin-top:22px}.hero-photo-navigation{right:25px;bottom:19px}.hero-photo-label{bottom:0}.hero-visual:before{inset:50px 5px 50px 20px}.hero-slide{bottom:85px}.contact-grid{grid-template-columns:1fr;gap:14px}.contact-card{padding:23px}.contact-card p{margin-bottom:15px}.contact-heading h2{font-size:28px}.help-section{padding-top:40px}.discounts{padding:65px 0}.how{padding:60px 0}.how-layout,.discounts-grid{grid-template-columns:1fr;gap:35px}.how-illustration{width:280px;margin:26px auto 0}.steps{margin-top:0}.step-card{padding:25px 0}.discounts-illustration{width:250px;margin:25px auto 0}.footer-inner{align-items:flex-start;flex-direction:column;gap:16px}.footer{padding-bottom:90px}.whatsapp-label{display:none}.whatsapp-wrap{right:16px;bottom:16px}.desktop-break{display:none}.contact-dialog{padding:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 
 
@@ -210,17 +230,16 @@
 
 /* ---------- HERO · etiqueta y controles sobre la imagen ---------- */
 .hero-photo-label{
-  left:26px;right:auto;bottom:4px;max-width:340px;
-  padding:14px 20px 15px 17px;
+  bottom:4px;
+  padding:14px 24px 16px;
   background:rgba(255,254,250,.86);
   -webkit-backdrop-filter:blur(14px) saturate(1.15);
   backdrop-filter:blur(14px) saturate(1.15);
-  border-left:3px solid var(--accent);
-  border-radius:3px 16px 16px 3px;
+  border-radius:16px;
   box-shadow:0 20px 44px -26px rgba(22,57,42,.6);
 }
 .hero-photo-label strong{display:block;color:var(--ink)}
-.hero-photo-label p{margin-top:6px;color:#5b6359}
+
 @keyframes labelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .hero-photo-label.is-changing{animation:labelIn .4s cubic-bezier(.22,.61,.36,1)}
 
@@ -260,9 +279,9 @@
   .hero-slide{inset:-2px 0 78px}
   .hero-slide.cat img{padding:8px 24px 0}
   .hero-slide:after{width:62%;height:20px;bottom:2px}
-  .hero-photo-label{left:16px;right:16px;bottom:2px;max-width:none;padding:12px 16px 13px 14px}
+  .hero-photo-label{bottom:2px;padding:12px 20px 13px;max-width:calc(100% - 24px)}
   .hero-photo-label strong{font-size:17px}
-  .hero-photo-label p{font-size:12.5px}
+  
 }
 
 
@@ -282,7 +301,7 @@
 .hero-slide{inset:-4px -8px 64px -8px}
 .hero-photo-label{bottom:0}
 @media(max-width:1050px){.hero-slide{inset:-2px -4px 62px -4px}}
-@media(max-width:820px){.hero-slide{inset:-2px 0 66px}.hero-photo-label{bottom:0}}
+@media(max-width:820px){.hero-slide{inset:-2px 0 66px}.hero-photo-label{bottom:0;left:0}}
 
 /* ---------- Ayuda · tarjetas que se leen y funcionan como botón ---------- */
 .contact-card{
@@ -458,7 +477,6 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
     </button>
     <nav class="nav" id="primary-navigation" aria-label="Navegación">
       <a href="#inicio">Seguro</a>
-      <a href="#informacion">Qué incluye</a>
       <a href="#coberturas">Coberturas</a>
       <a href="#descuentos">Descuentos</a>
       <a class="cta" href="#ayuda">Calcula tu precio</a>
@@ -469,19 +487,22 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
 <main>
 <section class="hero" id="inicio">
   <div class="hero-grid" role="region" aria-roledescription="carrusel" aria-label="Seguro para perros y gatos" tabindex="0">
-    <div class="hero-visual" aria-hidden="true"><span class="hero-stage" aria-hidden="true"></span><figure class="hero-slide dog is-active" id="hero-slide-dog" data-slide="0" data-title="Siempre a su lado." data-copy="Acude al veterinario que prefieras y recupera el 80 % de los gastos cubiertos." aria-hidden="false">
+    <div class="hero-visual" aria-hidden="true"><span class="hero-stage" aria-hidden="true"></span><figure class="hero-slide dog is-active" id="hero-slide-dog" data-slide="0" data-title="Siempre a tu lado." aria-hidden="false">
         <img src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/perro-patita.png" alt="Perro protegido por Affinity Mascotas" loading="eager" fetchpriority="high" decoding="async" referrerpolicy="no-referrer">
       </figure>
-<figure class="hero-slide cat" id="hero-slide-cat" data-slide="1" data-title="Cuidado para sus siete vidas." data-copy="Consultas, diagnóstico, cirugía y hospitalización, con límites claros." aria-hidden="true">
-        <img src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/gatito-mira.png" alt="Gato protegido por Affinity Mascotas" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+<figure class="hero-slide cat" id="hero-slide-cat" data-slide="1" data-title="Cuidado para sus siete vidas." aria-hidden="true">
+        <img src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/gatito-1.png" alt="Gato protegido por Affinity Mascotas" loading="lazy" decoding="async" referrerpolicy="no-referrer">
       </figure>
-      <div class="hero-photo-label"><strong id="hero-photo-title">Siempre a su lado.</strong><p id="hero-photo-copy">Acude al veterinario que prefieras y recupera el 80 % de los gastos cubiertos.</p></div>
+      <div class="hero-photo-label"><strong id="hero-photo-title">Siempre a tu lado.</strong></div>
     </div>
     <div class="hero-content-shell"><div class="hero-copy">
       <p class="hero-eyebrow">Seguro de salud para perros y gatos</p>
       <h1>Es parte de tu <em>familia</em>.<br>Protégelo como uno más.</h1>
-      <p class="hero-lead">MGC Mutua te reembolsa el 80 % de la asistencia<br class="desktop-break"> veterinaria, hasta 2.000 € al año.</p>
-      <div class="hero-actions"><a class="hero-link" href="#ayuda">Calcular mi precio</a></div>
+      <p class="hero-lead">Elige tu veterinario y recupera el 80 % de los gastos<br class="desktop-break"> cubiertos por accidente o enfermedad.</p>
+      <div class="hero-actions">
+        <button type="button" class="hero-link" data-contact-dialog="chat-help-dialog" aria-haspopup="dialog">Chatea para calcular tu precio</button>
+        <button type="button" class="hero-link-soft" data-contact-dialog="call-dialog" aria-haspopup="dialog">Te llamamos</button>
+      </div>
 
       <!-- SVG propios, coherentes con la iconografía de la web; no proceden del catálogo Canva. -->
       <fieldset class="hero-pet-picker">
@@ -491,6 +512,16 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
           <button type="button" class="hero-pet-option" data-pet-slide="1" aria-pressed="false" aria-controls="hero-slide-cat"><svg class="slider-pet-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 11V4l5 3h4l5-3v7c2 5-1 9-7 9s-9-4-7-9Z"/><path d="M8 12h.01M16 12h.01M11 14h2l-1 1-1-1Zm1 1v2M3 14l5 1M3 18l5-1M21 14l-5 1M21 18l-5-1"/></svg><span>Gatos</span><span class="selection-mark" aria-hidden="true">✓</span></button>
         </div>
       </fieldset>
+
+      <div class="hero-club">
+        <p class="hero-club-copy">Regístrate en el <strong>Club Mascotas</strong> y consigue descuentos en sus tiendas. <a href="#descuentos">Ver las ventajas</a></p>
+        <ul class="hero-club-brands">
+          <li><a href="#descuentos" aria-label="Zooplus: ver las ventajas"><img src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/Zooplus-1.png" alt="Zooplus" width="1774" height="887" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></li>
+          <li><a href="#descuentos" aria-label="Tiendanimal: ver las ventajas"><img src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/Tiendanimal-1.png" alt="Tiendanimal" width="2172" height="724" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></li>
+          <li><a href="#descuentos" aria-label="Kiwoko: ver las ventajas"><img src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/Kiwoko-1.png" alt="Kiwoko" width="2172" height="724" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></li>
+          <li><a href="#descuentos" aria-label="Mascotas: ver las ventajas"><img src="https://www.affinitysoluciones.com/wp-content/uploads/2026/09/Mascotas-1000-1.png" alt="Mascotas" width="1536" height="1024" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></li>
+        </ul>
+      </div>
     </div></div>
     <div class="hero-photo-navigation"><span class="hero-photo-count" aria-hidden="true">01 / 02</span>
     <button class="hero-slider-arrow" type="button" data-direction="prev" aria-label="Ver imagen anterior"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.2 5.6-6.4 6.4 6.4 6.4"/></svg></button>
@@ -499,91 +530,6 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
     <span class="sr-only" id="hero-image-status" aria-live="polite" aria-atomic="true">Imagen 1 de 2: perro.</span>
   </div>
 </section>
-
-<section class="product-info" id="informacion">
-  <div class="container">
-    <div class="info-head">
-      <div class="kicker">Tu seguro, de forma clara</div>
-      <h2>Protección veterinaria con un reembolso del 80 %.</h2>
-      <p>
-        MGC Mutua es una entidad sin ánimo de lucro cuyos propietarios son los propios asegurados. Conoce las coberturas del seguro y calcula un presupuesto para tu mascota.
-      </p>
-    </div>
-
-    <div class="info-grid">
-      <article class="info-card">
-        <span class="pet-symbol">
-<svg class="pet-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path d="M12 2.8 19.2 5.7v6.1c0 4.6-2.9 8.3-7.2 9.4-4.3-1.1-7.2-4.8-7.2-9.4V5.7Z"/>
-  <path d="M14.4 9.6a3.4 3.4 0 0 0-4.8 1 4.4 4.4 0 0 0 0 3.6 3.4 3.4 0 0 0 4.8 1"/>
-  <path d="M8.3 11.1h4.1M8.3 12.9h4.1"/>
-</svg></span>
-        <h3>80 % de reembolso</h3>
-        <p>
-          Recuperas el 80 % de la asistencia veterinaria cubierta, con un límite máximo de 2.000 € al año y los importes máximos por acto establecidos en la póliza.
-        </p>
-      </article>
-
-      <article class="info-card">
-        <span class="pet-symbol soft">
-<svg class="pet-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path d="M3.4 20.6h17.2"/>
-  <path d="M5.4 20.6V9.4L12 5.1l6.6 4.3v11.2"/>
-  <path d="M12 10.9v5M9.5 13.4h5"/>
-</svg></span>
-        <h3>Elige tu veterinario</h3>
-        <p>
-          Acude a cualquier veterinario legalmente establecido en el país y gestiona después el reembolso de los gastos cubiertos.
-        </p>
-      </article>
-
-      <article class="info-card">
-        <span class="pet-symbol soft">
-<svg class="pet-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path d="M20.5 5.8a4.9 4.9 0 0 0-7 0L12 7.3l-1.5-1.5a4.9 4.9 0 0 0-7 7l1.5 1.5L12 21l7-7 1.5-1.5a4.9 4.9 0 0 0 0-6.7Z"/>
-  <path d="M4.3 11.9h3.2l1.4-2.6 2.4 5.3 1.6-3.4 1 .7h3.8"/>
-</svg></span>
-        <h3>Accidente y enfermedad</h3>
-        <p>
-          La asistencia veterinaria derivada de ambos, en la modalidad cotizada sin copagos.
-        </p>
-      </article>
-    </div>
-
-    <div class="eligibility public-eligibility">
-      <strong>Protección para perros y gatos.</strong>
-      Consulta las coberturas y los importes máximos en el <a href="#coberturas">detalle de la póliza</a>.
-    </div>
-  </div>
-</section>
-
-<section class="help-section" id="ayuda" aria-labelledby="contact-heading"><div class="container"><div class="contact-heading"><h2 id="contact-heading">¿Prefieres que te ayudemos?</h2></div><div class="contact-grid"><article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1 .9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><h3>Te llamamos</h3></div><p>Déjanos tu número y te ayudamos a resolver tus dudas sobre el seguro.</p><button type="button" class="contact-action" data-contact-dialog="call-dialog" aria-haspopup="dialog">Solicitar una llamada</button></article>
-<article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"/></svg></span><h3>WhatsApp</h3></div><p>Escríbenos por WhatsApp y consulta tus dudas con nosotros.</p><button type="button" class="contact-action" data-contact-dialog="contact-dialog" aria-haspopup="dialog">Escribir por WhatsApp</button></article>
-<article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><h3>Chat</h3></div><p>Consulta tus dudas en el chat sin salir de esta página.</p><button type="button" class="contact-action" data-contact-dialog="chat-help-dialog" aria-haspopup="dialog">Iniciar chat en línea</button></article></div>
-
-</div>
-<div class="paseo" aria-hidden="true">
-<svg class="paseo-animal paseo-perro" data-kind="perro" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" focusable="false">
-<ellipse class="pet-shadow" cx="106" cy="93" rx="61" ry="3"/>
-<path class="pet-tail" stroke-width="7"/>
-<g class="pet-far"><path class="pet-leg" data-leg="0"/><path class="pet-leg" data-leg="1"/></g>
-<path class="pet-body" d="M53 62 C49 51 57 45 73 46 C89 49 106 46 121 48 C131 47 134 34 142 34 L151 44 C147 52 143 64 132 70 C118 79 105 71 91 72 C77 72 59 82 53 62Z"/>
-<path class="pet-leg" data-leg="2"/><path class="pet-leg" data-leg="3"/>
-<g class="pet-head"><path d="M133 43 C132 32 138 24 149 26 C157 26 160 31 161 36 L176 40 Q180 43 176 47 L163 49 Q154 55 142 49Z"/><path class="pet-ear" d="M140 29 C130 25 128 35 132 47 Q136 54 140 48 L146 32Z" fill="currentColor"/><path class="pet-detail" d="M138 33 Q133 43 137 46"/><ellipse class="pet-eye" cx="155" cy="36" rx="1.35" ry="1.6"/><path class="pet-detail" d="M164 46 L172 45"/></g>
-</svg>
-<svg class="paseo-animal paseo-gato" data-kind="gato" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" focusable="false">
-<ellipse class="pet-shadow" cx="106" cy="93" rx="61" ry="3"/>
-<path class="pet-tail" stroke-width="5"/>
-<g class="pet-far"><path class="pet-leg" data-leg="0"/><path class="pet-leg" data-leg="1"/></g>
-<path class="pet-body" d="M51 69 C49 61 54 55 66 53 C81 50 94 56 111 54 C124 53 132 47 139 43 L150 51 C147 63 138 71 124 75 C109 79 97 71 84 73 C70 78 55 80 51 69Z"/>
-<path class="pet-leg" data-leg="2"/><path class="pet-leg" data-leg="3"/>
-<g class="pet-head"><path d="M132 47 L134 29 Q134 26 137 29 L145 37 Q151 34 157 37 L163 27 Q165 24 165 29 L165 45 Q171 49 171 53 Q170 57 165 59 Q154 64 143 59 Q134 56 132 47Z"/><path class="pet-detail" d="M136 32 L143 39 M162 31 L158 39 M144 55 Q150 59 157 55 M160 53 L175 52 M160 56 L175 58 M159 59 L172 63"/><ellipse class="pet-eye" cx="158" cy="45" rx="1.4" ry="1.7"/><path class="pet-detail" d="M164 50 L167 51 L164 52"/></g>
-</svg>
-</div></section>
-
-
-
-
 
 <section class="coverage" id="coberturas">
   <div class="container">
@@ -677,6 +623,34 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
     </div>
   </div>
 </section>
+
+<section class="help-section" id="ayuda" aria-labelledby="contact-heading"><div class="container"><div class="contact-heading"><h2 id="contact-heading">¿Prefieres que te ayudemos?</h2></div><div class="contact-grid"><article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 16.6v2.7a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.1 4.4 1.9 1.9 0 0 1 4 2.3h2.7a1.9 1.9 0 0 1 1.9 1.7c.1 .9.3 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L7.7 9.9a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7A1.9 1.9 0 0 1 21 16.6Z"/></svg></span><h3>Te llamamos</h3></div><p>Déjanos tu número y te ayudamos a resolver tus dudas sobre el seguro.</p><button type="button" class="contact-action" data-contact-dialog="call-dialog" aria-haspopup="dialog">Solicitar una llamada</button></article>
+<article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon is-solid" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.04 3.2c-6.96 0-12.62 5.6-12.62 12.5 0 2.2.58 4.35 1.69 6.24L3.3 28.55l6.82-1.78a12.7 12.7 0 0 0 5.91 1.49h.01c6.95 0 12.61-5.6 12.61-12.51A12.55 12.55 0 0 0 16.04 3.2Zm0 22.95h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.05 1.06 1.08-3.93-.25-.4a10.36 10.36 0 0 1-1.63-5.48c0-5.76 4.78-10.45 10.66-10.45 2.85 0 5.53 1.1 7.54 3.08a10.3 10.3 0 0 1 3.12 7.4c0 5.75-4.79 10.42-10.67 10.42Zm5.85-7.81c-.32-.16-1.9-.92-2.2-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.23-.69.08-.32-.16-1.35-.49-2.57-1.56-.95-.83-1.59-1.87-1.78-2.18-.18-.31-.02-.48.14-.64.14-.14.32-.36.48-.54.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.7-.98-2.33-.26-.62-.52-.53-.71-.54l-.61-.01c-.21 0-.56.08-.85.39-.29.31-1.12 1.07-1.12 2.62 0 1.54 1.15 3.03 1.31 3.24.16.21 2.27 3.4 5.5 4.77.77.33 1.37.52 1.84.67.77.24 1.47.21 2.02.13.62-.09 1.9-.76 2.17-1.49.27-.73.27-1.36.19-1.49-.08-.13-.29-.21-.61-.36Z"/></svg></span><h3>WhatsApp</h3></div><p>Escríbenos por WhatsApp y consulta tus dudas con nosotros.</p><button type="button" class="contact-action" data-contact-dialog="contact-dialog" aria-haspopup="dialog">Escribir por WhatsApp</button></article>
+<article class="contact-card"><div class="contact-card-top"><span class="contact-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 12.4c0 4.1-3.6 7.4-8 7.4a9 9 0 0 1-2.9-.5l-5.1 1.4 1.5-4.4a7 7 0 0 1-1.5-4.3c0-4.1 3.6-7.4 8-7.4s8 3.3 8 7.8Z"/><path d="M8.6 12.2h.01M12 12.2h.01M15.4 12.2h.01" stroke-width="2.4"/></svg></span><h3>Chat</h3></div><p>Consulta tus dudas en el chat sin salir de esta página.</p><button type="button" class="contact-action" data-contact-dialog="chat-help-dialog" aria-haspopup="dialog">Iniciar chat en línea</button></article></div>
+
+</div>
+<div class="paseo" aria-hidden="true">
+<svg class="paseo-animal paseo-perro" data-kind="perro" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" focusable="false">
+<ellipse class="pet-shadow" cx="106" cy="93" rx="61" ry="3"/>
+<path class="pet-tail" stroke-width="7"/>
+<g class="pet-far"><path class="pet-leg" data-leg="0"/><path class="pet-leg" data-leg="1"/></g>
+<path class="pet-body" d="M53 62 C49 51 57 45 73 46 C89 49 106 46 121 48 C131 47 134 34 142 34 L151 44 C147 52 143 64 132 70 C118 79 105 71 91 72 C77 72 59 82 53 62Z"/>
+<path class="pet-leg" data-leg="2"/><path class="pet-leg" data-leg="3"/>
+<g class="pet-head"><path d="M133 43 C132 32 138 24 149 26 C157 26 160 31 161 36 L176 40 Q180 43 176 47 L163 49 Q154 55 142 49Z"/><path class="pet-ear" d="M140 29 C130 25 128 35 132 47 Q136 54 140 48 L146 32Z" fill="currentColor"/><path class="pet-detail" d="M138 33 Q133 43 137 46"/><ellipse class="pet-eye" cx="155" cy="36" rx="1.35" ry="1.6"/><path class="pet-detail" d="M164 46 L172 45"/></g>
+</svg>
+<svg class="paseo-animal paseo-gato" data-kind="gato" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" focusable="false">
+<ellipse class="pet-shadow" cx="106" cy="93" rx="61" ry="3"/>
+<path class="pet-tail" stroke-width="5"/>
+<g class="pet-far"><path class="pet-leg" data-leg="0"/><path class="pet-leg" data-leg="1"/></g>
+<path class="pet-body" d="M51 69 C49 61 54 55 66 53 C81 50 94 56 111 54 C124 53 132 47 139 43 L150 51 C147 63 138 71 124 75 C109 79 97 71 84 73 C70 78 55 80 51 69Z"/>
+<path class="pet-leg" data-leg="2"/><path class="pet-leg" data-leg="3"/>
+<g class="pet-head"><path d="M132 47 L134 29 Q134 26 137 29 L145 37 Q151 34 157 37 L163 27 Q165 24 165 29 L165 45 Q171 49 171 53 Q170 57 165 59 Q154 64 143 59 Q134 56 132 47Z"/><path class="pet-detail" d="M136 32 L143 39 M162 31 L158 39 M144 55 Q150 59 157 55 M160 53 L175 52 M160 56 L175 58 M159 59 L172 63"/><ellipse class="pet-eye" cx="158" cy="45" rx="1.4" ry="1.7"/><path class="pet-detail" d="M164 50 L167 51 L164 52"/></g>
+</svg>
+</div></section>
+
+
+
+
 
 <section class="how" id="como-funciona">
   <div class="container how-layout">
@@ -1389,7 +1363,6 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
     const status = slider.querySelector('#hero-image-status');
     const choices = [...slider.querySelectorAll('[data-pet-slide]')];
     const title = slider.querySelector('#hero-photo-title');
-    const copy = slider.querySelector('#hero-photo-copy');
     const count = slider.querySelector('.hero-photo-count');
     let active = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
     const showSlide = index => {
@@ -1402,9 +1375,8 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
       choices.forEach(choice => choice.setAttribute('aria-pressed', String(Number(choice.dataset.petSlide) === active)));
       const current = slides[active];
       if (title) title.textContent = current.dataset.title;
-      if (copy) copy.textContent = current.dataset.copy;
       if (count) count.textContent = `${String(active + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-      if (status) status.textContent = `Imagen ${active + 1} de ${slides.length}: ${current.classList.contains('dog') ? 'perro' : 'gato'}. ${current.dataset.title} ${current.dataset.copy}`;
+      if (status) status.textContent = `Imagen ${active + 1} de ${slides.length}: ${current.classList.contains('dog') ? 'perro' : 'gato'}. ${current.dataset.title}`;
     };
     choices.forEach(choice => choice.addEventListener('click', () => showSlide(Number(choice.dataset.petSlide))));
     slider.querySelectorAll('[data-direction]').forEach(button => button.addEventListener('click', () => {
@@ -1696,7 +1668,7 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
   if(!('IntersectionObserver' in window)) return;
 
   const targets = document.querySelectorAll(
-    '.info-head, .info-card, .eligibility, .contact-heading, .contact-card, ' +
+    '.contact-heading, .contact-card, .coverage-head, .coverage-group, .condition, ' +
     '.how-copy, .step-card, .discounts-copy, .access-card'
   );
   targets.forEach(el => el.classList.add('reveal'));
