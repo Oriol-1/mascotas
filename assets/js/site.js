@@ -903,3 +903,76 @@
 
   size();sync();
 })();
+
+/* Patita lateral: indica el progreso y se desvanece al terminar el scroll. */
+(() => {
+  const indicator = document.querySelector('.scroll-paw-indicator');
+  if (!indicator || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const trail = indicator.querySelector('.scroll-paw-trail');
+  const icon = indicator.querySelector('.scroll-paw-lead');
+  let frame = 0;
+  let idleTimer = 0;
+  let lastPrintY = null;
+  let foot = 1;
+  let walking = false;
+
+  const leavePrint = y => {
+    const print = document.createElement('img');
+    const mobile = window.innerWidth <= 820;
+    foot *= -1;
+    print.className = 'scroll-paw-print';
+    print.src = icon.currentSrc || icon.src;
+    print.alt = '';
+    print.width = mobile ? 14 : 18;
+    print.height = mobile ? 14 : 18;
+    print.style.setProperty('--print-y', `${Math.round(y)}px`);
+    print.style.setProperty('--print-x', `${foot * (mobile ? 8 : 12)}px`);
+    print.style.setProperty('--print-turn', `${foot * 13}deg`);
+    trail.appendChild(print);
+    requestAnimationFrame(() => print.classList.add('is-visible'));
+    setTimeout(() => print.classList.add('is-fading'), 1250);
+    setTimeout(() => print.remove(), 1850);
+  };
+
+  const paint = () => {
+    frame = 0;
+    const scrollable = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const progress = scrollable ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+    const travel = Math.max(0, indicator.clientHeight - (icon?.offsetHeight || 32));
+    const y = progress * travel;
+    indicator.style.setProperty('--paw-y', `${Math.round(y)}px`);
+
+    if (lastPrintY === null) lastPrintY = y;
+    if (walking) {
+      const step = window.innerWidth <= 820 ? 28 : 36;
+      const direction = Math.sign(y - lastPrintY);
+      let prints = 0;
+      while (direction && Math.abs(y - lastPrintY) >= step && prints < 6) {
+        lastPrintY += direction * step;
+        leavePrint(lastPrintY);
+        prints++;
+      }
+      if (prints === 6) lastPrintY = y;
+      indicator.style.setProperty('--paw-x', `${foot * (window.innerWidth <= 820 ? 5 : 7)}px`);
+      indicator.style.setProperty('--paw-turn', `${foot * 8}deg`);
+    } else {
+      lastPrintY = y;
+    }
+    walking = false;
+  };
+
+  const requestPaint = () => {
+    if (!frame) frame = requestAnimationFrame(paint);
+  };
+
+  window.addEventListener('scroll', () => {
+    document.body.classList.add('is-scrolling');
+    walking = true;
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => document.body.classList.remove('is-scrolling'), 900);
+    requestPaint();
+  }, {passive: true});
+  window.addEventListener('resize', requestPaint, {passive: true});
+  requestPaint();
+})();
