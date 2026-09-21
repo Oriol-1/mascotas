@@ -116,7 +116,7 @@
       </fieldset>
 
       <aside class="hero-rc" aria-labelledby="hero-rc-title">
-        <p class="hero-actions-label hero-rc-label">Responsabilidad civil · Otro seguro</p>
+        <p class="hero-actions-label hero-rc-label">Responsabilidad civil</p>
         <span class="hero-rc-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div class="hero-rc-copy">
           <strong id="hero-rc-title">Responsabilidad civil para tu perro o tu gato.</strong>
@@ -163,7 +163,7 @@
     </div>
 
     <div class="coverage-groups">
-      <section class="coverage-group">
+      <section class="coverage-group" data-amounts="hidden" id="coverage-consultas">
         <h3>Consultas<span>Por visita</span></h3>
         <dl class="limit-list">
           <div class="limit">
@@ -175,9 +175,13 @@
             <dd><span class="limit-pay"><span class="limit-cap">Te devolvemos hasta</span><span class="limit-amount">60 €</span></span><span class="limit-hint">Factura de 90 € → recibes <b>60 €</b> (tope) y pagas <b>30 €</b>.</span></dd>
           </div>
         </dl>
+        <button type="button" class="group-amounts" aria-expanded="false" aria-controls="coverage-consultas">
+          <span data-amounts-off>Mostrar importes y ejemplos</span><span data-amounts-on hidden>Ocultar importes y ejemplos</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
       </section>
 
-      <section class="coverage-group">
+      <section class="coverage-group" data-amounts="hidden" id="coverage-cirugia">
         <h3>Cirugía, ingresos y tratamientos<span>Por anualidad</span></h3>
         <dl class="limit-list">
           <div class="limit">
@@ -193,9 +197,13 @@
             <dd><span class="limit-pay"><span class="limit-cap">Te devolvemos hasta</span><span class="limit-amount">600 €</span></span><span class="limit-hint">Factura de 500 € → recibes <b>400 €</b> y pagas <b>100 €</b>.</span></dd>
           </div>
         </dl>
+        <button type="button" class="group-amounts" aria-expanded="false" aria-controls="coverage-cirugia">
+          <span data-amounts-off>Mostrar importes y ejemplos</span><span data-amounts-on hidden>Ocultar importes y ejemplos</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
       </section>
 
-      <section class="coverage-group is-highlight">
+      <section class="coverage-group is-highlight" data-amounts="hidden" id="coverage-diagnostico">
         <h3>Pruebas de diagnóstico<span>Sin importe máximo por acto</span></h3>
         <dl class="limit-list">
           <div class="limit">
@@ -203,9 +211,13 @@
             <dd class="is-text"><span class="limit-pay"><span class="limit-cap">Te devolvemos el 80 %</span><span class="limit-amount">Sin máximo</span></span><span class="limit-hint">Factura de 300 € → recibes <b>240 €</b> y pagas <b>60 €</b>.</span></dd>
           </div>
         </dl>
+        <button type="button" class="group-amounts" aria-expanded="false" aria-controls="coverage-diagnostico">
+          <span data-amounts-off>Mostrar importes y ejemplos</span><span data-amounts-on hidden>Ocultar importes y ejemplos</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
       </section>
 
-      <section class="coverage-group">
+      <section class="coverage-group" data-amounts="hidden" id="coverage-otros">
         <h3>Otros actos cubiertos</h3>
         <dl class="limit-list">
           <div class="limit">
@@ -217,6 +229,10 @@
             <dd><span class="limit-pay"><span class="limit-cap">Te devolvemos hasta</span><span class="limit-amount">150 €</span></span><span class="limit-hint">Factura de 180 € → recibes <b>144 €</b> y pagas <b>36 €</b>.</span></dd>
           </div>
         </dl>
+        <button type="button" class="group-amounts" aria-expanded="false" aria-controls="coverage-otros">
+          <span data-amounts-off>Mostrar importes y ejemplos</span><span data-amounts-on hidden>Ocultar importes y ejemplos</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
       </section>
     </div>
 

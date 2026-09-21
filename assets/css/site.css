@@ -503,6 +503,15 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
 .coverage{padding:84px 0;background:var(--tint)}
 /* Coberturas: cada cobertura aparece una vez, con su importe máximo */
 .coverage-head{max-width:760px;margin-bottom:18px}
+/* Botón «Mostrar importes» en cada tarjeta: por defecto solo se ven los actos; al pulsarlo aparecen las cifras y ejemplos de esa tarjeta. */
+.coverage-group[data-amounts=hidden] .limit dd{display:none}
+.coverage-group[data-amounts=hidden] .limit{padding:13px 0}
+.coverage-group[data-amounts=visible] .limit dd{animation:limit-in .45s cubic-bezier(.22,.9,.3,1) backwards}
+.group-amounts{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin-top:16px;min-height:44px;padding:10px 16px;border:1px solid var(--hairline-strong);border-radius:100px;background:transparent;color:var(--brand);font-weight:700;font-size:13.5px;transition:border-color .2s,background .2s}
+.group-amounts:hover{border-color:var(--brand);background:var(--brand-soft)}
+.group-amounts svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:transform .25s}
+.group-amounts[aria-expanded=true]{border-color:var(--brand);background:var(--brand-soft)}
+.group-amounts[aria-expanded=true] svg{transform:rotate(180deg)}
 .limits-intro{margin:0 0 16px;font-size:15px;line-height:1.6;color:var(--muted);text-wrap:pretty}
 .limits-intro strong{color:var(--brand)}
 .reimbursement{margin:0 0 22px;padding:20px 24px;border-radius:20px;background:var(--paper);border:1px solid var(--line-soft)}
