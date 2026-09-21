@@ -4,12 +4,19 @@
 
   /* Aperturas provisionales. Los widgets futuros usarán data-widget-trigger y
      reemplazarán solo el diálogo correspondiente cuando estén operativos. */
+  /* Safari anterior a 15.4 no implementa showModal(): se abre como diálogo no modal. */
+  const openDialog = dialog => {
+    if (!dialog) return;
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+  };
+  window.__openDialog = openDialog;
   document.querySelectorAll('[data-contact-dialog]').forEach(button => button.addEventListener('click', () => {
     const dialog = document.getElementById(button.dataset.contactDialog);
-    dialog.showModal();
+    openDialog(dialog);
     if (dialog.id === 'call-dialog') dialog.querySelector('input').focus();
   }));
-  document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
+  document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => { const dialog = button.closest('dialog'); if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open'); }));
   const callbackForm = document.querySelector('#callback-form');
   const callbackName = document.querySelector('#callback-name');
   const callbackPhone = document.querySelector('#callback-phone');
@@ -89,7 +96,7 @@
 
   whatsapp?.addEventListener('click', event => {
     event.preventDefault();
-    contactDialog?.showModal();
+    openDialog(contactDialog);
   });
 
   document.querySelector('#close-contact')?.addEventListener('click', () => contactDialog?.close());
@@ -1051,12 +1058,14 @@
   const price = dialog.querySelector('#external-price');
   const go = dialog.querySelector('#external-continue');
   document.querySelectorAll('[data-external-plan]').forEach(link => link.addEventListener('click', event => {
+    /* Sin soporte de <dialog>, el enlace se abre directamente. */
+    if (typeof dialog.showModal !== 'function' && typeof window.__openDialog !== 'function') return;
     event.preventDefault();
     plan.textContent = link.dataset.externalPlan;
     price.textContent = link.dataset.externalPrice;
     go.href = link.href;
-    dialog.showModal();
+    window.__openDialog(dialog);
     go.focus();
   }));
-  go.addEventListener('click', () => dialog.close());
+  go.addEventListener('click', () => { if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open'); });
 })();
