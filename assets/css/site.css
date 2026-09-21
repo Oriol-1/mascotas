@@ -510,6 +510,12 @@ h1{font-size:clamp(38px,3.85vw,55px);max-width:640px;text-wrap:balance}
 .coverage-head{max-width:760px;margin-bottom:18px}
 /* Botón «Mostrar importes» en cada tarjeta: por defecto solo se ven los actos; al pulsarlo aparecen las cifras y ejemplos de esa tarjeta. */
 .coverage-group[data-amounts=hidden] .limit dd{display:none}
+.reimbursement[data-amounts=hidden] .reimbursement-example{display:none}
+.reimbursement[data-amounts=visible] .reimbursement-example{animation:limit-in .45s cubic-bezier(.22,.9,.3,1) backwards}
+.reimbursement .group-amounts{margin-top:18px}
+.reimbursement.is-clickable{cursor:pointer}
+.reimbursement.is-clickable:hover{border-color:var(--hairline-strong);box-shadow:0 6px 20px rgba(24,39,32,.06)}
+.reimbursement.is-clickable:hover .group-amounts{border-color:var(--brand);background:var(--brand-soft)}
 .coverage-group[data-amounts=hidden] .limit{padding:13px 0}
 .coverage-group[data-amounts=visible] .limit dd{animation:limit-in .45s cubic-bezier(.22,.9,.3,1) backwards}
 .coverage-group.is-clickable{cursor:pointer;transition:border-color .2s,box-shadow .2s}

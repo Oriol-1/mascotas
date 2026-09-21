@@ -152,14 +152,18 @@
 
     <p class="limits-intro">Pagas la factura en tu veterinario de siempre y <strong>te devolvemos el 80 %</strong> de lo que has pagado. El 20 % restante lo asumes tú.</p>
 
-    <div class="reimbursement">
+    <div class="reimbursement" id="reimbursement" data-amounts="hidden">
       <h3>Cómo se calcula lo que recibes</h3>
       <ol class="reimbursement-steps">
         <li><strong>Pagas la factura</strong>Eliges el veterinario y abonas la visita como siempre.</li>
         <li><strong>Calculamos el 80 %</strong>Sobre el importe de la factura de los actos cubiertos.</li>
         <li><strong>Te ingresamos el reembolso</strong>Nunca más del máximo por acto que ves en cada cifra.</li>
       </ol>
-      <p class="reimbursement-example">Ejemplo: una consulta diurna de <strong>35 €</strong>. El 80 % son <strong>28 €</strong>, por debajo del máximo de 30 €, así que recibes <strong>28 €</strong> y pagas <strong>7 €</strong>. Si esa consulta costara 50 €, el 80 % serían 40 €, pero el máximo es 30 €: recibirías <strong>30 €</strong> y pagarías <strong>20 €</strong>.</p>
+      <button type="button" class="group-amounts" aria-expanded="false" aria-controls="reimbursement">
+        <span data-amounts-off>Ver ejemplo con cifras</span><span data-amounts-on hidden>Ocultar ejemplo</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <p class="reimbursement-example" id="reimbursement-example">Ejemplo: una consulta diurna de <strong>35 €</strong>. El 80 % son <strong>28 €</strong>, por debajo del máximo de 30 €, así que recibes <strong>28 €</strong> y pagas <strong>7 €</strong>. Si esa consulta costara 50 €, el 80 % serían 40 €, pero el máximo es 30 €: recibirías <strong>30 €</strong> y pagarías <strong>20 €</strong>.</p>
     </div>
 
     <div class="coverage-groups">
