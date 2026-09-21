@@ -1023,12 +1023,21 @@
     const offLabel = button.querySelector('[data-amounts-off]');
     const onLabel = button.querySelector('[data-amounts-on]');
     if (!group) return;
-    button.addEventListener('click', () => {
+    const toggle = () => {
       const show = button.getAttribute('aria-expanded') !== 'true';
       button.setAttribute('aria-expanded', String(show));
       group.dataset.amounts = show ? 'visible' : 'hidden';
       if (offLabel) offLabel.hidden = show;
       if (onLabel) onLabel.hidden = !show;
+    };
+    button.addEventListener('click', toggle);
+    /* Toda la tarjeta alterna los importes; el botón queda como indicador. Se ignora si el usuario está seleccionando texto. */
+    group.classList.add('is-clickable');
+    group.addEventListener('click', event => {
+      if (event.target.closest('.group-amounts')) return;
+      const selection = window.getSelection();
+      if (selection && selection.type === 'Range' && selection.toString().length) return;
+      toggle();
     });
   });
 })();
