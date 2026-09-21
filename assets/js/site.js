@@ -1032,3 +1032,22 @@
     });
   });
 })();
+
+/* Precios: aviso antes de salir a la web de Línea Directa. */
+(() => {
+  'use strict';
+  const dialog = document.querySelector('#external-dialog');
+  if (!dialog) return;
+  const plan = dialog.querySelector('#external-plan');
+  const price = dialog.querySelector('#external-price');
+  const go = dialog.querySelector('#external-continue');
+  document.querySelectorAll('[data-external-plan]').forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    plan.textContent = link.dataset.externalPlan;
+    price.textContent = link.dataset.externalPrice;
+    go.href = link.href;
+    dialog.showModal();
+    go.focus();
+  }));
+  go.addEventListener('click', () => dialog.close());
+})();
