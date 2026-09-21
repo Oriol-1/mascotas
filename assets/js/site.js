@@ -976,3 +976,41 @@
   window.addEventListener('resize', requestPaint, {passive: true});
   requestPaint();
 })();
+
+/* Precios: selector Perros/Gatos y detalle desplegable de cada modalidad. */
+(() => {
+  'use strict';
+  const section = document.querySelector('#precios');
+  if (!section) return;
+
+  const notes = {
+    perro: 'Cualquier raza de perro, incluidas las consideradas potencialmente peligrosas (PPP).',
+    gato: 'Todas las razas de gato, con el mismo precio y las mismas coberturas.'
+  };
+  const words = { perro: 'perro', gato: 'gato' };
+  const options = [...section.querySelectorAll('[data-pricing-pet]')];
+  const note = section.querySelector('[data-pricing-pet-note]');
+  const petWords = [...section.querySelectorAll('[data-pet-word]')];
+  const petOnly = [...section.querySelectorAll('[data-pet-only]')];
+
+  const showPet = pet => {
+    options.forEach(option => option.setAttribute('aria-pressed', String(option.dataset.pricingPet === pet)));
+    if (note) note.textContent = notes[pet];
+    petWords.forEach(word => { word.textContent = words[pet]; });
+    petOnly.forEach(item => { item.hidden = item.dataset.petOnly !== pet; });
+  };
+  options.forEach(option => option.addEventListener('click', () => showPet(option.dataset.pricingPet)));
+
+  section.querySelectorAll('.plan-toggle').forEach(toggle => {
+    const panel = document.getElementById(toggle.getAttribute('aria-controls'));
+    const closedLabel = toggle.querySelector('[data-label-closed]');
+    const openLabel = toggle.querySelector('[data-label-open]');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      if (panel) panel.hidden = !open;
+      if (closedLabel) closedLabel.hidden = open;
+      if (openLabel) openLabel.hidden = !open;
+    });
+  });
+})();
