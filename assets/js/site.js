@@ -329,7 +329,7 @@
   if(!('IntersectionObserver' in window)) return;
 
   const targets = document.querySelectorAll(
-    '.contact-heading, .contact-card, .coverage-head, .limits-intro, .reimbursement, .coverage-group, .condition, ' +
+    '.contact-heading, .contact-card, .coverage-head, .reimbursement, .coverage-group, .condition, ' +
     '.how-copy, .step-card, .discounts-copy, .access-card'
   );
   const phase = new Map();
@@ -984,29 +984,11 @@
   requestPaint();
 })();
 
-/* Precios: selector Perros/Gatos y detalle desplegable de cada modalidad. */
+/* Precios: detalle desplegable de cada modalidad. */
 (() => {
   'use strict';
   const section = document.querySelector('#precios');
   if (!section) return;
-
-  const notes = {
-    perro: 'Cualquier raza de perro, incluidas las consideradas potencialmente peligrosas (PPP).',
-    gato: 'Todas las razas de gato, con el mismo precio y las mismas coberturas.'
-  };
-  const words = { perro: 'perro', gato: 'gato' };
-  const options = [...section.querySelectorAll('[data-pricing-pet]')];
-  const note = section.querySelector('[data-pricing-pet-note]');
-  const petWords = [...section.querySelectorAll('[data-pet-word]')];
-  const petOnly = [...section.querySelectorAll('[data-pet-only]')];
-
-  const showPet = pet => {
-    options.forEach(option => option.setAttribute('aria-pressed', String(option.dataset.pricingPet === pet)));
-    if (note) note.textContent = notes[pet];
-    petWords.forEach(word => { word.textContent = words[pet]; });
-    petOnly.forEach(item => { item.hidden = item.dataset.petOnly !== pet; });
-  };
-  options.forEach(option => option.addEventListener('click', () => showPet(option.dataset.pricingPet)));
 
   section.querySelectorAll('.plan-toggle').forEach(toggle => {
     const panel = document.getElementById(toggle.getAttribute('aria-controls'));
